@@ -67,7 +67,7 @@ def index():
         #Login form
         #if state == "login": #login form submitted
             '''
-            '''
+            ''' #need to do js function to call this as a json request when button pressed
             # TODO - need to make sure only one user is able to login at a time...
             if len(session["userid"]) >= 1:
                 message = "System already being controlled, logout and try again."
@@ -114,7 +114,7 @@ def index():
 
             #new user database entry/puts in user roles
             if status == True:
-                new_user_entry()
+                new_user_entry() #create database functions in yourrobot
                 user_role_entry()
             
     else:
