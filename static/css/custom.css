@@ -17,6 +17,14 @@ footer { margin-top:60px; }
 
 /* Origin Website Window */
 .origin{
+    position: absolute;
+}
+
+/* Message CSS */
+.message {
+    color: black;
+    text-align: left;
+    font-weight: bold;
 }
 
 /* Navigation Bar CSS */

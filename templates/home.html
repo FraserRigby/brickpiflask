@@ -20,7 +20,8 @@
             Please log in to access the LegoFire robot system.<br>
             Upon logging in you will be redirected to Mission Control.<br>
             If you do not have an account, please click here to <button type="button" class="create-account-button" onclick="docuement.getElementByID('signup').style.display='block'">create account</button> .
-        </p>
+        </p><br>
+        <p class="message" id="login_message"></p>
         <!--original msg<p>If you click the "Submit" button, the form-data will be sent to the form action. Default is Email is <b>'admin@admin'</b> and Password is <b>'admin'</b>.</p>-->
     </div>
 </div>
@@ -37,13 +38,13 @@
         </div>
         <form class="signup-form" id="signup-form" action="/" method="POST">
             <label for="name">Firstname:</label>
-            <input type="text" name="name" value='' placeholder="Please enter your first name" required>
+            <input type="text" name="signup_name" value='' placeholder="Please enter your first name" required>
             <label for="surname">Surname:</label>
-            <input type="text" name="surname" value='' placeholder="Please enter your surname" required>
+            <input type="text" name="signup_surname" value='' placeholder="Please enter your surname" required>
             <label for="username">Username:</label>
-            <input type="text" name="username" value='' placeholder="Please enter desired username" required>
+            <input type="text" name="signup_username" value='' placeholder="Please enter desired username" required>
             <label for="password">Password:</label>
-            <input type="password" name="password" value='' placeholder="Please enter your password" required>
+            <input type="password" name="signup_password" value='' placeholder="Please enter your password" required>
             <label for="password_confirm">Confirm Password:</label>
             <input type="password" name="password_confirm" value='' placeholder="Please confirm password" required>
             <label>User Roles:</label>
@@ -58,8 +59,8 @@
             <div class="signup-form-button-container"><!--might need to use a clearfix div if appearance messes up-->
                 <button type="button" onclick="document.getElementByID('signup').style.display='none'" class='signup-cancel-button'>Cancel</button>
                 <button type="submit" id="signup-form" class="signup-signup-button">Sign Up</button>
+                <br><p class="message" id="signup_message"></p>
             </div>
-            <input type="hidden" name="form-name" value="signup-form">
         </form>   
     </div>
 </div>
