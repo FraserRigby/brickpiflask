@@ -257,7 +257,7 @@ def claw_open():
         message = 'Claw opening.'
     else:
         message = 'Robot not enabled.'
-    return jsonify({"message": message})
+    return jsonify({"message":message})
 
 
 @app.route('/claw_close', methods=['GET','POST'])#Closes claw
