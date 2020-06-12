@@ -111,9 +111,7 @@ footer { margin-top:60px; }
     background-color: #3deb6b;
     color: white;
     opacity: 0.75;
-    margin: 20px;
-    left: 50%;
-    transform: translate(-50%, 0);
+    margin: 20px auto;
 }
 
 .login-form button:hover {
