@@ -90,6 +90,71 @@ def sensorview():
 #----------------JSON REQUEST HANDLERS--------------------#
 
 
+#--Home Page Data Handlers--#
+
+@app.route('/login', methods=['GET','POST']) #Login handler, called when login button activated
+def login():
+    if ROBOTENABLED:#checking if robot enabled
+        #Local variables
+        username = ''
+        password = ''
+        results = "failed"
+        message = ''
+        if len(session["userid"]) >= 1: #checking if user is already logged in
+            if request.method == "POST":
+                username = request.form.get('username') #gets username from login form
+                password = request.form.get('password') #gets password from login form
+                userdetails = database.ViewQueryHelper("SELECT * FROM usertable WHERE username = ? AND password = ?",(username,password)) #gets rows where username & password = inputted values
+                if len(userdetails) != 0: #checks whether any acutual results were returned
+                    row = userdetails[0]
+                    session["userid"] = row["userid"] #assigns session/cookie userid to user's id
+                    results = "loggedin" #when results returned via json, js directs to mission control bc logged in
+                else:
+                    message = "Sorry no user found, password or username incorrect." #no user found message
+        else:
+            message = "System already being controlled, please logout and try again." #user already logged in message
+    else:
+        message = "Robot not activated, please activate."
+    return jsonify({"results":results, "message":message}) #returns whether user logged in, and error message if necessary
+
+
+@app.route('/signup', methods=['GET','POST']) #Signup handler, called when signup button activated
+def signup():
+    if ROBOTENABLED:#checking if robot enabled
+        #Local variables
+        name = ''
+        surname = ''
+        username = ''
+        password = ''
+        userroles = []
+        message = ''
+        if request.method == "POST":
+            name = request.form.get('name') #gets name from singup form
+            surname = request.form.get('surname') #gets surname from signup form
+            username = request.form.get('username') #gets username from signup form
+            password = request.form.get('password') #gets password from signup form
+            taken_username = database.ViewQueryHelper('SELECT * FROM usertable WHERE username = ?',(username,)) #getting data entries with same username as inputted
+            if len(taken_username) == 0: #checking that username is unique
+                database.ModifyQueryHelper("INSERT INTO usertable (name, surname, username, password) VALUES (?,?,?,?)",(name, surname, username, password)) #creating new user entry
+                if request.form.get('role_firefighter') == "firefighter": #checks whether firefighter role selected
+                    userroles.append(1)
+                if request.form.get('role_investigator') == "investigator": #checks whether investigator role selected
+                    userroles.append(2)
+                if request.form.get('role_admin') == "admin": #checks whether admin role selected
+                    userroles.append(3) #if role selected, role code added to list
+                userid = database.ViewQueryHelper("SELECT userid FROM usertable WHERE username = ? AND password = ?",(username,password)) #userid fetched
+                row = userid[0]
+                session["userid"] = row["userid"] #gets userid
+                for role in userroles:
+                    database.ModifyQueryHelper("INSERT INTO userrole (userid, rolecode) VALUES (?,?)",(session["userid"],role)) #creating new role entry for user
+                message = "New user created, please log in to access fire robot system." #signup confirmation message
+            else:
+                message = "Username is taken, please choose a different one." #error message
+        else:
+            message = "Robot not activated, please activate."
+    return jsonify({"message":message}) #returns mssages
+
+
 #--Sensor Handlers--#
 
 @app.route('/getallstats', methods=['GET','POST'])#get all stats and return through JSON
@@ -296,71 +361,6 @@ def get_all_users():
     return jsonify([dict(row) for row in results]) #jsonify doesnt work with an SQLite.Row
 '''
 
-
-#--Data Transfer Handlers--#
-
-@app.route('/login', methods=['GET','POST']) #Login handler, called when login button activated
-def login():
-    if ROBOTENABLED:#checking if robot enabled
-        #Local variables
-        username = ''
-        password = ''
-        results = "failed"
-        message = ''
-        if len(session["userid"]) >= 1: #checking if user is already logged in
-            if request.method == "POST":
-                username = request.form.get('username') #gets username from login form
-                password = request.form.get('password') #gets password from login form
-                userdetails = database.ViewQueryHelper("SELECT * FROM usertable WHERE username = ? AND password = ?",(username,password)) #gets rows where username & password = inputted values
-                if len(userdetails) != 0: #checks whether any acutual results were returned
-                    row = userdetails[0]
-                    session["userid"] = row["userid"] #assigns session/cookie userid to user's id
-                    results = "loggedin" #when results returned via json, js directs to mission control bc logged in
-                else:
-                    message = "Sorry no user found, password or username incorrect." #no user found message
-        else:
-            message = "System already being controlled, please logout and try again." #user already logged in message
-    else:
-        message = "Robot not activated, please activate."
-    return jsonify({"results":results, "message":message}) #returns whether user logged in, and error message if necessary
-
-
-@app.route('/signup', methods=['GET','POST']) #Signup handler, called when signup button activated
-def signup():
-    if ROBOTENABLED:#checking if robot enabled
-        #Local variables
-        name = ''
-        surname = ''
-        username = ''
-        password = ''
-        userroles = []
-        message = ''
-        if request.method == "POST":
-            name = request.form.get('name') #gets name from singup form
-            surname = request.form.get('surname') #gets surname from signup form
-            username = request.form.get('username') #gets username from signup form
-            password = request.form.get('password') #gets password from signup form
-            taken_username = database.ViewQueryHelper('SELECT * FROM usertable WHERE username = ?',(username,)) #getting data entries with same username as inputted
-            if len(taken_username) == 0: #checking that username is unique
-                database.ModifyQueryHelper("INSERT INTO usertable (name, surname, username, password) VALUES (?,?,?,?)",(name, surname, username, password)) #creating new user entry
-                if request.form.get('role_firefighter') == "firefighter": #checks whether firefighter role selected
-                    userroles.append(1)
-                if request.form.get('role_investigator') == "investigator": #checks whether investigator role selected
-                    userroles.append(2)
-                if request.form.get('role_admin') == "admin": #checks whether admin role selected
-                    userroles.append(3) #if role selected, role code added to list
-                userid = database.ViewQueryHelper("SELECT userid FROM usertable WHERE username = ? AND password = ?",(username,password)) #userid fetched
-                row = userid[0]
-                session["userid"] = row["userid"] #gets userid
-                for role in userroles:
-                    database.ModifyQueryHelper("INSERT INTO userrole (userid, rolecode) VALUES (?,?)",(session["userid"],role)) #creating new role entry for user
-                message = "New user created, please log in to access fire robot system." #signup confirmation message
-            else:
-                message = "Username is taken, please choose a different one." #error message
-        else:
-            message = "Robot not activated, please activate."
-    return jsonify({"message":message}) #returns mssages
-
             
 #--Miscellaneous Request Handlers--#
 
@@ -411,10 +411,11 @@ def defaultdatahandler():
     return jsonify({"message":"just an example"})
 
 
-
 #------------END JSON REQUEST HANDLERS--------------------#
 
 
+
+#----------OTHER----------#
 
 #Log a message
 def log(message):
