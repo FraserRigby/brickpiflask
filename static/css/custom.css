@@ -18,7 +18,7 @@ footer { margin-top:60px; }
 /* Origin Website Window */
 .origin{
     position: absolute;
-    background-color: gray;
+    background-color: black;
 }
 
 /* Message CSS */
@@ -34,6 +34,8 @@ footer { margin-top:60px; }
     background-color: transparent;
     width: 100%;
     height: auto;
+    margin: 0 auto;
+
 }
 
 .navbar-button-holder {/*class for centering set of navbar buttons*/
