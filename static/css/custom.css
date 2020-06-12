@@ -18,6 +18,7 @@ footer { margin-top:60px; }
 /* Origin Website Window */
 .origin{
     position: absolute;
+    background-color: gray;
 }
 
 /* Message CSS */

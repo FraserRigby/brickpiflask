@@ -9,31 +9,18 @@
     <script src="/static/scripts/jsonrequesthandler.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
-
-
-<body style="padding:30px;font-size:16px;">
-
-    <!-- Top navigation bar, common across all pages-->
-    <nav class="navbar"><!-- navbar, navbar buttons-->
-        <div class="navbar-button-holder">
-            <a href="/" class="navbar-button">Home</a>
-            <a href="/missioncontrol" class="navbar-button">Mission Control</a>
-            <a href="/dataview" class="navbar-button">Data View</a>
-            <a href="/help" class="navbar-button">Help</a>
-        </div>
-    </nav>
-
-<br>
-
-    {% block content %}{% endblock %} <!-- Container for Content -->
-    <footer>
-        <a href="https://github.com/bradnielsen2981/brickpiflask">The full code can be found on Github</a>
-        {% for message in get_flashed_messages() %}
-        <div class='alert'>
-            {{message}}
-        </div>
-        {%endfor%}
-    </footer>
+<body>
+    <div class="origin">
+        <!-- Top navigation bar, common across all pages-->
+        <nav class="navbar"><!-- navbar, navbar buttons-->
+            <div class="navbar-button-holder">
+                <a href="/" class="navbar-button">Home</a>
+                <a href="/missioncontrol" class="navbar-button">Mission Control</a>
+                <a href="/dataview" class="navbar-button">Data View</a>
+                <a href="/help" class="navbar-button">Help</a>
+            </div>
+        </nav>
+    </div>
 </body>
    {% block scripts %}{% endblock %} <!-- Container for Scripts-->
 </html>
