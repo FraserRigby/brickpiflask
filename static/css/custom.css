@@ -122,7 +122,8 @@ footer { margin-top:60px; }
     border-width: 1px;
     border-radius: 20px;
     border-color: gray;
-    /* transition: 0.2s; */
+    opacity: 0.5;
+    transition: 0.5;
 }
 
 .table-login-form input:hover, input:focus {
@@ -130,6 +131,7 @@ footer { margin-top:60px; }
     border-width: 1px;
     border-radius: 20px;
     border-color:black;
+    opacity: 1;
 }
 
 .login-form button {
