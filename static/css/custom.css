@@ -112,6 +112,7 @@ footer { margin-top:60px; }
 }
 
 .login-form input:focus, input:hover {
+    border: none;
     color: black;
     border-color: black;
     border-radius: 20px;
@@ -119,6 +120,7 @@ footer { margin-top:60px; }
 
 .login-form button {
     border-radius: 18px;
+    border-color: transparent;
     background-color: #3deb6b;
     color: white;
     opacity: 0.75;
@@ -129,7 +131,7 @@ footer { margin-top:60px; }
     opacity: 1;
 }
 
-.login-instructions-container p {
+.login-instructions-container {
     text-align: left;
     color: black;
     margin: 20px;
