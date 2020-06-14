@@ -12,6 +12,14 @@ window.onclick = function(event) {
     }
 }
 
+//Signup window open function
+function window_signup_open() {
+    var origin = document.getElementById('origin');
+    origin.classList.toggle('origin_signup_transition')
+    document.getElementById('signup').style.display='block';
+
+}
+
 //Login submit function, when login submit button pressed data saved to database
 function user_login_submit() {
     login_data['username'] = document.getElementById('login_username').value; //getting form field values
