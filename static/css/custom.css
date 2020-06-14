@@ -68,7 +68,7 @@ footer { margin-top:60px; }
 /* Home Page CSS */
 /* Login CSS */
 .login-container{
-    width: auto;
+    width: 40%;
     height: auto;
     border-radius: 15px;
     padding: 20px 20px 20px 20px;
