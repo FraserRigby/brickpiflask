@@ -112,9 +112,9 @@ footer { margin-top:60px; }
 }
 
 .login-form input:focus, input:hover {
-    border: 1px black;
     color: black;
     border-radius: 20px;
+    border-color: black;    
 }
 
 .login-form button {
