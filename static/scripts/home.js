@@ -19,7 +19,7 @@ function user_login_submit() {
     if (login_data['username'] != '' && login_data['password'] != '') { //testing to see if data not submitted
         document.getElementById('message').innerHTML = "No data entered, please try again."; //no data input message
     } else {
-        JSONrequest('/login', 'POST', login_results_return, login_data);
+        JSONrequest('/login','POST',login_results_return,login_data);
     }
 }
 
@@ -56,7 +56,7 @@ function user_sign_up() {
         document.getElementById('message').innerHTML = "New password and confirm password do not match, please try again.";
     }
     if (signup == true) {
-        JSONrequest('/signup', 'POST', signup_results_return, signup_data);
+        JSONrequest('/signup','POST',signup_results_return,signup_data);
     }
 }
 
