@@ -200,6 +200,9 @@ footer { margin-top:60px; }
     border-radius: 15px;
     background-color: white;
     padding: 20px 20px 20px 20px;
+    filter: none;
+    opacity: 1;
+    z-index: 1;
 }
 
 .signup-header-container{
@@ -219,6 +222,7 @@ footer { margin-top:60px; }
     width: auto;
     height: auto;
     margin: auto;
+    overflow: scroll;
 }
 
 .signup-form label{
