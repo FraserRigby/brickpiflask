@@ -3,6 +3,7 @@
 //Variables
 var modal = document.getElementById('signup');
 var login_data = {};
+var message = '';
 
 //SignUp popup js
 window.onclick = function(event) {
