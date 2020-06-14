@@ -107,15 +107,13 @@ footer { margin-top:60px; }
     padding: 10px 10px 10px 10px;
     text-align: left;
     color: gray;
-    border: none;
+    border: 1px gray;
     border-radius: 20px;
-    border-color: gray;
 }
 
 .login-form input:focus, input:hover {
     color: black;
-    border: none;
-    border-color: black;
+    border: 1px black;
     border-radius: 20px;
 }
 
@@ -125,6 +123,7 @@ footer { margin-top:60px; }
     background-color: #3deb6b;
     color: white;
     opacity: 0.75;
+    padding: 20px 20px 20px 20px;
     margin: 20px auto;
 }
 
@@ -141,6 +140,7 @@ footer { margin-top:60px; }
 .create-account-button {
     display: inline;
     color: blue;
+    background: none;
 }
 
 .create-account-button:hover {
