@@ -45,16 +45,16 @@ footer { margin-top:60px; }
     width: auto;
     height: auto;
     background-color: transparent;
-    margin: auto;
+    margin: 10px auto auto auto;
 }
 
 .navbar-button {/*navbar button class*/
     background-color: transparent;
     color: white;
     text-align: center;
-    padding: 10px 20px; /*test to find whats best*/
+    padding: 5px 20px; /*test to find whats best*/
     margin: 20px 20px; /*test to find whats best*/
-    border-radius: 16px; /*might need to define border as none, probably change border*/
+    border-radius: 14px; /*might need to define border as none, probably change border*/
     cursor: pointer;    
     transition-duration: 0.4s;
 }
@@ -62,6 +62,7 @@ footer { margin-top:60px; }
 .navbar-button:hover {
     background-color: white;
     color: black;
+    text-decoration: none;
 }
 
 /* Home Page CSS */
