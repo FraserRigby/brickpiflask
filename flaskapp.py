@@ -19,7 +19,7 @@ SECRET_KEY = 'my random key can be anything' #this is used for encrypting sessio
 app.config.from_object(__name__) #Set app configuration using above SETTINGS
 
 #Connect to database
-database = DatabaseHelper('legofire.sqlite')
+database = DatabaseHelper('firerobot.sqlite')
 database.set_log(app.logger) #set the logger inside the database
 
 #Create the Robot
