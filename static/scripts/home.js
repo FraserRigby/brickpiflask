@@ -7,8 +7,6 @@ var message = '';
 
 //Signup window open function
 function window_signup_open() {
-    var origin = document.getElementById('origin');
-    origin.classList.toggle('origin_signup_transition')
     document.getElementById('signup').style.display='block';
 }
 

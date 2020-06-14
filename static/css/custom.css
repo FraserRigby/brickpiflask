@@ -145,6 +145,7 @@ footer { margin-top:60px; }
     opacity: 0.75;
     padding: 10px 40px 10px 40px;
     margin: 30px auto 0 auto;
+    transition: 0.4s;
 }
 
 .login-form button:hover {
@@ -180,11 +181,11 @@ footer { margin-top:60px; }
     transition-duration: 0.6s;
 }
 
-.origin-signup-transition {
+/*.origin-signup-transition {
     opacity: 0.75;
     filter: blur(2px);
     transition: 0.6;
-}
+}*/
 
 .close {
     position: absolute;
@@ -193,6 +194,7 @@ footer { margin-top:60px; }
     font-size: 40px;
     font-weight: bold;
     color: #f1f1f1;
+    transition: 0.2s;
 }
 
 .close:hover, .close:focus{
