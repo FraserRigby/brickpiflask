@@ -68,8 +68,8 @@ footer { margin-top:60px; }
 /* Home Page CSS */
 /* Login CSS */
 .login-container{
-    width: auto;
     height: auto;
+    width: 50%;
     border-radius: 15px;
     padding: 20px 20px 20px 20px;
     margin: auto;
@@ -77,6 +77,8 @@ footer { margin-top:60px; }
 }
 
 .login-header-container{
+    height: auto;
+    width: auto;
     margin: 20px auto 40px auto;
     color: black;
     text-align: center;  
@@ -85,15 +87,15 @@ footer { margin-top:60px; }
 }
 
 .login-form-container{
-    margin: auto;
-    width: auto;
     height: auto;
+    width: auto;
+    margin: 0 auto 0 auto;
 }
 
 .login-form {
-    margin: 20px auto 20px auto;
-    width: auto;
     height: auto;
+    width: auto;
+    margin: 20px auto 20px auto;
 }
 
 .login-form label {
