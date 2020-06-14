@@ -105,16 +105,16 @@ footer { margin-top:60px; }
 }
 
 
-.table-form{
+.login-table-form{
     margin: 0 auto 0 auto;
 }
 
-.table-form label {
+.login-table-form label {
     margin: 10px 10px 0px 10px;
     text-align:left;
 }
 
-.table-form input {
+.login-table-form input {
     width: 200px;
     margin: 10px 10px 0px 10px;
     padding: 5px 10px 5px 10px;
@@ -127,7 +127,7 @@ footer { margin-top:60px; }
     transition: 0.5;
 }
 
-.table-form input:hover, input:focus {
+.login-table-form input:hover, input:focus {
     color: black;
     border-width: 1px;
     border-radius: 20px;
@@ -223,19 +223,24 @@ footer { margin-top:60px; }
     margin: 0 10 10 0;
 }
 
-.signup-form{
+.signup-form {
     width: auto;
     height: auto;
     margin: auto;
     overflow-y: scroll;
 }
 
-/*.signup-form label{
+.signup-table-form {
+    margin: 0 auto 0 auto;
+    width: auto;
+}
+
+.signup-table-form label{
     margin: 10px 10px 0px 10px;
     text-align:left;
 }
 
-.signup-form input{
+.signup-table-form input{
     width: 40%;
     margin: 10px 10px 10px 10px;
     border-radius: 12px;
@@ -243,9 +248,9 @@ footer { margin-top:60px; }
     text-align: left;
 }
 
-.signup-form input:focus{
+.signup-table-form input:focus{
     border: 1px black;
-}*/
+}
 
 .userrole-select-container{
     padding: 10px;
@@ -258,6 +263,14 @@ footer { margin-top:60px; }
 
 .userrole-table-form{
     margin: 0 auto 0 auto;
+}
+
+.userrole-table-form label{
+    margin: 0 10px 0 0;
+}
+
+.userrole-table-form input{
+    margin: 0 10px 0 0;
 }
 
 .signup-form-button-container{
