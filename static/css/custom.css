@@ -96,12 +96,13 @@ footer { margin-top:60px; }
 }
 
 .login-form input {
-    width: 100px;
+    width: 300px;
     margin: 10px 10px 10px 10px;
-    border-radius: 12px;
+    border-radius: 16px;
     padding: 15px;
     text-align: left;
-    border-color: transparent;
+    color: #b6bbc2;
+    border-color: #b6bbc2;
 }
 
 .login-form input:focus {
