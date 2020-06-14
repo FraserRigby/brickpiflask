@@ -56,8 +56,9 @@ def index():
 
 @app.route('/missioncontrol') #mission control page
 def missioncontrol():
-    if 'userid' not in session:
+    '''if 'userid' not in session:
         return redirect('./') #no form data is carried across using 'dot/'
+    '''
     voltage = None
     if ROBOTENABLED:
         voltage = robot.get_battery()
