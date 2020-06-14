@@ -145,7 +145,7 @@ footer { margin-top:60px; }
     opacity: 0.75;
     padding: 10px 40px 10px 40px;
     margin: 30px auto 0 auto;
-    transition: 0.4s;
+    transition: 0.2s;
 }
 
 .login-form button:hover {
