@@ -87,6 +87,7 @@ footer { margin-top:60px; }
 }
 
 .login-form-container{
+    display: block;
     height: auto;
     width: auto;
     margin: 0 auto 0 auto;
@@ -122,13 +123,15 @@ footer { margin-top:60px; }
 }
 
 .login-form button {
+    height: auto;
+    width: auto;
     border-radius: 18px;
     border-color: transparent;
     background-color: #3deb6b;
     color: white;
     opacity: 0.75;
     padding: 10px 20px 10px 20px;
-    margin: 20px auto;
+    margin: 20px auto 0 auto;
 }
 
 .login-form button:hover {
