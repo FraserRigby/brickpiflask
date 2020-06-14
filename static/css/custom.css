@@ -240,12 +240,17 @@ footer { margin-top:60px; }
     text-align:left;
 }
 
-.signup-table-form input{
-    width: 40%;
-    margin: 10px 10px 10px 10px;
-    border-radius: 12px;
-    padding: 15px;
+.signup-table-form input {
+    width: 200px;
+    margin: 10px 10px 0px 10px;
+    padding: 5px 10px 5px 10px;
     text-align: left;
+    color: gray;
+    border-width: 1px;
+    border-radius: 20px;
+    border-color: gray;
+    opacity: 0.5;
+    transition: 0.5;
 }
 
 .signup-table-form input:focus{
@@ -265,8 +270,13 @@ footer { margin-top:60px; }
     margin: 0 auto 0 auto;
 }
 
+.userrole-table-form tr{
+    margin: auto 10px auto 10px;
+}
+
 .userrole-table-form label{
-    margin: 0 10px 0 0;
+    margin: 0 10px 0px 10px;
+    text-align:left;
 }
 
 .userrole-table-form input{
