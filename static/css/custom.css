@@ -121,9 +121,10 @@ footer { margin-top:60px; }
     color: gray;
     border-radius: 20px;
     border: 1px gray;
+    transition: 0.2s;
 }
 
-.login-form input:focus, input:hover {
+.table-login-form input:focus, input:hover {
     color: black;
     border-radius: 20px;
     border: 1px black;
