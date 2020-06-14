@@ -104,16 +104,17 @@ footer { margin-top:60px; }
 .login-form input {
     width: 300px;
     margin: 10px 10px 10px 10px;
-    border-radius: 16px;
-    padding: 15px;
+    border-radius: 20px;
+    padding: 10px 10px 10px 10px;
     text-align: left;
-    color: #b6bbc2;
-    border-color: #b6bbc2;
+    color: gray;
+    border-color: gray;
 }
 
 .login-form input:focus {
     border: 1px black;
     color: black;
+    border-radius: 20px
 }
 
 .login-form button {
