@@ -99,7 +99,13 @@ footer { margin-top:60px; }
     display: block;
     height: auto;
     width: auto;
-    margin: 20px auto 20px auto;
+    margin: 20px auto 30px auto;
+    text-align: center;
+}
+
+
+.table-login-form{
+    margin: auto;
     text-align: center;
 }
 
