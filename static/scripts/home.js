@@ -5,19 +5,18 @@ var modal = document.getElementById('signup');
 var login_data = {};
 var message = '';
 
-//SignUp popup js
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
 //Signup window open function
 function window_signup_open() {
     var origin = document.getElementById('origin');
     origin.classList.toggle('origin_signup_transition')
     document.getElementById('signup').style.display='block';
+}
 
+//SignUp popup close js
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 
 //Login submit function, when login submit button pressed data saved to database
