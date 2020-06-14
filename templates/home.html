@@ -7,21 +7,23 @@
     <div class="login-header-container"><!--container for login header-->
         Login
     </div>
-    <form class="login-form" id="login-form" action="/" method="POST">
-        <table>
-            <tr>
-                <td><label for="username">Username:</label></td>
-                <td><input type="text" name="username" id="login_username" value="" placeholder="Please enter username" required></td>
-            </tr>
-            <tr>
-                <td><label for="password">Password:</label></td>
-                <td><input type="password" name="password" id="login_password" value="" placeholer="Please enter password" required></td>
-            </tr>
-        </table>
-        <div class="login_submit_button_container">
-            <button type="submit" id="login-submit-button" onclick="user_login_submit">Login</button>
-        </div>
-    </form>
+    <div class="login-form-container">
+        <form class="login-form" id="login-form" action="/" method="POST">
+            <table>
+                <tr>
+                    <td><label for="username">Username:</label></td>
+                    <td><input type="text" name="username" id="login_username" value="" placeholder="Please enter username" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" name="password" id="login_password" value="" placeholer="Please enter password" required></td>
+                </tr>
+            </table>
+            <div class="login_submit_button_container">
+                <button type="submit" id="login-submit-button" onclick="user_login_submit">Login</button>
+            </div>
+        </form>
+    </div>
     <div class="login-instructions-container"><!--login message/instructions/information container-->
         <p>
             Please log in to access the LegoFire robot system.<br>

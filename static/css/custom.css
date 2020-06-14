@@ -84,6 +84,10 @@ footer { margin-top:60px; }
     font-size: 20px;
 }
 
+.login-form-container{
+    margin: 0 auto 0 auto;
+}
+
 .login-form {
     margin: 20px auto 20px auto;
     width: auto;
