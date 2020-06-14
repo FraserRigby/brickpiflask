@@ -70,6 +70,7 @@ footer { margin-top:60px; }
 .login-container{
     height: auto;
     width: 55%;
+    display: block;
     border-radius: 15px;
     padding: 20px 20px 20px 20px;
     margin: auto;
