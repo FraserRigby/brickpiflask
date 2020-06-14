@@ -142,6 +142,7 @@ footer { margin-top:60px; }
 .create-account-button {
     display: inline;
     color: blue;
+    border: none;
     background: none;
 }
 
