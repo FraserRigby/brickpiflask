@@ -105,16 +105,16 @@ footer { margin-top:60px; }
 }
 
 
-.table-login-form{
+.table-form{
     margin: 0 auto 0 auto;
 }
 
-.table-login-form label {
+.table-form label {
     margin: 10px 10px 0px 10px;
     text-align:left;
 }
 
-.table-login-form input {
+.table-form input {
     width: 200px;
     margin: 10px 10px 0px 10px;
     padding: 5px 10px 5px 10px;
@@ -127,7 +127,7 @@ footer { margin-top:60px; }
     transition: 0.5;
 }
 
-.table-login-form input:hover, input:focus {
+.table-form input:hover, input:focus {
     color: black;
     border-width: 1px;
     border-radius: 20px;
@@ -224,14 +224,13 @@ footer { margin-top:60px; }
 }
 
 .signup-form{
-    overflow: auto;
     width: auto;
     height: auto;
     margin: auto;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
-.signup-form label{
+/*.signup-form label{
     margin: 10px 10px 0px 10px;
     text-align:left;
 }
@@ -246,10 +245,18 @@ footer { margin-top:60px; }
 
 .signup-form input:focus{
     border: 1px black;
+}*/
+
+.userrole-select-container{
+    padding: 10px;
+    margin: 10px auto 20px auto;
+    display: block;
+    height: auto;
+    width: auto;
+    text-align: center;
 }
 
-.user-select-container{
-    padding: 10px;
+.userrole-table-form{
     margin: 0 auto 0 auto;
 }
 
