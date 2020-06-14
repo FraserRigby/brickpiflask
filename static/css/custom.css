@@ -108,12 +108,12 @@ footer { margin-top:60px; }
     margin: 0 auto 0 auto;
 }
 
-.login-form label {
+.tabel-login-form label {
     margin: 20px 10px 0px 10px;
     text-align:left;
 }
 
-.login-form input {
+.tabel-login-form input {
     width: 200px;
     margin: 20px 10px 0px 10px;
     padding: 10px 10px 10px 10px;
