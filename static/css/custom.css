@@ -109,13 +109,13 @@ footer { margin-top:60px; }
 }
 
 .table-login-form label {
-    margin: 20px 10px 0px 10px;
+    margin: 20px 0px 0px 10px;
     text-align:left;
 }
 
 .table-login-form input {
     width: 200px;
-    margin: 20px 10px 0px 10px;
+    margin: 20px 0px 0px 10px;
     padding: 10px 10px 10px 10px;
     text-align: left;
     color: gray;
