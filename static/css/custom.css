@@ -253,8 +253,12 @@ footer { margin-top:60px; }
     transition: 0.5;
 }
 
-.signup-table-form input:focus{
-    border: 1px black;
+.signup-table-form input:hover, input:focus {
+    color: black;
+    border-width: 1px;
+    border-radius: 20px;
+    border-color:black;
+    opacity: 1;
 }
 
 .userrole-select-container{
