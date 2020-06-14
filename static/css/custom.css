@@ -105,7 +105,7 @@ footer { margin-top:60px; }
 
 
 .table-login-form{
-    margin: auto;
+    margin: 0 auto 0 auto;
 }
 
 .login-form label {
