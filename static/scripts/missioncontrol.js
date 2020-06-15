@@ -42,7 +42,7 @@ function writecurrentcommand(results) {
 //New Mission
 
 //new mission window open function
-function window_new_mission_open() {
+function new_mission_window() {
     document.getElementById('mc-new').style.display='block';
 }
 
