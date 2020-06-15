@@ -4,7 +4,7 @@ from interfaces.brickpiinterface import BrickPiInterface
 from interfaces.databaseinterface import DatabaseHelper 
 import logging
 import time
-from datetime import datetime
+import datetime
 
 ENABLED = 1
 DISABLED = 5 #if the sensor returns NOREADING more than 5 times in a row, its permanently 
@@ -138,7 +138,7 @@ class Robot(BrickPiInterface):
         return(heading_traversed)
         
     def get_datetime(self,):
-        dt = datetime.now()
+        dt = datetime.datetime.now()
         dt = int(dt.strftime("%Y%m%d%H%M%S"))
         return(dt)
     
