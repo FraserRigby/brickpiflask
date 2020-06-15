@@ -17,6 +17,11 @@ window.onclick = function(event) {
     }
 }
 
+//Logout function js
+function logout() {
+    JSONrequest('/logout', 'POST')
+}
+
 //Login submit function, when login submit button pressed data saved to database
 function user_login_submit() {
     var login_data = {};
@@ -45,8 +50,8 @@ function user_sign_up() {
     signup_data['name'] = document.getElementById('signup_name').value; //getting form field values
     signup_data['surname'] = document.getElementById('signup_surname').value;
     signup_data['password'] = document.getElementById('signup_password').value;
-    signup_data['confirm_password'] = document.getElementById('confirm_password').value;
-    signup_data["role_firefighter"] = document.getElementById('role_firefighter').value;
+    signup_data['password_confirm'] = document.getElementById('password_confirm').value;
+    signup_data['role_firefighter'] = document.getElementById('role_firefighter').value;
     signup_data['role_investigator'] = document.getElementById('role_investigator').value;
     signup_data['role_admin'] = document.getElementById('role_admin').value;
     var signup = True;
@@ -59,7 +64,7 @@ function user_sign_up() {
             break;
         }
     }
-    if (signup != false && signup_data['password'] != signup_data['confirm_password']) {
+    if (signup != false && signup_data['password'] != signup_data['password_confirm']) {
         signup = False;
         document.getElementById('signup-message').innerHTML = "New password and confirm password do not match, please try again.";
     }
