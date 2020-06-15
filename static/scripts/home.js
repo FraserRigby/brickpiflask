@@ -31,6 +31,7 @@ function user_login_submit() {
 //gets data from executed user_login_submit function, if user is "loggedin"
 function login_results_return(results, message) {
     if (results.results == "loggedin") {
+        document.getElementById('login-message').innerHTML = "User logged in!"
         window.location.pathname = '/missioncontrol'; //taken to mission control page
     } else{
         document.getElementById('login-message').innerHTML = message.message; //gives signin error message
@@ -67,5 +68,5 @@ function user_sign_up() {
 
 //
 function signup_results_return(results, message) {
-        document.getElementById('message').innerHTML = message.message;
+        document.getElementById('signup-message').innerHTML = message.message;
 }

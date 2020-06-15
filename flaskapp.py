@@ -153,7 +153,7 @@ def signup():
                 message = "Username is taken, please choose a different one." #error message
         else:
             message = "Robot not activated, please activate."
-    return jsonify({"message":message}) #returns mssages
+    return jsonify({"message":message}) #returns messages
 
 
 #--Sensor Handlers--#
