@@ -326,6 +326,8 @@ footer { margin-top:60px; }
     opacity: 1;
 }
 
+/* Mision Control CSS*/
+/*new mission*/
 .mc-container{
     height:auto;
     width:auto;
@@ -366,4 +368,18 @@ footer { margin-top:60px; }
     margin: 200px auto 0 auto;
     background-color: white;
     opacity: 1;
+}
+
+.mc-new-mission-button{
+
+}
+
+/*control panel*/
+.mc-control-panel{
+    height:100px;
+    width: 100px;
+    margin: 0 auto 0 auto;
+    background-color: white;
+    position: absolute;
+    bottom: 0px;
 }

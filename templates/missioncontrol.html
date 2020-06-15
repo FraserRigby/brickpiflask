@@ -15,7 +15,7 @@
         <h3 id="message"></h3>
     </div>
     <div class="container">
-      <button type="button" onclick="new_mission_window()">New Mission</button>
+      <button type="button" class="mc-new-mission-button" onclick="new_mission_window()">New Mission</button>
         <div class="row text-center">
           <div class="col-4">
             <button type="button" class="btn btn-success" onclick="JSONrequest('/forward','POST')">Forward</button>
@@ -44,6 +44,12 @@
         </div>
       </div>
 </div>
+
+<!-- Control Panel -->
+<div class='mc-control-panel'>
+
+</div>
+
 
 <!-- New Mission Entry -->
 <div id="mc-new" class='modal'><!--box containing signup stuff-->
