@@ -230,7 +230,8 @@ footer { margin-top:60px; }
     margin: auto;
 }
 
-.signup-form label{
+.signup-label{
+    color: black;
     margin: 0 10px 0 0;
 }
 
