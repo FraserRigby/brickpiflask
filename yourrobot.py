@@ -138,7 +138,7 @@ class Robot(BrickPiInterface):
         return(heading_traversed)
         
     def get_datetime(self,):
-        dt = datetime.now()
+        dt = int(datetime.now())
         return(dt)
     
     
