@@ -199,7 +199,7 @@ footer { margin-top:60px; }
     position: fixed;
     z-index: 1;
     background-color: black;
-    opactity: 0.3;
+    filter: opactity(0.3);
     /*opacity: 0.75;
     filter: blur(2px);*/
     transition-duration: 0.6s;
@@ -229,7 +229,7 @@ footer { margin-top:60px; }
 .signup-container{
     width: 450px;
     height: auto;
-    margin: 200px auto 0 auto;
+    margin: 100px auto 0 auto;
     vertical-align: middle;
     border-radius: 15px;
     background-color: white;
