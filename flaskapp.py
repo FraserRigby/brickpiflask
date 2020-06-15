@@ -9,7 +9,7 @@ from datetime import datetime
 ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
 POWER = 30 #constant power/speed
 TPOWER = 20 #constant turning power
-DEVIATION = -0.5 #value accounting for motor deviations
+DEVIATION = 0.5 #value accounting for motor deviations
 DISTANCETO = 20 #Stopping distance
 MOF = 2 #Turning margin of error
 
