@@ -200,11 +200,15 @@ def new_mission():
 def end_mission():
     message = ''
     if ROBOTENABLED:
-        session.remove('missionid')
+        if "missionid" in session:
+            session.remove('missionid')
+            message = "Mission ended."
+        else:
+            message = "No mission currently occuring."
     else:
         message = "Robot not activated, please activate."
     return jsonify({"message":message})
-    
+
 
 #--Sensor Handlers--#
 
