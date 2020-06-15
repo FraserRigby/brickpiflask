@@ -116,7 +116,7 @@ def login():
         #Local variables
         username = ''
         password = ''
-        if "userid" in session: #checking if user is already logged in
+        if "userid" not in session: #checking if user is already logged in
             if request.method == "POST":
                 username = request.form.get('username') #gets username from login form
                 password = request.form.get('password') #gets password from login form
