@@ -139,7 +139,7 @@ def signup():
             password = request.form.get('password') #gets password from signup form
             taken_username = database.ViewQueryHelper('SELECT * FROM usertable WHERE username = ?',(username,)) #getting data entries with same username as inputted
             if len(taken_username) == 0: #checking that username is unique
-                database.ModifyQueryHelper("INSERT INTO usertable (name, surname, username, password) VALUES (?,?,?,?)",(name, surname, username, password)) #creating new user entry
+                database.ModifyQueryHelper("INSERT INTO usertable (name, surname, username, password) VALUES (?,?,?,?)",(name,surname,username,password)) #creating new user entry
                 if request.form.get('role_firefighter') == "firefighter": #checks whether firefighter role selected
                     userroles.append(1)
                 if request.form.get('role_investigator') == "investigator": #checks whether investigator role selected
