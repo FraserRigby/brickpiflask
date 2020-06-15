@@ -230,6 +230,10 @@ footer { margin-top:60px; }
     margin: auto;
 }
 
+.signup-form label{
+    margin: 0 10px 0 0;
+}
+
 .signup-table-form {
     margin: 0 auto 0 auto;
     width: auto;
