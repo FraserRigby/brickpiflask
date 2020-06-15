@@ -403,6 +403,7 @@ def logout():
     message = ''
     if ROBOTENABLED:
         session.clear()
+        message = 'Logged out.'
     return jsonify({"message":message})
 
 
