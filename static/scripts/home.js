@@ -4,6 +4,14 @@
 var modal = document.getElementById('signup');
 var login_data = {};
 var message = '';
+var page_load = false;
+
+function origin_load() {
+    if (page_load == false) {
+        var element = document.getElementById('origin');
+        element.classList.toggle('origin-home')
+    }
+}
 
 //Signup window open function
 function window_signup_open() {

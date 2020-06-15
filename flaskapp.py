@@ -52,20 +52,33 @@ def index():
     #post methods, mainly for forms
     #forms processed via json, preventing need for refreshes
     #login & signup functions assoicated with home page controlled via json functions
-    return render_template('home.html') #renders home page
+    origin_class = "origin-class-home"
+    return render_template('home.html', origin_class = origin_class) #renders home page
 
 
 @app.route('/missioncontrol') #mission control page
 def missioncontrol():
-    '''if 'userid' not in session:
+    if 'userid' not in session:#if user not already logged in
         return redirect('./') #no form data is carried across using 'dot/'
-    '''
     voltage = None
+    origin_class = "origin-missioncontrol"
     if ROBOTENABLED:
         voltage = robot.get_battery()
-    return render_template("missioncontrol.html", configured = ROBOTENABLED, voltage = voltage)
+    return render_template("missioncontrol.html", configured = ROBOTENABLED, voltage = voltage, origin_class = origin_class)
 
 
+@app.route('/dataview') #dataview page
+def dataview():
+    if 'userid' not in session:
+        return redirect('./')
+    voltage = None
+    results = None
+    origin_class = "origin-dataview"
+    if ROBOTENABLED:
+        pass
+    return render_template('dataview.html', voltage = voltage, results = results, origin_class = origin_class)
+
+'''
 @app.route('/missionhistory') #map or table of fire and path data
 def missionhistory():
     if 'userid' not in session:
@@ -83,7 +96,7 @@ def sensorview():
     if ROBOTENABLED: #make sure robot is
         pass
     return render_template("sensorview.html", configured = ROBOTENABLED) 
-
+'''
 
 #-------------END HTML REQUEST HANDLERS----------------------------------#
 
@@ -401,7 +414,7 @@ def stop():
 @app.route('/logout', methods=['GET','POST'])#session/cookie clear --> only accessible through home page
 def logout():
     message = ''
-    session.clear()
+    session.clear() #not sure how well this works
     message = 'Logged out.'
     return jsonify({"message":message})
 
