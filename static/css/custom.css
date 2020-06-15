@@ -236,13 +236,13 @@ footer { margin-top:60px; }
 }
 
 .signup-table-form label{
-    margin: 10px 10px 0px 10px;
+    margin: 10px 10px 0px 0px;
     text-align:left;
 }
 
 .signup-table-form input {
     width: 240px;
-    margin: 10px 10px 0px 10px;
+    margin: 10px 10px 0px 0px;
     padding: 5px 10px 5px 10px;
     text-align: left;
     color: gray;
