@@ -380,6 +380,7 @@ footer { margin-top:60px; }
     width: 100px;
     margin: 0 auto 0 auto;
     background-color: black;
+    display: inline-block;
     position: absolute;
-    bottom: 0px;
+    vertical-align: bottom;
 }
