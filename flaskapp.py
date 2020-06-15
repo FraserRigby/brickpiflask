@@ -184,7 +184,7 @@ def new_mission():
             datetime = robot.get_datetime() #gets datetime
             description = request.form.get('description') #gets description from mission form
             userid = session['userid']
-            database.ModifyQueryHelper("INSERT INTO missiontable (userid, datetime, address, postcode, missiondescription) VALUES (?,?,?,?,?",(userid,datetime,address,postcode,description))
+            database.ModifyQueryHelper("INSERT INTO missiontable (userid, datetime, address, postcode, missiondescription) VALUES (?,?,?,?,?)",(userid,datetime,address,postcode,description))
             session['missionid'] = database.ViewQueryHelper("SELECT missionid, datetime FROM missiontable WHERE userid = ? ORDER BY datetime DESC LIMIT 1",(userid,))
             message = "New mission created."
         else:
