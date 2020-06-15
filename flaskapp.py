@@ -400,9 +400,10 @@ def stop():
 
 @app.route('/logout', methods=['GET','POST'])#session/cookie clear --> only accessible through home page
 def logout():
+    message = ''
     if ROBOTENABLED:
         session.clear()
-    return
+    return jsonify({"message":message})
 
 
 @app.route('/shutdown', methods=['GET','POST'])#Shutdown the web server
