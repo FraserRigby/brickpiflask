@@ -77,5 +77,5 @@ function new_mission() {
 
 //gets return data from /new_mission
 function new_mission_results_return(results){
-    document.getElementById('mc-new-message').innerHTML = "New mission created."
+    document.getElementById('mc-new-message').innerHTML = results.message
 }
