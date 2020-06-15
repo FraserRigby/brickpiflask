@@ -174,7 +174,7 @@ def signup():
 
 #--MissionControl Data Handlers--#
 
-@app.route('/new_mission', methods=['GET',['POST'])
+@app.route('/new_mission', methods=['GET','POST'])
 def new_mission():
     message = ''
     if ROBOTENABLED:
