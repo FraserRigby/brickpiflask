@@ -7,7 +7,7 @@ recurringhandle = setInterval(get_current_command, 1000);
 var message = '';
 
 var element = document.getElementById("origin")
-element.classList.toggle('origin-home')
+element.classList.toggle('origin-missioncontrol')
 
 function shutdownserver(){
     clearInterval(recurringhandle);
