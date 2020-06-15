@@ -19,6 +19,7 @@ window.onclick = function(event) {
 
 //Login submit function, when login submit button pressed data saved to database
 function user_login_submit() {
+    var login_data = {};
     login_data['username'] = document.getElementById('login_username').value; //getting form field values
     login_data['password'] = document.getElementById('login_password').value;
     if (login_data['username'] == '' && login_data['password'] == '') { //testing to see if data not submitted
@@ -40,6 +41,7 @@ function login_results_return(results) {
 
 //Signup submit function, when signup button pressed data processed, sent to server to be saved
 function user_sign_up() {
+    var signup_data = {};
     signup_data['name'] = document.getElementById('signup_name').value; //getting form field values
     signup_data['surname'] = document.getElementById('signup_surname').value;
     signup_data['password'] = document.getElementById('signup_password').value;
