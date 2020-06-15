@@ -114,7 +114,7 @@ footer { margin-top:60px; }
     display: block;
     height: auto;
     width: auto;
-    margin: 100px auto 0 auto;
+    margin: 10px auto 0 auto;
     text-align: center;
 }
 
@@ -229,7 +229,7 @@ footer { margin-top:60px; }
 .signup-container{
     width: 450px;
     height: auto;
-    margin: 100px auto 0 auto;
+    margin: 0 auto 0 auto;
     vertical-align: middle;
     border-radius: 15px;
     background-color: white;
