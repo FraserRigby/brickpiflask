@@ -96,12 +96,13 @@ def sensorview():
 
 @app.route('/login', methods=['GET','POST']) #Login handler, called when login button activated
 def login():
+    #local variables
+    results = 'failed'
+    message = ''
     if ROBOTENABLED:#checking if robot enabled
         #Local variables
         username = ''
         password = ''
-        results = "failed"
-        message = ''
         if "userid" in session: #checking if user is already logged in
             if request.method == "POST":
                 username = request.form.get('username') #gets username from login form
