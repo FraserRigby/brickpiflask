@@ -123,6 +123,8 @@ def login():
 
 @app.route('/signup', methods=['GET','POST']) #Signup handler, called when signup button activated
 def signup():
+    #local variables
+    message = ''
     if ROBOTENABLED:#checking if robot enabled
         #Local variables
         name = ''
@@ -130,7 +132,6 @@ def signup():
         username = ''
         password = ''
         userroles = []
-        message = ''
         if request.method == "POST":
             name = request.form.get('name') #gets name from singup form
             surname = request.form.get('surname') #gets surname from signup form
