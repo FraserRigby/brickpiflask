@@ -19,7 +19,7 @@ window.onclick = function(event) {
 
 //Logout function js
 function logout() {
-    JSONrequest('/logout', 'POST')
+    JSONrequest('/logout', 'POST', ,);
 }
 
 //Login submit function, when login submit button pressed data saved to database
