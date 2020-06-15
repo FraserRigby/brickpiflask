@@ -278,10 +278,6 @@ footer { margin-top:60px; }
     margin: 0 auto 0 auto;
 }
 
-/*.userrole-table-form tr{
-    margin: auto 10px auto 10px;
-}*/
-
 .userrole-table-form label{
     margin: 0 10px 0px 10px;
     text-align:left;
@@ -292,21 +288,25 @@ footer { margin-top:60px; }
 }
 
 .signup-form-button-container{
-    margin: 10px;
-    width: auto;
+    margin: auto;
+    width: 200px;
     color: white;
-    opacity: 0.75;
-    transition-duration: 0.2s;
 }
 
 .signup-cancel-button {
     float: left;
     width: 50%;
+    border: none;
     background-color: #f44336;
+    opacity: 0.75;
+    transition: 0.2s;
 }
 
 .signup-submit-button {
     background-color: #3deb6b;
+    border: none;
+    opacity: 0.75;
+    transition: 0.2s;
 }
 
 .signup-cancel-button:hover, .signup-submit-button:hover{
