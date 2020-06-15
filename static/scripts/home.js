@@ -9,7 +9,8 @@ var page_load = false;
 function origin_load() {
     if (page_load == false) {
         var element = document.getElementById('origin');
-        element.classList.toggle('origin-home')
+        element.classList.toggle('origin-home');
+        page_load = true;
     }
 }
 
