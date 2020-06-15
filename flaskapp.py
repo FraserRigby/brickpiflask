@@ -185,7 +185,9 @@ def new_mission():
             description = request.form.get('description') #gets description from mission form
             userid = session['userid']
             database.ModifyQueryHelper("INSERT INTO missiontable (userid, datetime, address, postcode, missiondescription) VALUES (?,?,?,?,?)",(userid,datetime,address,postcode,description))
-            session['missionid'] = database.ViewQueryHelper("SELECT missionid, datetime FROM missiontable WHERE userid = ? ORDER BY datetime DESC LIMIT 1",(userid,))
+            missionid = database.ViewQueryHelper("SELECT missionid, datetime FROM missiontable WHERE userid = ? ORDER BY datetime DESC LIMIT 1",(userid,))
+            row = missionid[0]
+            session['missionid'] = row['missionid']
             message = "New mission created."
         else:
             message = "Mission already in progress, please end current mission to create new one."
