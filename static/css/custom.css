@@ -35,7 +35,12 @@ footer { margin-top:60px; }
 }
 
 .origin-missioncontrol{
-
+    position: absolute;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 20px 0 0 0;
+    transition: 0.6s;
 }
 
 .origin-dataview{
