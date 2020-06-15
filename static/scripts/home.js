@@ -22,7 +22,7 @@ function user_login_submit() {
     login_data['username'] = document.getElementById('login_username').value; //getting form field values
     login_data['password'] = document.getElementById('login_password').value;
     if (login_data['username'] != '' && login_data['password'] != '') { //testing to see if data not submitted
-        document.getElementById('message').innerHTML = "No data entered, please try again."; //no data input message
+        document.getElementById('login-message').innerHTML = "No data entered, please try again."; //no data input message
     } else {
         JSONrequest('/login', 'POST', login_results_return, login_data);
     }
