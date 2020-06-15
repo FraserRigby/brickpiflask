@@ -33,7 +33,7 @@ function login_results_return(results, message) {
     if (results.results == "loggedin") {
         window.location.pathname = '/missioncontrol'; //taken to mission control page
     } else{
-        document.getElementById('message').innerHTML = message.message; //gives signin error message
+        document.getElementById('login-message').innerHTML = message.message; //gives signin error message
     }
 }
 
@@ -52,13 +52,13 @@ function user_sign_up() {
         if (signup_data[i] == '') {
             empty_field = true;
             signup = False
-            document.getElementById('message').innerHTML = "Data not entered, please try again.";
+            document.getElementById('signup-message').innerHTML = "Data not entered, please try again.";
             break;
         }
     }
     if (signup != false && signup_data['password'] != signup_data['confirm_data']) {
         signup = False;
-        document.getElementById('message').innerHTML = "New password and confirm password do not match, please try again.";
+        document.getElementById('signup-message').innerHTML = "New password and confirm password do not match, please try again.";
     }
     if (signup == true) {
         JSONrequest('/signup','POST',signup_results_return,signup_data);
