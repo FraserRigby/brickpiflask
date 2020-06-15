@@ -195,6 +195,17 @@ def new_mission():
         message = "Robot not activated, please activate."
     return jsonify({"message":message})
 
+
+@app.route('/end_mission', methods=['GET','POST'])
+def end_mission():
+    message = ''
+    if ROBOTENABLED:
+        session.remove('missionid')
+    else:
+        message = "Robot not activated, please activate."
+    return jsonify({"message":message})
+    
+
 #--Sensor Handlers--#
 
 @app.route('/getallstats', methods=['GET','POST'])#get all stats and return through JSON

@@ -75,7 +75,18 @@ function new_mission() {
     }
 }
 
-//gets return data from /new_mission
+//End mission functions
+function end_mission() {
+    JSONrequest('/end_mission', 'POST', return_message);
+}
+
+//gets return data from /new_mission and /end_mission
 function new_mission_results_return(results){
-    document.getElementById('mc-new-message').innerHTML = results.message
+    document.getElementById('mc-new-message').innerHTML = results.message;
+}
+
+
+//gets return message
+function return_message(results) {
+    document.getElementById('message').innerHTML = results.message;
 }
