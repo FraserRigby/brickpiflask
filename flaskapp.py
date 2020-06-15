@@ -201,7 +201,7 @@ def end_mission():
     message = ''
     if ROBOTENABLED:
         if "missionid" in session:
-            session.remove('missionid')
+            session.pop('missionid', None)
             message = "Mission ended."
         else:
             message = "No mission currently occuring."
