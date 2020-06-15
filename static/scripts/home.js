@@ -57,7 +57,7 @@ function user_sign_up() {
             break;
         }
     }
-    if (signup != false && signup_data['password'] != signup_data['confirm_data']) {
+    if (signup != false && signup_data['password'] != signup_data['confirm_password']) {
         signup = False;
         document.getElementById('signup-message').innerHTML = "New password and confirm password do not match, please try again.";
     }
