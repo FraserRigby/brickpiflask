@@ -289,7 +289,7 @@ footer { margin-top:60px; }
 
 .signup-form-button-container{
     margin: auto;
-    width: 200px;
+    width: 300px;
     color: white;
 }
 
@@ -303,6 +303,7 @@ footer { margin-top:60px; }
 }
 
 .signup-submit-button {
+    width: 50%;
     background-color: #3deb6b;
     border: none;
     opacity: 0.75;
