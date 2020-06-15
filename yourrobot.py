@@ -138,7 +138,8 @@ class Robot(BrickPiInterface):
         return(heading_traversed)
         
     def get_datetime(self,):
-        dt = int(datetime.now().timestamp())
+        dt = datetime.now()
+        dt = int(dt.strftime("%Y%m%d%H%M%S"))
         return(dt)
     
     
