@@ -376,10 +376,8 @@ footer { margin-top:60px; }
 
 /*control panel*/
 .mc-control-panel{
-    height:100px;
-    width: 100px;
+    height:auto;
+    width:auto;
     margin: 0 auto 0 auto;
     background-color: black;
-    display: inline-block;
-    position: absolute;
 }
