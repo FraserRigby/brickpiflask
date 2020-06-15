@@ -230,11 +230,6 @@ footer { margin-top:60px; }
     margin: auto;
 }
 
-.signup-form-label{
-    color: black;
-    margin: 10px 20px 0 0;
-}
-
 .signup-table-form {
     margin: 0 auto 0 auto;
     width: auto;
@@ -275,13 +270,17 @@ footer { margin-top:60px; }
     text-align: center;
 }
 
+.userrole-select-container label{
+    margin: 10px 20px 0 0;
+}
+
 .userrole-table-form{
     margin: 0 auto 0 auto;
 }
 
-.userrole-table-form tr{
+/*.userrole-table-form tr{
     margin: auto 10px auto 10px;
-}
+}*/
 
 .userrole-table-form label{
     margin: 0 10px 0px 10px;
