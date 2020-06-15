@@ -224,13 +224,13 @@ footer { margin-top:60px; }
     margin: 0 10 10 0;
 }
 
-.signup-form {
+.signup-form{
     width: auto;
     height: auto;
     margin: auto;
 }
 
-.signup-label{
+.signup-form-label{
     color: black;
     margin: 10px 20px 0 0;
 }
