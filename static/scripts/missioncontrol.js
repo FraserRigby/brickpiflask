@@ -5,15 +5,9 @@ var shutdown = false;
 var recurringhandle = null;  //can be used to delete recurring function if you want
 recurringhandle = setInterval(get_current_command, 1000);
 var message = '';
-var page_load = false;
 
-function origin_load() {
-    if (page_load == false) {
-        var element = document.getElementById('origin');
-        element.classList.toggle('origin-missioncontrol');
-        page_load = true;
-    }
-}
+var element = document.getElementById("origin")
+element.classList.toggle('origin-home')
 
 function shutdownserver(){
     clearInterval(recurringhandle);

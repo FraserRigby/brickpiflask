@@ -4,7 +4,6 @@
 var modal = document.getElementById('signup');
 var login_data = {};
 var message = '';
-var page_load = false;
 
 var element = document.getElementById("origin")
 element.classList.toggle('origin-home')
