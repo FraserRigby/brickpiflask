@@ -178,7 +178,7 @@ def signup():
 def new_mission():
     message = ''
     if ROBOTENABLED:
-        if 'missionid' in session:
+        if 'missionid' not in session:
             address = request.form.get('address') #gets address from new mission form
             postcode = request.form.get('postcode') #gets postcode from new mission form
             datetime = robot.get_datetime() #gets datetime
