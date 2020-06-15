@@ -1,6 +1,11 @@
+//Mission control page js
+
+//variables
 var shutdown = false;
 var recurringhandle = null;  //can be used to delete recurring function if you want
 recurringhandle = setInterval(get_current_command, 1000);
+var message = '';
+var page_load = false;
 
 function origin_load() {
     if (page_load == false) {
