@@ -36,7 +36,7 @@
 
 <!--SignUp-->
 <div id="signup" class='modal'><!--box containing signup stuff-->
-    <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">X</span>
+    <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">x</span>   
     <div class="signup-container">
         <div class="signup-header-container">
             Sign Up
@@ -86,7 +86,7 @@
             </div>
             <div class="signup-form-button-container"><!--might need to use a clearfix div if appearance messes up-->
                 <button type="button" onclick="document.getElementById('signup').style.display='none'" class='signup-cancel-button'>Cancel</button>
-                <button type="submit" id="signup-form-button" class="signup-submit-button">Sign Up</button>
+                <button type="submit" id="signup-form-button" class="signup-submit-button" onclick="user_sign_up()">Sign Up</button>
                 <br><p class="message" id="signup-message"></p>
             </div>
         </form>   
