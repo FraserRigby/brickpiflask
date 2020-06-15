@@ -3,11 +3,8 @@
 <!-- Main website html -->
 {% block content %}
 
-<!--New mission entry-->
 
 <!--Mission control-->
-
-
 
 <h2>Sample Web Interface using Bootstrap</h2><br/>
 <p>The buttons when clicked run a special script that can be used to send data to the server without a form (and the necessary page refresh). This helper script uses JSON (a method of sending complex data through text encoding).</p>
@@ -18,6 +15,7 @@
         <h3 id="message"></h3>
     </div>
     <div class="container">
+      <button type="button" onclick="window_new_mission_open()">New Mission</button>
         <div class="row text-center">
           <div class="col-4">
             <button type="button" class="btn btn-success" onclick="JSONrequest('/forward','POST')">Forward</button>
@@ -46,6 +44,39 @@
         </div>
       </div>
 </div>
+
+<!-- New Mission Entry -->
+<div id="mc-new" class='modal'><!--box containing signup stuff-->
+  <span onclick="document.getElementById('mc-new').style.display='none'" class="close" title="Close Modal">x</span>   
+  <div class="mc-new-container">
+      <div class="form-header-container">
+          New Mission
+      </div>
+      <div class="form-instructions-container">
+          To create a mission, please complete this form.
+      </div>
+      <form class="new-entry-form" id="signup-form" action="/" method="POST">
+          <table class="new-entry-table-form">
+              <tr>
+                  <td><label for="mc_address">Address:</label></td>
+                  <td><input type="text" name="mc_address" id="mc_address" value='' placeholder="Please enter incident address" required></td>
+              </tr>
+              <tr>
+                  <td><label for="mc_postcode">Postcode:</label></td>
+                  <td><input type="text" name="mc_postcode" id="mc_postcode" value='' placeholder="Please enter incident postcode" required></td>
+              </tr>
+              <tr>
+                <td><label for="mc_description">Postcode:</label></td>
+                <td><input type="text" name="mc_description" id="mc_description" value='' placeholder="Use this space to enter a description" required></td>
+            </tr>
+          </table>
+          <div class="new-entry-form-button-container"><!--might need to use a clearfix div if appearance messes up-->
+              <button type="button" onclick="document.getElementById('mc-new').style.display='none'" class='new-entry-cancel-button'>Cancel</button>
+              <button type="button" id="mc-new-form-button" class="new-entry-submit-button" onclick="new_mission()">Sign Up</button>
+              <br><p class="message" id="mc-new-message"></p>
+          </div>
+      </form>   
+  </div>
 
 {% endblock %}
 

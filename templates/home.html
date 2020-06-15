@@ -5,7 +5,7 @@
 
 <!--Login-->
 <div class="login-container"><!--box containing login stuff-->
-    <div class="login-header-container"><!--container for login header-->
+    <div class="form-header-container"><!--container for login header-->
         Login
     </div>
     <div class="login-form-container">
@@ -25,7 +25,7 @@
             </div>
         </form>
     </div>
-    <div class="login-instructions-container"><!--login message/instructions/information container-->
+    <div class="form-instructions-container"><!--login message/instructions/information container-->
             Please log in to access the LegoFire robot system.<br>
             Upon logging in you will be redirected to Mission Control.<br>
             If you do not have an account, please click here to<button type="button" class="create-account-button" onclick="window_signup_open()">create account</button>.
@@ -41,14 +41,14 @@
 <div id="signup" class='modal'><!--box containing signup stuff-->
     <span onclick="document.getElementById('signup').style.display='none'" class="close" title="Close Modal">x</span>   
     <div class="signup-container">
-        <div class="signup-header-container">
+        <div class="form-header-container">
             Sign Up
         </div>
-        <div class="signup-instructions-container">
+        <div class="form-instructions-container">
             To create an account, please complete this form.
         </div>
-        <form class="signup-form" id="signup-form" action="/" method="POST">
-            <table class="signup-table-form">
+        <form class="new-entry-form" id="signup-form" action="/" method="POST">
+            <table class="new-entry-table-form">
                 <tr>
                     <td><label for="name">Firstname:</label></td>
                     <td><input type="text" name="signup_name" id="signup_name" value='' placeholder="Please enter your first name" required></td>
@@ -87,9 +87,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="signup-form-button-container"><!--might need to use a clearfix div if appearance messes up-->
-                <button type="button" onclick="document.getElementById('signup').style.display='none'" class='signup-cancel-button'>Cancel</button>
-                <button type="button" id="signup-form-button" class="signup-submit-button" onclick="user_sign_up()">Sign Up</button>
+            <div class="new-entry-form-button-container"><!--might need to use a clearfix div if appearance messes up-->
+                <button type="button" onclick="document.getElementById('signup').style.display='none'" class='new-entry-cancel-button'>Cancel</button>
+                <button type="button" id="signup-form-button" class="new-entry-submit-button" onclick="user_sign_up()">Sign Up</button>
                 <br><p class="message" id="signup-message"></p>
             </div>
         </form>   

@@ -100,10 +100,10 @@ footer { margin-top:60px; }
     background-color: white; /*#979c9c; possible grey color for form container background*/
 }
 
-.login-header-container{
+.form-header-container{
     height: auto;
     width: auto;
-    margin: 20px auto 40px auto;
+    margin: 20px auto 30px auto;
     color: black;
     text-align: center;  
     padding: 0 0 0 0;
@@ -174,7 +174,7 @@ footer { margin-top:60px; }
     opacity: 1;
 }
 
-.login-instructions-container {
+.form-instructions-container {
     text-align: left;
     color: black;
     margin: 20px;
@@ -234,35 +234,23 @@ footer { margin-top:60px; }
     padding: 20px 20px 20px 20px;
 }
 
-.signup-header-container{
-    text-align: center;
-    color: black;
-    margin: 0 0 30px 0;
-    font-size: 20px;
-}
-
-.signup-instructions-container{
-    text-align: left;
-    margin: 0 10 10 0;
-}
-
-.signup-form{
+.new-entry-form{
     width: auto;
     height: auto;
     margin: auto;
 }
 
-.signup-table-form {
+.new-entry-table-form {
     margin: 0 auto 0 auto;
     width: auto;
 }
 
-.signup-table-form label{
+.new-entry-table-form label{
     margin: 10px 10px 0px 0px;
     text-align:left;
 }
 
-.signup-table-form input {
+.new-entry-table-form input {
     width: 240px;
     margin: 10px 10px 0px 0px;
     padding: 5px 10px 5px 10px;
@@ -275,7 +263,7 @@ footer { margin-top:60px; }
     transition: 0.5;
 }
 
-.signup-table-form input:hover, input:focus {
+.new-entry-table-form input:hover, input:focus {
     color: black;
     border-width: 1px;
     border-radius: 20px;
@@ -309,13 +297,13 @@ footer { margin-top:60px; }
     margin: 0 10px 0 0;
 }
 
-.signup-form-button-container{
+.new-entry-form-button-container{
     margin: auto;
     width: 300px;
     color: white;
 }
 
-.signup-cancel-button {
+.new-entry-cancel-button {
     float: left;
     width: 50%;
     border: none;
@@ -324,7 +312,7 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.signup-submit-button {
+.new-entry-submit-button {
     width: 50%;
     background-color: #3deb6b;
     border: none;
@@ -332,6 +320,47 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.signup-cancel-button:hover, .signup-submit-button:hover{
+.new-entry-cancel-button:hover, .new-entry-submit-button:hover{
     opacity: 1;
+}
+
+.mc-container{
+    height:auto;
+    width:auto;
+    margin:auto;
+    background:transparent;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    /*opacity: 0.75;
+    filter: blur(2px);*/
+    transition-duration: 0.6s;
+}
+
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+    transition: 0.2s;
+}
+
+.close:hover, .close:focus{
+    color: #f44336;
+    cursor: pointer;
+}
+
+.mc-new-container{
+    height: auto;
+    width: 40%;
+    display: block;
+    border-radius: 15px;
+    padding: 20px 20px 20px 20px;
+    margin: auto;
+    background-color: white;
 }

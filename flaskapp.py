@@ -172,6 +172,26 @@ def signup():
     return jsonify({"message":message}) #returns messages
 
 
+#--MissionControl Data Handlers--#
+
+@app.route('/new_mission', methods=['GET',['POST'])
+def new_mission():
+    message = ''
+    if ROBOTENABLED:
+        if 'missionid' in session:
+            address = request.form.get('address') #gets address from new mission form
+            postcode = request.form.get('postcode') #gets postcode from new mission form
+            datetime = robot.get_datetime() #gets datetime
+            description = request.form.get('description') #gets description from mission form
+            userid = session['userid']
+            database.ModifyQueryHelper("INSERT INTO missiontable (userid, datetime, address, postcode, missiondescription) VALUES (?,?,?,?,?",(userid,datetime,address,postcode,missiondescription))
+            missionid = database.ViewQueryHelper("SELECT missionid, datetime FROM missiontable WHERE userid = ? ORDER BY datetime DESC LIMIT 1",(userid,))
+        else:
+            message = "Mission already in progress, please end current mission to create new one."
+    else:
+        message = "Robot not activated, please activate."
+    return jsonify({"message":message})
+
 #--Sensor Handlers--#
 
 @app.route('/getallstats', methods=['GET','POST'])#get all stats and return through JSON

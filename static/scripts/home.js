@@ -25,6 +25,9 @@ function logout() {
     JSONrequest('/logout', 'POST');
 }
 
+
+//Login
+
 //Login submit function, when login submit button pressed data saved to database
 function user_login_submit() {
     var login_data = {};
@@ -46,6 +49,9 @@ function login_results_return(results) {
         document.getElementById('login-message').innerHTML = results.message; //gives signin error message
     }
 }
+
+
+//Signup, new user
 
 //Signup submit function, when signup button pressed data processed, sent to server to be saved
 function user_sign_up() {
@@ -77,7 +83,7 @@ function user_sign_up() {
     }
 }
 
-//
+//gets return data from /signup
 function signup_results_return(results) {
         document.getElementById('signup-message').innerHTML = results.message;
 }

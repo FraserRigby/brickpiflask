@@ -4,6 +4,7 @@ from interfaces.brickpiinterface import BrickPiInterface
 from interfaces.databaseinterface import DatabaseHelper 
 import logging
 import time
+from datetime import datetime
 
 ENABLED = 1
 DISABLED = 5 #if the sensor returns NOREADING more than 5 times in a row, its permanently 
@@ -135,6 +136,10 @@ class Robot(BrickPiInterface):
         if heading_traversed < 0:
             heading_traversed = -1*heading_traversed
         return(heading_traversed)
+        
+    def get_datetime(self,):
+        dt = datetime.now()
+        return(dt)
     
     
     #def calibrate_imu(self, timelimit=20)
