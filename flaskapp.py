@@ -44,7 +44,7 @@ if ROBOTENABLED:
 
 @app.route('/', methods=['GET','POST']) #home page
 def index():
-    session.clear()
+    #session.clear()
     #if user is already logged in (userid in session), redirected to missioncontrol
     '''if 'userid' in session:
         return redirect('./missioncontrol') #no form data is carried across using 'dot/'
