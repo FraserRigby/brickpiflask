@@ -186,6 +186,7 @@ def new_mission():
             userid = session['userid']
             database.ModifyQueryHelper("INSERT INTO missiontable (userid, datetime, address, postcode, missiondescription) VALUES (?,?,?,?,?",(userid,datetime,address,postcode,missiondescription))
             missionid = database.ViewQueryHelper("SELECT missionid, datetime FROM missiontable WHERE userid = ? ORDER BY datetime DESC LIMIT 1",(userid,))
+            message = "New mission created."
         else:
             message = "Mission already in progress, please end current mission to create new one."
     else:
