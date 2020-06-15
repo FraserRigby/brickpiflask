@@ -49,6 +49,7 @@ function user_sign_up() {
     var signup_data = {};
     signup_data['name'] = document.getElementById('signup_name').value; //getting form field values
     signup_data['surname'] = document.getElementById('signup_surname').value;
+    signup_data['username'] = document.getElementById('signup_username').value;
     signup_data['password'] = document.getElementById('signup_password').value;
     signup_data['password_confirm'] = document.getElementById('password_confirm').value;
     signup_data['role_firefighter'] = document.getElementById('role_firefighter').value;
