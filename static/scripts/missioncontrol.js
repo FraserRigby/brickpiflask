@@ -4,6 +4,7 @@
 var shutdown = false;
 var recurringhandle = null;  //can be used to delete recurring function if you want
 recurringhandle = setInterval(get_current_command, 1000);
+var modal = document.getElementById('mc-new');
 var message = '';
 
 var element = document.getElementById("origin");
