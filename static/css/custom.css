@@ -203,7 +203,7 @@ footer { margin-top:60px; }
 }
 
 .signup-container{
-    width: 400px;
+    width: 450px;
     height: auto;
     margin: auto;
     border-radius: 15px;
@@ -227,7 +227,6 @@ footer { margin-top:60px; }
     width: auto;
     height: auto;
     margin: auto;
-    overflow-y: scroll;
 }
 
 .signup-table-form {
