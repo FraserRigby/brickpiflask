@@ -398,6 +398,13 @@ def stop():
     return jsonify({ "message":"Stopping" })
 
 
+@app.route('/logout', methods=['GET','POST'])#session/cookie clear --> only accessible through home page
+def logout():
+    if ROBOTENABLED:
+        session.clear()
+    return
+
+
 @app.route('/shutdown', methods=['GET','POST'])#Shutdown the web server
 def shutdown():
     if ROBOTENABLED:

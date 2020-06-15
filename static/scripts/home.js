@@ -54,7 +54,7 @@ function user_sign_up() {
     signup_data['role_firefighter'] = document.getElementById('role_firefighter').value;
     signup_data['role_investigator'] = document.getElementById('role_investigator').value;
     signup_data['role_admin'] = document.getElementById('role_admin').value;
-    var signup = True;
+    var signup = true;
     var empty_field = false;
     for (i = 0; i < length.signup_data; i++) {
         if (signup_data[i] == '') {
