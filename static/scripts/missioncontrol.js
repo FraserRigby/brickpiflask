@@ -98,7 +98,7 @@ function control_manual(){
     element1.classList.toggle('mc-control-active-button');
     var element2 = document.getElementById('control-semiauto');
     element2.classList.toggle('mc-control-inactive-button');
-    var element3 = document.getElementById('control-autonomous');
+    var element3 = document.getElementById('control-auto');
     element3.classList.toggle('mc-control-inactive-button');
     JSONrequest('/control_state', 'POST', return_message, control_state);
 }
