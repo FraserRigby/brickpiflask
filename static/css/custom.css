@@ -381,7 +381,7 @@ footer { margin-top:60px; }
 /*control panel*/
 .mc-control-panel-container{
     height:auto;
-    width:200px;
+    width:300px;
     margin: 0 auto 0 auto;
     background-color: green;
     border-color: transparent;
@@ -404,7 +404,7 @@ footer { margin-top:60px; }
     margin:auto;
     display: inline-block;
     text-align: center;
-    width: 25%;
+    width: 100px;
     border: none;
 }
 
@@ -415,6 +415,6 @@ footer { margin-top:60px; }
     opacity: 1;
     display: inline-block;
     text-align: center;
-    width: 25%;
+    width: 100px;
     border: none;
 }
