@@ -375,7 +375,7 @@ footer { margin-top:60px; }
 }
 
 .mc-end-mission-button{
-    
+
 }
 
 /*control panel*/
@@ -383,5 +383,25 @@ footer { margin-top:60px; }
     height:auto;
     width:auto;
     margin: 0 auto 0 auto;
-    background-color: black;
+    background-color: white;
+}
+
+.mc-control-panel-header-container{
+    height:auto;
+    width:auto;
+}
+
+.mc-control-inactive-button{
+    color: black;
+    text-align: center;
+    background-color: gray;
+    opacity: 0.5;
+    transition: 0.2s;
+}
+
+.mc-control-active-button{
+    color: black;
+    text-align: center;
+    background-color: gray;
+    opacity: 1;
 }

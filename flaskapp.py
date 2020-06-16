@@ -12,6 +12,7 @@ TPOWER = 20 #constant turning power
 DEVIATION = 0.5 #value accounting for motor deviations
 DISTANCETO = 20 #Stopping distance
 MOF = 2 #Turning margin of error
+control_state = 'manual' #set contrl state to manual as default
 
 #Server intialize
 app = Flask(__name__)
@@ -207,6 +208,17 @@ def end_mission():
             message = "No mission currently occuring."
     else:
         message = "Robot not activated, please activate."
+    return jsonify({"message":message})
+
+
+@app.route('control_state', methods=['GET','POST'])
+def set_control_state():
+    message = ''
+    if ROBOTENABLED:
+        control_state = request.form.get('control_state')
+        message = 'Manual control activated'
+    else:
+        message = 'Robot not activated, please activate.'
     return jsonify({"message":message})
 
 

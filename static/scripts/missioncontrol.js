@@ -5,10 +5,12 @@ var shutdown = false;
 var recurringhandle = null;  //can be used to delete recurring function if you want
 recurringhandle = setInterval(get_current_command, 1000);
 var modal = document.getElementById('mc-new');
+var control_state = 'manual'
 var message = '';
 
 var element = document.getElementById("origin");
 element.classList.toggle('origin-missioncontrol');
+
 
 function shutdownserver(){
     clearInterval(recurringhandle);
@@ -83,6 +85,46 @@ function end_mission() {
 //gets return data from /new_mission and /end_mission
 function new_mission_results_return(results){
     document.getElementById('mc-new-message').innerHTML = results.message;
+}
+
+
+//Control Panel JS
+
+//control panel header button functions
+//manual
+function manual_control(){
+    control_state = "manual"
+    var element1 = document.getElementById('manual');
+    element1.classList.toggle('mc-control-active-button');
+    var element2 = document.getElementById('semiauto');
+    element2.classList.toggle('mc-control-inactive-button');
+    var element3 = document.getElementById('autonomous');
+    element3.classList.toggle('mc-control-inactive-button');
+    JSONrequest('/control_state', 'POST', return_message);
+}
+
+//semi-autonomous
+function manual_control(){
+    control_state = "semiauto"
+    var element1 = document.getElementById('manual');
+    element1.classList.toggle('mc-control-inactive-button');
+    var element2 = document.getElementById('semiauto');
+    element2.classList.toggle('mc-control-active-button');
+    var element3 = document.getElementById('autonomous');
+    element3.classList.toggle('mc-control-inactive-button');
+    JSONrequest('/control_state', 'POST', return_message, control_state);
+}
+
+//auto
+function manual_control(){
+    control_state = "auto"
+    var element1 = document.getElementById('manual');
+    element1.classList.toggle('mc-control-inactive-button');
+    var element2 = document.getElementById('semiauto');
+    element2.classList.toggle('mc-control-inactive-button');
+    var element3 = document.getElementById('auto');
+    element3.classList.toggle('mc-control-active-button');
+    JSONrequest('/control_state', 'POST', return_message, control_state);
 }
 
 
