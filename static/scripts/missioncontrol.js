@@ -106,11 +106,11 @@ function control_manual(){
 //semi-autonomous
 function control_semiauto(){
     control_state = "semiauto"
-    var element1 = document.getElementById('manual');
+    var element1 = document.getElementById('control-manual');
     element1.classList.toggle('mc-control-inactive-button');
-    var element2 = document.getElementById('semiauto');
+    var element2 = document.getElementById('control-semiauto');
     element2.classList.toggle('mc-control-active-button');
-    var element3 = document.getElementById('autonomous');
+    var element3 = document.getElementById('control-auto');
     element3.classList.toggle('mc-control-inactive-button');
     JSONrequest('/control_state', 'POST', return_message, control_state);
 }
@@ -118,11 +118,11 @@ function control_semiauto(){
 //auto
 function control_auto(){
     control_state = "auto"
-    var element1 = document.getElementById('manual');
+    var element1 = document.getElementById('control-manual');
     element1.classList.toggle('mc-control-inactive-button');
-    var element2 = document.getElementById('semiauto');
+    var element2 = document.getElementById('control-semiauto');
     element2.classList.toggle('mc-control-inactive-button');
-    var element3 = document.getElementById('auto');
+    var element3 = document.getElementById('control-auto');
     element3.classList.toggle('mc-control-active-button');
     JSONrequest('/control_state', 'POST', return_message, control_state);
 }
