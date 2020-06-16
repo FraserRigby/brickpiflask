@@ -392,6 +392,7 @@ footer { margin-top:60px; }
     height:auto;
     width:auto;
     margin: 0, auto, 0 auto;
+    text-align: center;
 }
 
 .mc-control-inactive-button{
@@ -403,6 +404,8 @@ footer { margin-top:60px; }
     margin:auto;
     display: inline-block;
     text-align: center;
+    width: 33%;
+    border: none;
 }
 
 .mc-control-active-button{
@@ -412,4 +415,6 @@ footer { margin-top:60px; }
     opacity: 1;
     display: inline-block;
     text-align: center;
+    width: 33%;
+    border: none;
 }
