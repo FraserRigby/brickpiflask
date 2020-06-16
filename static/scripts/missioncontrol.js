@@ -92,7 +92,7 @@ function new_mission_results_return(results){
 
 //control panel header button functions
 //manual
-function manual_control(){
+function control_manual(){
     control_state = "manual"
     var element1 = document.getElementById('manual');
     element1.classList.toggle('mc-control-active-button');
@@ -104,7 +104,7 @@ function manual_control(){
 }
 
 //semi-autonomous
-function manual_control(){
+function control_semiauto(){
     control_state = "semiauto"
     var element1 = document.getElementById('manual');
     element1.classList.toggle('mc-control-inactive-button');
@@ -116,7 +116,7 @@ function manual_control(){
 }
 
 //auto
-function manual_control(){
+function control_auto(){
     control_state = "auto"
     var element1 = document.getElementById('manual');
     element1.classList.toggle('mc-control-inactive-button');
