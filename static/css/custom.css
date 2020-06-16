@@ -385,7 +385,7 @@ footer { margin-top:60px; }
     margin: 0 auto 0 auto;
     background-color: green;
     border-color: transparent;
-    border-radius: 15px;
+    /*border-radius: 15px;*/
 }
 
 .mc-control-panel-header-container{
@@ -393,7 +393,7 @@ footer { margin-top:60px; }
     width:auto;
     margin: 0, auto, 0 auto;
     text-align: center;
-    background-color:gray;
+    /*background-color:gray;*/
 
 }
 
@@ -408,7 +408,6 @@ footer { margin-top:60px; }
     text-align: center;
     width: 100px;
     border: none;
-    padding: auto;
 }
 
 .mc-control-active-button{
@@ -421,5 +420,4 @@ footer { margin-top:60px; }
     width: 100px;
     border: none;
     transition: 0.3s;
-    padding:auto;
 }
