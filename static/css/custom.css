@@ -400,7 +400,7 @@ footer { margin-top:60px; }
     text-align: center;
     background-color: gray;
     opacity: 0.5;
-    transition: 0.2s;
+    transition: 0.3s;
     margin:auto;
     display: inline-block;
     text-align: center;
@@ -417,4 +417,5 @@ footer { margin-top:60px; }
     text-align: center;
     width: 100px;
     border: none;
+    transition: 0.3s;
 }
