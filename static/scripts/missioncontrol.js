@@ -97,36 +97,24 @@ function control_manual(){
     document.getElementById('control-manual').className = "mc-control-active-button";
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
-    //var element1 = document.getElementById('control-manual');
-    //element1.classList.toggle('mc-control-active-button');
-    //var element2 = document.getElementById('control-semiauto');
-    //element2.classList.toggle('mc-control-inactive-button');
-    //var element3 = document.getElementById('control-auto');
-    //element3.classList.toggle('mc-control-inactive-button');
     JSONrequest('/control_state', 'POST', return_message, control_state);
 }
 
 //semi-autonomous
 function control_semiauto(){
     control_state = "semiauto"
-    var element1 = document.getElementById('control-manual');
-    element1.classList.toggle('mc-control-inactive-button');
-    var element2 = document.getElementById('control-semiauto');
-    element2.classList.toggle('mc-control-active-button');
-    var element3 = document.getElementById('control-auto');
-    element3.classList.toggle('mc-control-inactive-button');
+    document.getElementById('control-manual').className = "mc-control-inactive-button";
+    document.getElementById('control-semiauto').className = "mc-control-active-button";
+    document.getElementById('control-auto').className = "mc-control-inactive-button";
     JSONrequest('/control_state', 'POST', return_message, control_state);
 }
 
 //auto
 function control_auto(){
     control_state = "auto"
-    var element1 = document.getElementById('control-manual');
-    element1.classList.toggle('mc-control-inactive-button');
-    var element2 = document.getElementById('control-semiauto');
-    element2.classList.toggle('mc-control-inactive-button');
-    var element3 = document.getElementById('control-auto');
-    element3.classList.toggle('mc-control-active-button');
+    document.getElementById('control-manual').className = "mc-control-inactive-button";
+    document.getElementById('control-semiauto').className = "mc-control-inactive-button";
+    document.getElementById('control-auto').className = "mc-control-active-button";
     JSONrequest('/control_state', 'POST', return_message, control_state);
 }
 
