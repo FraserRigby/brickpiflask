@@ -393,6 +393,8 @@ footer { margin-top:60px; }
     width:auto;
     margin: 0, auto, 0 auto;
     text-align: center;
+    background-color:gray;
+    opacity:0.5;
 }
 
 .mc-control-inactive-button{
@@ -406,6 +408,7 @@ footer { margin-top:60px; }
     text-align: center;
     width: 100px;
     border: none;
+    padding: auto;
 }
 
 .mc-control-active-button{
@@ -418,4 +421,5 @@ footer { margin-top:60px; }
     width: 100px;
     border: none;
     transition: 0.3s;
+    padding:auto;
 }
