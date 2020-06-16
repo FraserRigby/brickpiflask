@@ -379,16 +379,19 @@ footer { margin-top:60px; }
 }
 
 /*control panel*/
-.mc-control-panel{
+.mc-control-panel-container{
     height:auto;
-    width:auto;
+    width:300px;
     margin: 0 auto 0 auto;
-    background-color: white;
+    background-color: green;
+    border-color: transparent;
+    border-radius: 15px;
 }
 
 .mc-control-panel-header-container{
     height:auto;
     width:auto;
+    margin: 0, auto, 0 auto;
 }
 
 .mc-control-inactive-button{
@@ -397,6 +400,9 @@ footer { margin-top:60px; }
     background-color: gray;
     opacity: 0.5;
     transition: 0.2s;
+    margin:auto;
+    display: inline-block;
+    text-align: center;
 }
 
 .mc-control-active-button{
@@ -404,4 +410,6 @@ footer { margin-top:60px; }
     text-align: center;
     background-color: gray;
     opacity: 1;
+    display: inline-block;
+    text-align: center;
 }

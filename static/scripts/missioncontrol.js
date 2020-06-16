@@ -8,8 +8,8 @@ var modal = document.getElementById('mc-new');
 var control_state = 'manual'
 var message = '';
 
-var element = document.getElementById("origin");
-element.classList.toggle('origin-missioncontrol');
+//Setting page background
+document.getElementById("origin").className = 'origin-missioncontrol';
 
 
 function shutdownserver(){

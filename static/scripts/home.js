@@ -5,8 +5,9 @@ var modal = document.getElementById('signup');
 var login_data = {};
 var message = '';
 
-var element = document.getElementById("origin")
-element.classList.toggle('origin-home')
+//setting page background
+document.getElementById("origin").className = 'origin-home';
+
 
 //Signup window open function
 function window_signup_open() {
