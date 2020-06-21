@@ -444,8 +444,12 @@ footer { margin-top:60px; }
     display: none;
 }
 
-.mc-control-grid{
+.mc-control-manual-semiauto-grid{
+    width: 100%;
+}
 
+.mc-control-manual-semiauto-grid tr{
+    width: 180px;
 }
 
 .mc-claw-container{
