@@ -446,6 +446,7 @@ footer { margin-top:60px; }
 
 .mc-control-manual-semiauto-grid{
     width: 100%;
+    margin: auto;
 }
 
 .mc-control-manual-semiauto-grid td{
