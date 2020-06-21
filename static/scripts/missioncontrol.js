@@ -5,7 +5,7 @@ var shutdown = false;
 var recurringhandle = null;  //can be used to delete recurring function if you want
 recurringhandle = setInterval(get_current_command, 1000);
 var modal = document.getElementById('mc-new');
-var control_state = 'manual'
+var control_state = 'manual';
 var message = '';
 
 //Setting page background
@@ -93,7 +93,7 @@ function new_mission_results_return(results){
 //control panel header button functions
 //manual
 function control_manual(){
-    control_state['control_state'] = "manual";
+    var control_state = "manual";
     document.getElementById('control-manual').className = "mc-control-active-button";
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
@@ -102,7 +102,7 @@ function control_manual(){
 
 //semi-autonomous
 function control_semiauto(){
-    control_state['control_state'] = "semiauto";
+    var control_state = "semiauto";
     document.getElementById('control-manual').className = "mc-control-inactive-button";
     document.getElementById('control-semiauto').className = "mc-control-active-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
@@ -111,7 +111,7 @@ function control_semiauto(){
 
 //auto
 function control_auto(){
-    control_state['control_state'] = "auto";
+    var control_state = "auto";
     document.getElementById('control-manual').className = "mc-control-inactive-button";
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-active-button";
