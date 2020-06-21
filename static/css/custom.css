@@ -408,6 +408,7 @@ footer { margin-top:60px; }
     /*margin: 0 10px 0 0;*/
     width: 150px;
     padding: 5px 5px 5px 5px;
+    z-index: 1;
     /*border-radius: 14px;*/
     border-color: transparent;
     background-color: grey;
@@ -422,6 +423,7 @@ footer { margin-top:60px; }
     /*margin: 0 10px 0 0;*/
     width: 150px;
     padding: 5px 5px 5px 5px;
+    z-index: 1;
     /*border-radius: 14px;*/
     border-color: transparent;
     background-color: grey;
