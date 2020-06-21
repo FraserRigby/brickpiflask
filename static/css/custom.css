@@ -477,3 +477,10 @@ footer { margin-top:60px; }
 .claw-button:hover{
     opacity: 1;
 }
+
+.octagon { overflow: hidden; }
+
+.ocatagon-inner {
+	transform: rotate(45deg);
+	background-color: #ee8c25;
+}

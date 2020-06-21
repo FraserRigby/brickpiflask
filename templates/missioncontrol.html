@@ -61,21 +61,24 @@
   </div>
   <!--manual control container_need to be able to switch between different divs, that are in the same place via header options.-->
   <div class="mc-control-panel-control-active-container" id="mc-control-manual/semiauto"><!--manual/semiauto control container, basically containing same elements, just do different things according to control_state-->
-    <table class="mc-control-manual-semiauto-grid">
-      <td style="width:120px;">
+    <table class="mc-control-manual-semiauto-grid"><!--using table to arrange/organise sections of buttons, controls-->
+      <td style="width:120px;"><!--Claw buttons-->
           <button type="button" class="claw-button" onclick="JSONrequest('/claw_open','POST')">Open Claw</button>
           <button type="button" class="claw-button" onclick="JSONrequest('/claw_close','POST')">Close Claw</button>
       </td>
-      <td style="width:300px">
-        <div class="mc-traversal-container">
+      <td style="width:300px"><!--Traversal buttons-->
+        <div class="mc-traversal-container"><!--trying to create an arrow like shape out of these buttons-->
           <button type="button" class="btn btn-success" onclick="JSONrequest('/forward','POST')">Forward</button>
           <button type="button" class="btn btn-success" onclick="JSONrequest('/backward','POST')">Reverse</button>
           <button type="button" class="btn btn-success" onclick="JSONrequest('/t_right','POST')">Right</button>
           <button type="button" class="btn btn-success" onclick="JSONrequest('/t_left','POST')">Left</button>
         </div>
       </td>
-      <td style="width:120;">
-        <div class="mc-stop-container">
+      <td style="width:120;"><!--Stop button-->
+        <div class="mc-stop-container"><!--trying to create an octagon, stop sign looking button, image association with stop signs-->
+          <div class="octagon">
+            <div class="octagon-inner">STOP</div>
+          </div>
           <button type="button" class="btn btn-danger" onclick="JSONrequest('/stop','POST')">Stop</button>
         </div>
       </td>  
