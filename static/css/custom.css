@@ -447,12 +447,14 @@ footer { margin-top:60px; }
 .mc-control-manual-semiauto-grid{
     width: 100%;
     margin: auto;
+    text-align: center;
 }
 
 .mc-control-manual-semiauto-grid td{
     width: 180px;
     margin: auto;
     text-align: center;
+    vertical-align: middle;
 }
 
 .mc-claw-container{
