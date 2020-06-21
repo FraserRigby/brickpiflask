@@ -479,7 +479,7 @@ footer { margin-top:60px; }
     height:50px;
     width:50px;
     margin:auto;
-    border-radius:50;
+    border-radius:50%;
     border-color:transparent;
     background-color:#ff2929;
     text-align:center;
