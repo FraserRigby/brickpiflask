@@ -456,7 +456,7 @@ footer { margin-top:60px; }
     vertical-align: middle;
 }
 
-.claw-button{
+.claw-button{/*claw button styling*/
     margin: auto auto 10px auto;
     padding: 5px 10px 5px 10px;
     border-radius: 24px;
@@ -467,14 +467,44 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.mc-traversal-container{
+.mc-traversal-container{/*traversal button container/table*/
     margin: auto;
     text-align: center;
 }
 
 .mc-traversal-container td{
-    height: 15px;
-    width: 15px;
+    height: 10px;
+    width: 10px;
+}
+
+.arrow {/*arrow styling for traversal buttons*/
+    border: solid black;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 10px;
+    opacity: 0.5;
+    transition: 0.2s;
+    background-color: transparent;
+}
+  
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+  
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+  
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+  
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
 
 .stop-circle{/*stop button styling*/
@@ -490,36 +520,6 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.arrow {/*arrow styling for traversal buttons*/
-    border: solid black;
-    border-width: 0 6px 6px 0;
-    display: inline-block;
-    padding: 10px;
-    opacity: 0.75;
-    transition: 0.2s;
-    background-color: transparent;
-  }
-  
-  .right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-  }
-  
-  .left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
-  }
-  
-  .up {
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-  }
-  
-  .down {
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-  }
-
-.claw-button:hover, .stop-circle:hover .arrow:hover{
+.claw-button:hover, .stop-circle:hover, .arrow:hover{
     opacity: 1;
 }
