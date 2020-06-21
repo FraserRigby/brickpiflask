@@ -381,7 +381,7 @@ footer { margin-top:60px; }
 /*control panel*/
 .mc-control-panel-container{
     height:200px;
-    width:450px;
+    width:540px;
     margin: 0 auto 0 auto;
     background-color: white;
     border-color: transparent;
@@ -405,7 +405,7 @@ footer { margin-top:60px; }
 .mc-control-inactive-button{
     display: inline-block;
     /*margin: 0 10px 0 0;*/
-    width: 150px;
+    width: 180px;
     padding: 5px 5px 5px 5px;
     /*border-radius: 14px;*/
     border-color: transparent;
@@ -420,7 +420,7 @@ footer { margin-top:60px; }
 .mc-control-active-button{
     display: inline-block;
     /*margin: 0 10px 0 0;*/
-    width: 150px;
+    width: 180px;
     padding: 5px 5px 5px 5px;
     /*border-radius: 14px;*/
     border-color: transparent;
@@ -445,7 +445,7 @@ footer { margin-top:60px; }
 }
 
 .mc-control-grid{
-    
+
 }
 
 .mc-claw-container{

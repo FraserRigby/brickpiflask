@@ -14,6 +14,7 @@
     <div class="row">
         <h3 id="message"></h3>
     </div>
+    <button type="button" class="btn btn-dark" onclick="shutdownserver();">Shutdown Server</button>
     <!--
     <div class="container">
       <button type="button" class="mc-new-mission-button" onclick="new_mission_window()">New Mission</button>
@@ -79,7 +80,6 @@
         <td>
           <div class="mc-stop-container">
             <button type="button" class="btn btn-danger" onclick="JSONrequest('/stop','POST')">Stop</button>
-            <button type="button" class="btn btn-dark" onclick="shutdownserver();">Shutdown Server</button>
           </div>
         </td>
       </tr>
