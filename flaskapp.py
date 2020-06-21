@@ -211,7 +211,7 @@ def end_mission():
     return jsonify({"message":message})
 
 
-@app.route('/control_state', methods=['GET','POST'])
+@app.route('/set_control_state', methods=['GET','POST'])
 def set_control_state():
     message = ''
     if ROBOTENABLED:
