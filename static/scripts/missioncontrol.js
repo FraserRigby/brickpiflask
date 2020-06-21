@@ -94,6 +94,7 @@ function new_mission_results_return(results){
 //manual
 function control_manual(){
     var control_state = "manual";
+    state = {"control_state":"manual"};
     document.getElementById('control-manual').className = "mc-control-active-button";
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
@@ -103,6 +104,7 @@ function control_manual(){
 //semi-autonomous
 function control_semiauto(){
     var control_state = "semiauto";
+    state = {"control_state":"semiauto"};
     document.getElementById('control-manual').className = "mc-control-inactive-button";
     document.getElementById('control-semiauto').className = "mc-control-active-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
@@ -112,6 +114,7 @@ function control_semiauto(){
 //auto
 function control_auto(){
     var control_state = "auto";
+    state = {"control_state":"auto"};
     document.getElementById('control-manual').className = "mc-control-inactive-button";
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-active-button";
