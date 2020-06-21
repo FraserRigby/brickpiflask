@@ -30,7 +30,7 @@ footer { margin-top:60px; }
     background-color: black;
     height: 100%;
     width: 100%;
-    padding: 20px 0 0 0;
+    padding: 20px 0 10px 0;
     transition: 0.6s;
 }
 
@@ -39,7 +39,7 @@ footer { margin-top:60px; }
     background-color: white;
     height: 100%;
     width: 100%;
-    padding: 20px 0 0 0;
+    padding: 20px 0 10px 0;
     transition: 0.6s;
 }
 
@@ -383,9 +383,9 @@ footer { margin-top:60px; }
     height:auto;
     width:450px;
     margin: 0 auto 0 auto;
-    background-color: transparent;
+    background-color: white;
     border-color: transparent;
-    /*border-radius: 16px;*/
+    border-radius: 16px;
 }
 
 .mc-control-panel-header-container{
@@ -431,3 +431,5 @@ footer { margin-top:60px; }
     text-align: center;
     transition: 0.3s;
 }
+
+.mc-control-panel-
