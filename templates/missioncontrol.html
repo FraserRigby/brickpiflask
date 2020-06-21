@@ -62,11 +62,11 @@
   <!--manual control container_need to be able to switch between different divs, that are in the same place via header options.-->
   <div class="mc-control-panel-control-active-container" id="mc-control-manual/semiauto"><!--manual/semiauto control container, basically containing same elements, just do different things according to control_state-->
     <table class="mc-control-manual-semiauto-grid">
-      <td>
+      <td style="width:120px;">
           <button type="button" class="claw-button" onclick="JSONrequest('/claw_open','POST')">Open Claw</button>
           <button type="button" class="claw-button" onclick="JSONrequest('/claw_close','POST')">Close Claw</button>
       </td>
-      <td>
+      <td style="width:260px">
         <div class="mc-traversal-container">
           <button type="button" class="btn btn-success" onclick="JSONrequest('/forward','POST')">Forward</button>
           <button type="button" class="btn btn-success" onclick="JSONrequest('/backward','POST')">Reverse</button>
@@ -74,7 +74,7 @@
           <button type="button" class="btn btn-success" onclick="JSONrequest('/t_left','POST')">Left</button>
         </div>
       </td>
-      <td>
+      <td style="width:120;">
         <div class="mc-stop-container">
           <button type="button" class="btn btn-danger" onclick="JSONrequest('/stop','POST')">Stop</button>
         </div>
