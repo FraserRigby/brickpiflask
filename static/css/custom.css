@@ -444,6 +444,10 @@ footer { margin-top:60px; }
     display: none;
 }
 
+.mc-control-grid{
+    
+}
+
 .mc-claw-container{
 
 }
@@ -453,5 +457,5 @@ footer { margin-top:60px; }
 }
 
 .mc-stop-container{
-    
+
 }
