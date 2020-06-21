@@ -63,10 +63,10 @@
   <div class="mc-control-panel-control-active-container" id="mc-control-manual/semiauto"><!--manual/semiauto control container, basically containing same elements, just do different things according to control_state-->
     <table class="mc-control-manual-semiauto-grid">
       <td>
-        <div class="mc-claw-container">
-          <button type="button" class="btn btn-success" onclick="JSONrequest('/claw_open','POST')">Open Claw</button>
-          <button type="button" class="btn btn-success" onclick="JSONrequest('/claw_close','POST')">Close Claw</button>
-        </div>
+        <table class="mc-claw-container">
+          <tr><button type="button" class="btn btn-success" onclick="JSONrequest('/claw_open','POST')">Open Claw</button></tr>
+          <tr><button type="button" class="btn btn-success" onclick="JSONrequest('/claw_close','POST')">Close Claw</button></tr>
+        </table>
       </td>
       <td>
         <div class="mc-traversal-container">
