@@ -460,10 +460,6 @@ footer { margin-top:60px; }
 
 }
 
-.mc-stop-container{
-
-}
-
 .claw-button{
     margin: auto auto 10px auto;
     padding: 5px 10px 5px 10px;
@@ -472,15 +468,20 @@ footer { margin-top:60px; }
     opacity: 0.75;
     background-color: #3b86ff;
     text-align: center;
+    transition: 0.2s;
 }
 
 .claw-button:hover{
     opacity: 1;
 }
 
-.octagon { overflow: hidden; }
-
-.ocatagon-inner {
-	transform: rotate(45deg);
-	background-color: #ee8c25;
+.stop-circle{
+    height:50px;
+    width:50px;
+    margin:auto;
+    border-radius:50;
+    border-color:transparent;
+    background-color:#ff2929;
+    text-align:center;
+    color:white;
 }

@@ -75,11 +75,9 @@
         </div>
       </td>
       <td style="width:120;"><!--Stop button-->
-        <div class="mc-stop-container"><!--trying to create an octagon, stop sign looking button, image association with stop signs-->
-          <div class="octagon">
-            <div class="octagon-inner">STOP</div>
-          </div>
-          <button type="button" class="btn btn-danger" onclick="JSONrequest('/stop','POST')">Stop</button>
+        <!--trying to create an octagon, stop sign looking button, image association with stop signs-->
+        <!--hexagon wouldn't work, so compromising with circle shape-->
+          <button type="button" class="stop-circle" onclick="JSONrequest('/stop','POST')">Stop</button>
         </div>
       </td>  
     </table>
