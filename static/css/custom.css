@@ -456,14 +456,16 @@ footer { margin-top:60px; }
     vertical-align: middle;
 }
 
-.mc-claw-container{
-
-}
-
 .mc-traversal-container{
 
 }
 
 .mc-stop-container{
 
+}
+
+.open-claw-button{
+    margin: auto auto 20px auto;
+    padding: 10px 10px 10px 10px;
+    
 }
