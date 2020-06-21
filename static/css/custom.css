@@ -383,7 +383,7 @@ footer { margin-top:60px; }
     height:auto;
     width:450px;
     margin: 0 auto 0 auto;
-    background-color: green;
+    background-color: transparent;
     border-color: transparent;
     /*border-radius: 15px;*/
 }
