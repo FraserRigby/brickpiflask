@@ -484,6 +484,6 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.claw-button:hover, .stop-cirlce:hover{
+.claw-button:hover, .stop-circle:hover{
     opacity: 1;
 }
