@@ -468,7 +468,13 @@ footer { margin-top:60px; }
 }
 
 .mc-traversal-container{
-    margin:auto;
+    margin: auto;
+    text-align: center;
+}
+
+.mc-traversal-container td{
+    height: 15px;
+    width: 15px;
 }
 
 .stop-circle{/*stop button styling*/
@@ -491,6 +497,7 @@ footer { margin-top:60px; }
     padding: 10px;
     opacity: 0.75;
     transition: 0.2s;
+    background-color: transparent;
   }
   
   .right {
@@ -513,6 +520,6 @@ footer { margin-top:60px; }
     -webkit-transform: rotate(45deg);
   }
 
-.claw-button:hover, .stop-circle:hover{
+.claw-button:hover, .stop-circle:hover .arrow:hover{
     opacity: 1;
 }
