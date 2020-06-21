@@ -392,6 +392,7 @@ footer { margin-top:60px; }
     height:auto;
     width:auto;
     margin: 0, auto, 0 auto;
+    z-index: -1;
     text-align: center;
     background-color:grey;
     opacity: 0.5;
