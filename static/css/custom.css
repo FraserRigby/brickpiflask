@@ -394,7 +394,12 @@ footer { margin-top:60px; }
     margin: 0, auto, 0 auto;
     text-align: center;
     /*background-color:gray;*/
+}
 
+.mc-control-panel-header-table{
+    width: 100%;
+    margin: auto;
+    text-align: center;
 }
 
 .mc-control-inactive-button{
