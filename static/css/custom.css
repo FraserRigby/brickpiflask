@@ -398,13 +398,12 @@ footer { margin-top:60px; }
 
 .mc-control-panel-header-table{
     width: 100%;
-    margin: none;
     text-align: center;
 }
 
 .mc-control-inactive-button{
     display: inline-block;
-    /*margin: 0 10px 0 0;*/
+    margin: none;
     width: 180px;
     padding: 5px 5px 5px 5px;
     /*border-radius: 14px;*/
@@ -419,7 +418,7 @@ footer { margin-top:60px; }
 
 .mc-control-active-button{
     display: inline-block;
-    /*margin: 0 10px 0 0;*/
+    margin: none;
     width: 180px;
     padding: 5px 5px 5px 5px;
     /*border-radius: 14px;*/
