@@ -477,10 +477,10 @@ footer { margin-top:60px; }
     margin:auto;
     border-radius:50%;
     border-color:transparent;
+    opacity: 0.75;
     background-color:#ff2929;
     text-align:center;
     color:white;
-    opacity: 0.75;
     transition: 0.2s;
 }
 
