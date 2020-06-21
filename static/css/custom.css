@@ -448,7 +448,7 @@ footer { margin-top:60px; }
     width: 100%;
 }
 
-.mc-control-manual-semiauto-grid tr{
+.mc-control-manual-semiauto-grid.tr{
     width: 180px;
 }
 
