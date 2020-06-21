@@ -456,10 +456,6 @@ footer { margin-top:60px; }
     vertical-align: middle;
 }
 
-.mc-traversal-container{
-
-}
-
 .claw-button{
     margin: auto auto 10px auto;
     padding: 5px 10px 5px 10px;
@@ -471,17 +467,23 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.claw-button:hover{
+.claw-button:hover, .stop-cirlce:hover{
     opacity: 1;
 }
 
+.mc-traversal-container{
+    margin:auto;
+}
+
 .stop-circle{
-    height:50px;
-    width:50px;
+    height:75px;
+    width:75px;
     margin:auto;
     border-radius:50%;
     border-color:transparent;
     background-color:#ff2929;
     text-align:center;
     color:white;
+    opacity: 0.75;
+    transition: 0.2s;
 }
