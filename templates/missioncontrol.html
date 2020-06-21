@@ -67,12 +67,19 @@
           <button type="button" class="claw-button" onclick="JSONrequest('/claw_close','POST')">Close Claw</button>
       </td>
       <td style="width:300px"><!--Traversal buttons-->
-        <div class="mc-traversal-container"><!--trying to create an arrow like shape out of these buttons-->
-          <button type="button" class="btn btn-success" onclick="JSONrequest('/forward','POST')">Forward</button>
-          <button type="button" class="btn btn-success" onclick="JSONrequest('/backward','POST')">Reverse</button>
-          <button type="button" class="btn btn-success" onclick="JSONrequest('/t_right','POST')">Right</button>
-          <button type="button" class="btn btn-success" onclick="JSONrequest('/t_left','POST')">Left</button>
-        </div>
+        <table class="mc-traversal-container"><!--trying to create an arrow like shape out of these buttons-->
+          <tr><td></td><td>
+            <button type="button" class="arrow up" onclick="JSONrequest('/forward','POST')"></button>
+          </td><td></td></tr>
+          <tr>
+            <td><button type="button" class="arrow left" onclick="JSONrequest('/t_right','POST')"></button></td>
+            <td></td>
+            <td><button type="button" class="arrow right" onclick="JSONrequest('/t_left','POST')"></button></td>
+          </tr>
+          <tr><td></td><td>
+            <button type="button" class="arrow down" onclick="JSONrequest('/backward','POST')"></button>
+          </td><td></td></tr>
+        </table>
       </td>
       <td style="width:120;"><!--Stop button-->
         <!--trying to create an octagon, stop sign looking button, image association with stop signs-->

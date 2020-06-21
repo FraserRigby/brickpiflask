@@ -471,7 +471,7 @@ footer { margin-top:60px; }
     margin:auto;
 }
 
-.stop-circle{
+.stop-circle{/*stop button styling*/
     height:75px;
     width:75px;
     margin:auto;
@@ -483,6 +483,35 @@ footer { margin-top:60px; }
     color:white;
     transition: 0.2s;
 }
+
+.arrow {/*arrow styling for traversal buttons*/
+    border: solid black;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 10px;
+    opacity: 0.75;
+    transition: 0.2s;
+  }
+  
+  .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+  
+  .left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+  
+  .up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+  
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
 
 .claw-button:hover, .stop-circle:hover{
     opacity: 1;
