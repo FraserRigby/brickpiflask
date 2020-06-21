@@ -385,17 +385,15 @@ footer { margin-top:60px; }
     margin: 0 auto 0 auto;
     background-color: transparent;
     border-color: transparent;
-    border-radius: 16px;
+    /*border-radius: 16px;*/
 }
 
 .mc-control-panel-header-container{
     height:auto;
     width:auto;
     margin: 0, auto, 0 auto;
-    z-index: -1;
     text-align: center;
-    background-color:grey;
-    opacity: 0.5;
+    /*background-color:gray;*/
 }
 
 .mc-control-panel-header-table{
@@ -409,8 +407,7 @@ footer { margin-top:60px; }
     /*margin: 0 10px 0 0;*/
     width: 150px;
     padding: 5px 5px 5px 5px;
-    z-index: 1;
-    /*border-radius: 14px;*/
+    border-radius: 14px;
     border-color: transparent;
     background-color: grey;
     opacity: 0.5;
@@ -424,8 +421,7 @@ footer { margin-top:60px; }
     /*margin: 0 10px 0 0;*/
     width: 150px;
     padding: 5px 5px 5px 5px;
-    z-index: 1;
-    /*border-radius: 14px;*/
+    border-radius: 14px;
     border-color: transparent;
     background-color: grey;
     opacity: 1;
