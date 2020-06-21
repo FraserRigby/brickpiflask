@@ -380,7 +380,7 @@ footer { margin-top:60px; }
 
 /*control panel*/
 .mc-control-panel-container{
-    height:auto;
+    height:200px;
     width:450px;
     margin: 0 auto 0 auto;
     background-color: white;
@@ -432,4 +432,26 @@ footer { margin-top:60px; }
     transition: 0.3s;
 }
 
-.mc-control-panel-
+.mc-control-panel-control-active-container{
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+
+.mc-control-panel-control-inactive-container{
+    width: 100%;
+    margin: auto;
+    display: none;
+}
+
+.mc-claw-container{
+
+}
+
+.mc-traversal-container{
+
+}
+
+.mc-stop-container{
+    
+}

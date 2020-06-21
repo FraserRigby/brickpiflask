@@ -11,7 +11,6 @@ var message = '';
 //Setting page background
 document.getElementById("origin").className = 'origin-missioncontrol';
 
-
 function shutdownserver(){
     clearInterval(recurringhandle);
     setTimeout(() => { console.log("Shutting down"); }, 1000);
@@ -93,31 +92,37 @@ function new_mission_results_return(results){
 //control panel header button functions
 //manual
 function control_manual(){
-    var control_state = "manual";
+    var control_state = "manual";//changing state
     state = {"control_state":"manual"};
-    document.getElementById('control-manual').className = "mc-control-active-button";
+    document.getElementById('control-manual').className = "mc-control-active-button";//changing header appearance
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
+    document.getElementById('mc-control-manual/semiauto').className = "mc-control-panel-control-active-container";//changing control panel buttons/appearance
+    document.getElementById('mc-control-auto').className = "mc-control-panel-control-inactive-container";
     JSONrequest('/set_control_state', 'POST', return_message, state);
 }
 
 //semi-autonomous
 function control_semiauto(){
-    var control_state = "semiauto";
+    var control_state = "semiauto";//changing state
     state = {"control_state":"semiauto"};
-    document.getElementById('control-manual').className = "mc-control-inactive-button";
+    document.getElementById('control-manual').className = "mc-control-inactive-button";//changing header appearance
     document.getElementById('control-semiauto').className = "mc-control-active-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
+    document.getElementById('mc-control-manual/semiauto').className = "mc-control-panel-control-active-container";//changing control panel buttons/appearance
+    document.getElementById('mc-control-auto').className = "mc-control-panel-control-inactive-container";
     JSONrequest('/set_control_state', 'POST', return_message, state);
 }
 
 //auto
 function control_auto(){
-    var control_state = "auto";
+    var control_state = "auto";//changing state
     state = {"control_state":"auto"};
-    document.getElementById('control-manual').className = "mc-control-inactive-button";
+    document.getElementById('control-manual').className = "mc-control-inactive-button";//changing header appearance
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-active-button";
+    document.getElementById('mc-control-manual/semiauto').className = "mc-control-panel-control-inactive-container";//changing control panel buttons/appearance
+    document.getElementById('mc-control-auto').className = "mc-control-panel-control-active-container";
     JSONrequest('/set_control_state', 'POST', return_message, state);
 }
 
