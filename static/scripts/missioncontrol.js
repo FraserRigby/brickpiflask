@@ -93,7 +93,7 @@ function new_mission_results_return(results){
 //control panel header button functions
 //manual
 function control_manual(){
-    control_state['control_state'] = "manual"
+    control_state['control_state'] = "manual";
     document.getElementById('control-manual').className = "mc-control-active-button";
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
@@ -102,7 +102,7 @@ function control_manual(){
 
 //semi-autonomous
 function control_semiauto(){
-    control_state['control_state'] = "semiauto"
+    control_state['control_state'] = "semiauto";
     document.getElementById('control-manual').className = "mc-control-inactive-button";
     document.getElementById('control-semiauto').className = "mc-control-active-button";
     document.getElementById('control-auto').className = "mc-control-inactive-button";
@@ -111,7 +111,7 @@ function control_semiauto(){
 
 //auto
 function control_auto(){
-    control_state['control_state'] = "auto"
+    control_state['control_state'] = "auto";
     document.getElementById('control-manual').className = "mc-control-inactive-button";
     document.getElementById('control-semiauto').className = "mc-control-inactive-button";
     document.getElementById('control-auto').className = "mc-control-active-button";
