@@ -467,10 +467,6 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.claw-button:hover, .stop-cirlce:hover{
-    opacity: 1;
-}
-
 .mc-traversal-container{
     margin:auto;
 }
@@ -486,4 +482,8 @@ footer { margin-top:60px; }
     color:white;
     opacity: 0.75;
     transition: 0.2s;
+}
+
+.claw-button:hover, .stop-cirlce:hover{
+    opacity: 1;
 }
