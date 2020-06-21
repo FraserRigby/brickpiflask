@@ -216,7 +216,7 @@ def set_control_state():
     message = ''
     if ROBOTENABLED:
         control_state = request.form.get('control_state')
-        message = str(control_state) + ' control activated.'
+        message = 'Control State: ' + str(control_state)
     else:
         message = 'Robot not activated, please activate.'
     return jsonify({"message":message})
