@@ -409,6 +409,7 @@ footer { margin-top:60px; }
     padding: 5px 5px 5px 5px;
     /*border-radius: 14px;*/
     border-color: transparent;
+    border: none;
     background-color: grey;
     opacity: 0.5;
     color: black;
@@ -423,6 +424,7 @@ footer { margin-top:60px; }
     padding: 5px 5px 5px 5px;
     /*border-radius: 14px;*/
     border-color: transparent;
+    border: none;
     background-color: grey;
     opacity: 1;
     color: black;
