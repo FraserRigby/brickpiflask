@@ -464,8 +464,16 @@ footer { margin-top:60px; }
 
 }
 
-.open-claw-button{
+.claw-button{
     margin: auto auto 20px auto;
     padding: 10px 10px 10px 10px;
+    border-radius: 16px;
+    border-color: transparent;
+    opacity: 0.75;
+    background-color: #3b86ff;
     text-align: center;
+}
+
+.claw-button:hover{
+    opacity: 1;
 }
