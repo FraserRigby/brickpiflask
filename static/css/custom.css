@@ -473,8 +473,8 @@ footer { margin-top:60px; }
 }
 
 .mc-traversal-container td{
-    height: 100%;
-    width: 100%;
+    height: auto;
+    width: auto;
     overflow:hidden;
 }
 
