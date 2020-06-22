@@ -512,7 +512,7 @@ footer { margin-top:60px; }
 .stop-circle{/*stop button styling*/
     height:75px;
     width:75px;
-    margin:auto;
+    margin:10px auto;
     border-radius:50%;
     border-color:transparent;
     opacity: 0.75;
