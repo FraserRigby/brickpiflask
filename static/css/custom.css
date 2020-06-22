@@ -475,7 +475,7 @@ footer { margin-top:60px; }
 .mc-traversal-container td{
     height: auto;
     width: auto;
-
+    padding: 10px 10px 10px 0;
 }
 
 .arrow {/*arrow styling for traversal buttons*/
@@ -489,13 +489,12 @@ footer { margin-top:60px; }
 }
   
 .right {
-    padding: 10px 10px 0 0;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
   
 .left {
-    padding: 10px 0 10px 0;
+    padding: 10px, 10px, 0 0;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
