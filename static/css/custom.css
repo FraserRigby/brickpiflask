@@ -512,7 +512,7 @@ footer { margin-top:60px; }
 .stop-circle{/*stop button styling*/
     height:75px;
     width:75px;
-    margin:10px auto;
+    margin:10px auto 0 auto;
     border-radius:50%;
     border-color:transparent;
     opacity: 0.75;
@@ -523,7 +523,7 @@ footer { margin-top:60px; }
 }
 
 .shutdown-button{/*shutdown server button styling*/
-margin: 10px auto auto auto;
+margin: 5px auto auto auto;
     padding: 5px 10px 5px 10px;
     border-radius: 24px;
     border-color: transparent;
