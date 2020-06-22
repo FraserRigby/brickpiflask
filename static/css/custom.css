@@ -475,8 +475,7 @@ footer { margin-top:60px; }
 .mc-traversal-container td{
     height: auto;
     width: auto;
-    overflow:hidden;
-    border-collapse: collapse;
+
 }
 
 .arrow {/*arrow styling for traversal buttons*/
