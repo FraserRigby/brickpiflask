@@ -476,6 +476,7 @@ footer { margin-top:60px; }
     height: auto;
     width: auto;
     overflow:hidden;
+    border-collapse: collapse;
 }
 
 .arrow {/*arrow styling for traversal buttons*/
