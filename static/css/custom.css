@@ -489,11 +489,13 @@ footer { margin-top:60px; }
 }
   
 .right {
+    padding: 10px 10px 0 0;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
   
 .left {
+    padding: 10px 0 10px 0;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
