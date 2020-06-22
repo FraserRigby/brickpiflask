@@ -522,6 +522,19 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.claw-button:hover, .stop-circle:hover, .arrow:hover{
+.shutdown-button{/*shutdown server button styling*/
+margin: 10px auto auto auto;
+    padding: 5px 10px 5px 10px;
+    border-radius: 24px;
+    border-color: transparent;
+    opacity: 0.75;
+    background-color: #2e3642;
+    text-align: center;
+    color: white;
+    transition: 0.2s;
+}
+
+
+.claw-button:hover, .stop-circle:hover, .arrow:hover, .shutdown-button:hover{
     opacity: 1;
 }
