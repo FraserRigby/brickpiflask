@@ -381,7 +381,7 @@ footer { margin-top:60px; }
 /*control panel*/
 .mc-control-panel-container{
     height:200px;
-    width:480px;
+    width:450px;
     margin: 0 auto 0 auto;
     background-color: white;
     border-color: transparent;
@@ -404,7 +404,7 @@ footer { margin-top:60px; }
 .mc-control-inactive-button{
     display: inline-block;
     margin: none;
-    width: 160px;
+    width: 150px;
     padding: 5px 5px 5px 5px;
     /*border-radius: 14px;*/
     border-color: transparent;
@@ -419,7 +419,7 @@ footer { margin-top:60px; }
 .mc-control-active-button{
     display: inline-block;
     margin: none;
-    width: 160px;
+    width: 150px;
     padding: 5px 5px 5px 5px;
     /*border-radius: 14px;*/
     border-color: transparent;
@@ -450,7 +450,7 @@ footer { margin-top:60px; }
 }
 
 .mc-control-manual-semiauto-grid td{
-    width: 160px;
+    width: 150px;
     margin: auto;
     text-align: center;
     vertical-align: middle;
@@ -534,7 +534,9 @@ margin: 5px auto auto auto;
     transition: 0.2s;
 }
 
-
 .claw-button:hover, .stop-circle:hover, .arrow:hover, .shutdown-button:hover{
     opacity: 1;
 }
+
+/*need to put in auto control panel css here!!!*/
+
