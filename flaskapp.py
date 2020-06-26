@@ -164,7 +164,7 @@ def signup():
                 row = userid[0]
                 session["userid"] = row["userid"] #gets userid
                 for role in userroles:
-                    database.ModifyQueryHelper("INSERT INTO userrole (userid, rolecode) VALUES (?,?)",(session["userid"],role)) #creating new role entry for user
+                    database.ModifyQueryHelper("INSERT INTO userroletable (userid, rolecode) VALUES (?,?)",(session["userid"],role)) #creating new role entry for user in userroletable
                 message = "New user created, please log in to access fire robot system." #signup confirmation message
             else:
                 message = "Username is taken, please choose a different one." #error message
