@@ -416,6 +416,10 @@ footer { margin-top:60px; }
     transition: 0.3s;
 }
 
+.mc-control-inactive-button:hover{
+    opacity:1;
+}
+
 .mc-control-active-button{
     display: inline-block;
     margin: none;
