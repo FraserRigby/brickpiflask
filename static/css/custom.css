@@ -1,3 +1,4 @@
+/* already setup stuff */
 button.btn { width:100%; }
 .mediumcolumn { width:250px; padding:10px; }
 .alert { color:red; }
@@ -15,8 +16,10 @@ footer { margin-top:60px; }
     100%{   color: #000;    }
 }
 
+/** MY STUFF **/
+
 /* Origin Website Window */
-.origin{
+.origin{/*basic origin page styling*/
     position: absolute;
     background-color: black;
     height: 100%;
@@ -25,7 +28,7 @@ footer { margin-top:60px; }
     transition: 0.6s;
 }
 
-.origin-home{
+.origin-home{/*home page origin stylign*/
     position: absolute;
     background-color: black;
     height: 100%;
@@ -34,7 +37,7 @@ footer { margin-top:60px; }
     transition: 0.6s;
 }
 
-.origin-missioncontrol{
+.origin-missioncontrol{/*missioncontrol page origin styling*/
     position: absolute;
     background-color: white;
     height: 100%;
@@ -43,12 +46,16 @@ footer { margin-top:60px; }
     transition: 0.6s;
 }
 
-.origin-dataview{
+.origin-dataview{/*dataview page origin styling --> still need to do*/
+
+}
+
+.origin-help{/*help page origin styling --> only do it if actually developing help page*/
 
 }
 
 /* Message CSS */
-.message {
+.message {/*styling for basic message returns from flask, js --> computer directly informing the user what's happening*/
     color: black;
     text-align: left;
     font-weight: bold;
@@ -82,7 +89,7 @@ footer { margin-top:60px; }
     transition-duration: 0.4s;
 }
 
-.navbar-button:hover {
+.navbar-button:hover {/*creates differentiation, colour contrast and feedback to user input when interactable passed over*/
     background-color: white;
     color: black;
     text-decoration: none;
@@ -90,7 +97,7 @@ footer { margin-top:60px; }
 
 /* Home Page CSS */
 /* Login CSS */
-.login-container{
+.login-container{/*container for login form, holds key components of login page*/
     height: auto;
     width: 40%;
     display: block;
@@ -100,7 +107,7 @@ footer { margin-top:60px; }
     background-color: white; /*#979c9c; possible grey color for form container background*/
 }
 
-.form-header-container{
+.form-header-container{/*container for the header/title of the login container*/
     height: auto;
     width: auto;
     margin: 20px auto 30px auto;
@@ -110,7 +117,7 @@ footer { margin-top:60px; }
     font-size: 20px;
 }
 
-.login-form-container{
+.login-form-container{/*container for the form components of the login functionality*/
     display: block;
     height: auto;
     width: auto;
@@ -118,7 +125,7 @@ footer { margin-top:60px; }
     text-align: center;
 }
 
-.login-form {
+.login-form {/*styling for the login form*/
     display: block;
     height: auto;
     width: auto;
@@ -127,16 +134,16 @@ footer { margin-top:60px; }
 }
 
 
-.login-table-form{
+.login-table-form{/*styling for the login form, except in table format*/
     margin: 0 auto 0 auto;
 }
 
-.login-table-form label {
+.login-table-form label {/*styling the labelling of the form table*/
     margin: 10px 10px 0px 10px;
     text-align:left;
 }
 
-.login-table-form input {
+.login-table-form input {/*styling the input compnents of the form table*/
     width: 200px;
     margin: 10px 10px 0px 10px;
     padding: 5px 10px 5px 10px;
@@ -149,7 +156,7 @@ footer { margin-top:60px; }
     transition: 0.5;
 }
 
-.login-table-form input:hover, input:focus {
+.login-table-form input:hover, input:focus {/*feedback to user interaction with website, passive*/
     color: black;
     border-width: 1px;
     border-radius: 20px;
@@ -157,7 +164,7 @@ footer { margin-top:60px; }
     opacity: 1;
 }
 
-.login-form button {
+.login-form button {/*styling for login button, most buttons across this project utilise this basic concept, including an ofset opacity to juxtapose user interaction, as well as rounded edges for a smoother look*/
     height: auto;
     width: auto;
     border-radius: 20px;
@@ -170,31 +177,31 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.login-form button:hover {
+.login-form button:hover {/*login button feedback*/
     opacity: 1;
 }
 
-.form-instructions-container {
+.form-instructions-container {/*container for form instructions*/
     text-align: left;
     color: black;
     margin: 20px;
 }
 
-.create-account-button {
+.create-account-button {/*create account button styling*/
     display: inline;
     color: blue;
     border: none;
     background: none;
 }
 
-.create-account-button:hover {
+.create-account-button:hover {/*create account button feedback*/
     cursor: pointer;
     text-decoration: underline;
     text-decoration-color: blue;
 }
 
 /* Signup CSS*/
-.modal{
+.modal{/*creates background for signup form*/
     display: none;
     position: fixed;
     z-index: 1;
@@ -211,7 +218,7 @@ footer { margin-top:60px; }
     transition: 0.6;
 }*/
 
-.close {
+.close {/*close button styling*/
     position: absolute;
     right: 35px;
     top: 15px;
@@ -221,12 +228,12 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.close:hover, .close:focus{
+.close:hover, .close:focus{/*close button feedback*/
     color: #f44336;
     cursor: pointer;
 }
 
-.signup-container{
+.signup-container{/*container for all signup components*/
     width: 450px;
     height: auto;
     margin: 50px auto 0 auto;
@@ -236,23 +243,23 @@ footer { margin-top:60px; }
     padding: 20px 20px 20px 20px;
 }
 
-.new-entry-form{
+.new-entry-form{/*base signup form*/
     width: auto;
     height: auto;
     margin: auto;
 }
 
-.new-entry-table-form {
+.new-entry-table-form {/*form constructed as table, basic signup form table styling*/
     margin: 0 auto 10px auto;
     width: auto;
 }
 
-.new-entry-table-form label{
+.new-entry-table-form label{/*signup form label styling*/
     margin: 10px 10px 0px 0px;
     text-align:left;
 }
 
-.new-entry-table-form input {
+.new-entry-table-form input {/*signup form input styling*/
     width: 240px;
     margin: 10px 10px 0px 0px;
     padding: 5px 10px 5px 10px;
@@ -265,7 +272,7 @@ footer { margin-top:60px; }
     transition: 0.5;
 }
 
-.new-entry-table-form input:hover, input:focus {
+.new-entry-table-form input:hover, input:focus {/* signup form input feedback, when field toggled*/
     color: black;
     border-width: 1px;
     border-radius: 20px;
@@ -273,7 +280,7 @@ footer { margin-top:60px; }
     opacity: 1;
 }
 
-.userrole-select-container{
+.userrole-select-container{/*container for user role part of signup*/
     padding: 10px;
     margin: 0px auto 20px auto;
     display: block;
@@ -282,30 +289,30 @@ footer { margin-top:60px; }
     text-align: center;
 }
 
-.userrole-header-label{
+.userrole-header-label{/*user role section header*/
     margin: 10px 0 0 0;
 }
 
-.userrole-table-form{
+.userrole-table-form{/*table for organising the roles*/
     margin: 0 auto 0 auto;
 }
 
-.userrole-table-form label{
+.userrole-table-form label{/*label for user roles*/
     margin: 0 10px 0px 10px;
     text-align:left;
 }
 
-.userrole-table-form input{
+.userrole-table-form input{/*input fields are checkboxes*/
     margin: 0 10px 0 0;
 }
 
-.new-entry-form-button-container{
+.new-entry-form-button-container{/*container for signup form buttons, specifically signup and cancel*/
     margin: auto;
     width: 300px;
     color: white;
 }
 
-.new-entry-cancel-button {
+.new-entry-cancel-button {/*signup cancel button styling*/
     float: left;
     width: 50%;
     border: none;
@@ -314,7 +321,7 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.new-entry-submit-button {
+.new-entry-submit-button {/*signp submit button styling*/
     width: 50%;
     background-color: #3deb6b;
     border: none;
@@ -322,20 +329,20 @@ footer { margin-top:60px; }
     transition: 0.2s;
 }
 
-.new-entry-cancel-button:hover, .new-entry-submit-button:hover{
+.new-entry-cancel-button:hover, .new-entry-submit-button:hover{/*singup modal button feedback*/
     opacity: 1;
 }
 
 /* Mision Control CSS*/
-/*new mission*/
-.mc-container{
+.mc-container{/*container for mission control*/
     height:auto;
     width:auto;
     margin:auto;
     background:transparent;
 }
 
-.modal{
+/*new mission*/
+.modal{/*modal for new mission*/
     display: none;
     position: fixed;
     z-index: 1;
@@ -344,22 +351,7 @@ footer { margin-top:60px; }
     transition-duration: 0.6s;
 }
 
-.close {
-    position: absolute;
-    right: 35px;
-    top: 15px;
-    font-size: 40px;
-    font-weight: bold;
-    color: #f1f1f1;
-    transition: 0.2s;
-}
-
-.close:hover, .close:focus{
-    color: #f44336;
-    cursor: pointer;
-}
-
-.mc-new-container{
+.mc-new-container{/*new mission container*/
     height: auto;
     width: 40%;
     display: block;
@@ -370,16 +362,16 @@ footer { margin-top:60px; }
     opacity: 1;
 }
 
-.mc-new-mission-button{
+.mc-new-mission-button{/*new mission button styling*/
 
 }
 
-.mc-end-mission-button{
+.mc-end-mission-button{/*end mission button styling*/
 
 }
 
 /*control panel*/
-.mc-control-panel-container{
+.mc-control-panel-container{/*mission control panel base container*/
     height:200px;
     width:450px;
     margin: 0 auto 0 auto;
@@ -388,7 +380,7 @@ footer { margin-top:60px; }
     border-radius: 16px;
 }
 
-.mc-control-panel-header-container{
+.mc-control-panel-header-container{/*mission control panel control mode container, acts as header*/
     height:auto;
     width:auto;
     margin: 0, auto, 0 auto;
@@ -396,12 +388,12 @@ footer { margin-top:60px; }
     /*background-color:gray;*/
 }
 
-.mc-control-panel-header-table{
+.mc-control-panel-header-table{/*mision control panel control mode selector table*/
     width: 100%;
     text-align: center;
 }
 
-.mc-control-inactive-button{
+.mc-control-inactive-button{/*class of control type buttons which aren't currently activated/selected*/
     display: inline-block;
     margin: none;
     width: 150px;
@@ -416,11 +408,11 @@ footer { margin-top:60px; }
     transition: 0.3s;
 }
 
-.mc-control-inactive-button:hover{
+.mc-control-inactive-button:hover{/*control type inactive button feedback*/
     opacity:1;
 }
 
-.mc-control-active-button{
+.mc-control-active-button{/*control type button active class*/
     display: inline-block;
     margin: none;
     width: 150px;
@@ -435,25 +427,25 @@ footer { margin-top:60px; }
     transition: 0.3s;
 }
 
-.mc-control-panel-control-active-container{
+.mc-control-panel-control-active-container{/*mission control type active window container, holds the components for the active control type*/
     width: 100%;
     margin: auto;
     display: block;
 }
 
-.mc-control-panel-control-inactive-container{
+.mc-control-panel-control-inactive-container{/*mission control type inactive window container, intended to make the control window disappear when new window changed, deprecated by style.display=none*/
     width: 100%;
     margin: auto;
     display: none;
 }
 
-.mc-control-manual-semiauto-grid{
+.mc-control-manual-semiauto-grid{/*table styling for the manual, semiauto control types control panels*/
     width: 100%;
     margin: auto;
     text-align: center;
 }
 
-.mc-control-manual-semiauto-grid td{
+.mc-control-manual-semiauto-grid td{/*cell styling for manual/semiauto control types control panels*/
     width: 150px;
     margin: auto;
     text-align: center;
@@ -476,7 +468,7 @@ footer { margin-top:60px; }
     text-align: center;
 }
 
-.mc-traversal-container td{
+.mc-traversal-container td{/*cell styling for traversal button table/grid*/
     height: auto;
     width: auto;
     padding: 0 5px 0 5px;
@@ -492,23 +484,23 @@ footer { margin-top:60px; }
     background-color: transparent;
 }
   
-.right {
+.right {/*right arrow styling*/
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
 }
   
-.left {
+.left {/*left arrow styling*/
     padding: 10px, 10px, 0 0;
     transform: rotate(135deg);
     -webkit-transform: rotate(135deg);
 }
   
-.up {
+.up {/*up arrow styling*/
     transform: rotate(-135deg);
     -webkit-transform: rotate(-135deg);
 }
   
-.down {
+.down {/*down arrow styling*/
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }
@@ -538,7 +530,7 @@ margin: 5px auto auto auto;
     transition: 0.2s;
 }
 
-.claw-button:hover, .stop-circle:hover, .arrow:hover, .shutdown-button:hover{
+.claw-button:hover, .stop-circle:hover, .arrow:hover, .shutdown-button:hover{/*manual/semiauto control type button feedback (claw,stop,arrow,shutdown buttons)*/
     opacity: 1;
 }
 
