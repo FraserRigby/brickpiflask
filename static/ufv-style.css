@@ -1,0 +1,326 @@
+.origin{/*basic site styling*/
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: auto;
+    background-color: none;
+}
+
+/*Start Drag Styling*/
+.dragcontainer_init{/*inital drag object styling*/
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: none;/*only controlmenu open on startup*/
+    overflow: hidden;
+}
+
+.dragcontainer_est{/*inital drag object styling*/
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    display: block;/*established object visible*/
+    overflow: hidden;
+}
+
+#controlmenu_container{/*ensures controlmenu visible on startup*/
+    display: block;
+    background: white;
+    color: black;
+}
+
+.dragcontainer_header{/*drag object header styling*/
+    padding: 5px 5px 5px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    user-select: none;
+    transition: 0.2s;
+}
+
+.dragcontainer_header:hover{/*styling for when cursor hovers over header*/
+    cursor: move;
+    background-color: #d3d3d3;
+}
+
+.dragcontainer_header:active{/*styling for when header clicked on*/
+    filter: brightness(80%);
+}
+
+.dragcontainer_header_title{/*drag object header title styling*/
+    display: inline-block;
+}
+
+.dragcontainer_header_buttons{/*drag object header buttons styling*/
+    display: inline;
+    float: right;
+    margin: 0 0 0 5px;
+}
+
+.dragcontainer_content{/*drag object content styling*/
+    padding: 5px 5px 5px 5px;
+    resize: both;
+    overflow: auto;
+    border: 1px solid black;
+    border-top: none;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+/*End Drag Styling*/
+
+/*Start Data Table Styling*/
+.controlmenu_tbl{/*controlmenu tbl styling*/
+    display: block;
+    width: inherit;
+    height: inherit;
+}
+
+.controlmenu_tbl_row{/*controlmenu row styling*/
+}
+
+.controlmenu_tbl_col_lbl{/*controlmenu tbl lbl styling*/
+}
+
+.controlmenu_tbl_col_btn{/*controlmenu tbl btn styling*/
+}
+
+.data_tbl{/**/
+    display: block;
+    width: inherit;
+    height: inherit;
+}
+
+.tbl_row{/**/
+}
+
+.tbl_row_name{/**/
+    padding: 0 10px 0 0;
+}
+
+.tbl_row_entry{/**/
+    text-align: center;
+    padding: 0 10px 0 0;
+}
+
+.tbl_row_unit{/**/
+    text-align: right;
+}
+/*End Data Table Styling*/
+
+/*Start Button Styling*/
+.header_btn{/*general header btn styling*/
+    background: none;
+    border: hidden;
+    border-radius: 2px;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    transition: 0.2s;
+}
+
+.header_btn:hover{/*styling for when cursor hovers over btn*/
+    background: white;
+}
+
+.header_btn:active{/**/
+    background: grey;
+}
+
+.open_btn{/*general open btn styling*/
+    width: 50px;
+    text-align: center;
+    border: hidden;
+    border-radius: 2px;
+    background: white;
+    transition: 0.2s;
+}
+
+.open_btn:hover{/*styling for when cursor hovers over btn*/
+    background: #d3d3d3;
+}
+
+.open_btn:active{
+    filter: brightness(80%)
+}
+
+.estop_btn{/**/
+    display: block;
+    color: red;
+    font-size: 25px;
+    background: none;
+    border: 4px solid red;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transition: 0.2s;
+}
+
+.estop_btn:hover{/**/
+    color: white;
+    background: red;
+}
+
+.estop_btn:active{/**/
+    filter: brightness(80%);
+}
+
+.arrow{/**/
+    border: solid grey;
+    border-width: 0 5px 5px 0;
+    padding: 12px;
+    background: none;
+    display: block;
+    width: auto;
+    margin: auto;
+    opacity: 0.75;
+    transition: 0.2s;
+}
+
+.arrow:hover{/**/
+    filter: brightness(50%)
+}
+
+.arrow:active{/**/
+    border-color: black;
+}
+
+.up{/**/
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down{/**/
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.left{/**/
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    display: inline-block;
+}
+
+.right{/**/
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    display: inline-block;
+}
+
+.firewater_btn{/**/
+    display: block;
+    color: blue;
+    font-size: 20px;
+    background: none;
+    border: 4px solid blue;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    transition: 0.2s;
+    margin: 10px auto auto auto;
+}
+
+.firewater_btn:hover{/**/
+    color: white;
+    background: blue;
+}
+
+.firewater_btn:active{/**/
+    filter: brightness(80%);
+}
+/*End Button Styling*/
+
+/*Start eStop Styling*/
+.estop_container{/**/
+    position: relative;
+    margin: auto;
+    width: 100px;
+    top: 80%;
+}
+/*End eStop Styling*/
+
+/*Start Message Box Styling*/
+.msg_container{/**/
+    position: relative;
+    width: 350px;
+    padding: 2px 5px 2px 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: none;
+    transition: 0.2s;
+    top: 80%;
+    left: 5%;
+}
+
+.msg_container:hover{/**/
+    background: white;
+}
+
+.msg_box_title{/**/
+    display: inline;
+    vertical-align: middle;
+}
+
+.msg_box_msg{/**/
+    display: inline;
+    vertical-align: middle;
+}
+/*End Message Box Styling*/
+
+/*Control Styling*/
+.control_tbl{/**/
+}
+
+.control_tbl th{/**/
+    text-align: center;
+    font-weight: normal;
+    padding: 0 10px 5px 10px;
+}
+
+.slider{/**/
+    -webkit-appearance: none;
+    width: 15px;
+    height: 100px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.75;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+.slider::-webkit-slider-thumb{/**/
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider:hover {/**/
+    opacity: 1;
+}
+
+#slider_manual_sensitivity{/**/
+    -webkit-appearance: slider-vertical;
+}
+
+#slider_manual_pressure{/**/
+    -webkit-appearance: slider-horizontal;
+    height: 15px;
+    width: 100px;
+}
+
+#manual_turret_rotation_container{/**/
+    text-align: center;
+    vertical-align: middle;
+}
+/*End Control Styling*/
