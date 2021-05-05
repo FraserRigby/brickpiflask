@@ -1,7 +1,6 @@
 # This class inherits from the BrickPi interface, it should include any code for sub-routines
 # You can also over-ride any functions that you do not like. The BrickPiInterface is code created by your teacher to make using the robot easier. It is composed of snippets of code from the DexterIndustries github 
 from interfaces.brickpiinterface import BrickPiInterface
-from interfaces.databaseinterface import DatabaseHelper 
 import logging
 import time
 

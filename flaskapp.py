@@ -2,7 +2,6 @@ from flask import Flask, render_template, jsonify, redirect, request, session, f
 import logging #allow loggings
 import time, sys, json
 import yourrobot #import in your own robot functionality
-from interfaces.databaseinterface import DatabaseHelper
 from datetime import datetime
 
 ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
@@ -10,12 +9,7 @@ POWER = 30 #constant power/speed
 
 #Global Variables
 app = Flask(__name__)
-SECRET_KEY = 'my random key can be anything' #this is used for encrypting sessions
 app.config.from_object(__name__) #Set app configuration using above SETTINGS
-
-#Create the Database
-database = DatabaseHelper('test.sqlite')
-database.set_log(app.logger) #set the logger inside the database
 
 #Create the Robot
 robot = None
@@ -31,56 +25,10 @@ if ROBOTENABLED:
         robot.set_database(database) #store a handle to the database inside the robot
 
 #-----------------HTML REQUEST HANDLERS----------------------------------#
-#home page and login
+#ufv website, one page to rule them all
 @app.route('/', methods=['GET','POST'])
 def index():
-    if 'userid' in session:
-        return redirect('./missioncontrol') #no form data is carried across using 'dot/'
-    if request.method == "POST":  #if form data has been sent
-        email = request.form['email']   #get the form field with the name 
-        password = request.form['password']
-        # TODO - need to make sure only one user is able to login at a time...
-        userdetails = database.ViewQueryHelper("SELECT * FROM users WHERE email=? AND password=?",(email,password))
-        if len(userdetails) != 0:  #rows have been found
-            row = userdetails[0] #userdetails is a list of dictionaries
-            session['userid'] = row['userid']
-            session['username'] = row['username']
-            session['permission'] = row['permission']
-            return redirect('./missioncontrol')
-        else:
-            flash("Sorry no user found, password or username incorrect")
-    else:
-        flash("No data submitted")
-    return render_template('index.html')
-
-#mission control
-@app.route('/missioncontrol')
-def missioncontrol():
-    if 'userid' not in session:
-        return redirect('./') #no form data is carried across using 'dot/'
-    voltage = None
-    if ROBOTENABLED:
-        voltage = robot.get_battery()
-    return render_template("missioncontrol.html", configured = ROBOTENABLED, voltage = voltage)
-
-#map or table of fire and path data
-@app.route('/missionhistory')
-def missionhistory():
-    if 'userid' not in session:
-        return redirect('./') #no form data is carried across using 'dot/'
-    results = None
-    if ROBOTENABLED: #make sure robot is
-        pass
-    return render_template('missionhistory.html', results=results, configured = ROBOTENABLED)
-
-#sensor view
-@app.route('/sensorview', methods=['GET','POST'])
-def sensorview():
-    if 'userid' not in session:
-        return redirect('./')
-    if ROBOTENABLED: #make sure robot is
-        pass
-    return render_template("sensorview.html", configured = ROBOTENABLED)
+    return render_template('ufv-website.html')
 
 
 #----------------JSON REQUEST HANDLERS--------------------#
