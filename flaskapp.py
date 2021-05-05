@@ -11,7 +11,7 @@ POWER = 30 #constant power/speed
 app = Flask(__name__)
 app.config.from_object(__name__) #Set app configuration using above SETTINGS
 
-#Create the Robot
+'''#Create the Robot
 robot = None
 if ROBOTENABLED:
     #Create Robot first. It take 4 seconds to initialise the robot, sensor view wont work until robot is created...
@@ -22,7 +22,7 @@ if ROBOTENABLED:
         ROBOTENABLED = False
     else:
         ROBOTENABLED = robot.Configured #if the robot didnt load disable robot, otherwise Robot is enabled
-
+'''
 #-----------------HTML REQUEST HANDLERS----------------------------------#
 #ufv website, one page to rule them all
 @app.route('/', methods=['GET','POST'])
