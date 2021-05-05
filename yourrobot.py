@@ -4,6 +4,10 @@ from interfaces.brickpiinterface import BrickPiInterface
 import logging
 import time
 
+'''need to take out unecessary stuff --> the original code was for brickpi'''
+'''need to import sensor and actuator drivers'''
+'''use this instead of brikpiinterface.py, bc this not brickpi'''
+
 ENABLED = 1
 DISABLED = 5 #if the sensor returns NOREADING more than 5 times in a row, its permanently 
 

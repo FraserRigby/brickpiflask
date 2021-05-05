@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify, redirect, request, session, flash
 import logging #allow loggings
 import time, sys, json
-import yourrobot #import in your own robot functionality
+#import yourrobot #import in your own robot functionality --> need to develop
 from datetime import datetime
 
 ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
@@ -17,12 +17,11 @@ if ROBOTENABLED:
     #Create Robot first. It take 4 seconds to initialise the robot, sensor view wont work until robot is created...
     robot = yourrobot.Robot()
     robot.set_log(app.logger) #set the logger inside the robot
-    if robot.get_battery() < 6: #the robot motors will disable at 6 volts
+    if robot.get_battery() < 5: #the robot motors will disable at 6 volts
         robot.safe_exit()
         ROBOTENABLED = False
     else:
         ROBOTENABLED = robot.Configured #if the robot didnt load disable robot, otherwise Robot is enabled
-        robot.set_database(database) #store a handle to the database inside the robot
 
 #-----------------HTML REQUEST HANDLERS----------------------------------#
 #ufv website, one page to rule them all
@@ -30,7 +29,7 @@ if ROBOTENABLED:
 def index():
     return render_template('ufv-website.html')
 
-
+'''
 #----------------JSON REQUEST HANDLERS--------------------#
 #get all stats and return through JSON
 @app.route('/getallstats', methods=['GET','POST'])
@@ -122,6 +121,7 @@ def defaultdatahandler():
 def log(message):
     app.logger.info(message)
     return
+'''
 
 #---------------------------------------------------------------
 if __name__ == '__main__':
