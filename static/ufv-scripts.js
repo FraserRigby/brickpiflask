@@ -164,7 +164,7 @@ function closeElement(elmnt) {
 ///End Window Close Code///
 
 //Highlight function for when element clicked on
-function highlight(elmt) {
+function highlight(elmnt) {
     var element = document.getElementById(elmnt);
     if (element.style.backgroudColor != "white") {
         element.style.backgroundColor = "white";
