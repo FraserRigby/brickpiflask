@@ -3,7 +3,7 @@ import logging #allow loggings
 import time, sys, json
 from datetime import datetime
 #import yourrobot #import in your own robot functionality --> need to develop
-from camera import Camera
+from camerainterface import Camera
 
 '''
 ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
