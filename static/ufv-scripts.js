@@ -1,3 +1,35 @@
+///Start global variables///
+var shutdown = false; //if the server is still live
+var recurring_handle = null; //initializes recurring handle var
+//recurring_handle = setInterval(get_current_cmd, 1000); //provides recurring event
+var message = document.getElementById("msg_box_msg"); //define msg element
+var msg = ''
+
+///End global variables///
+
+///Start Robot Functions Code///
+//Return message
+function return_msg(results) {
+    message.innerHTML = results.msg;
+}
+
+//Shutdown
+function shutdown_server() {
+    element = document.getElementById("shutdown_btn");
+    element.classList.toggle('shutdown_btn');
+    element.classList.toggle('shutdown_clicked_btn');
+    clearInterval(recurring_handle);
+    setTimeout(() => {console.log("Shutting down");}, 1000);
+    JSONrequest('/shutdown', 'POST', return_msg);
+    shutdown = true;
+}
+
+//Stop Button
+function stop() {
+    console.log("stop")
+}
+///End Robot Functions Code///
+
 ///Start Div Drag Code///
 dragElement(document.getElementById("controlmenu_container"));
 dragElement(document.getElementById("sensorview_container"));
@@ -85,9 +117,3 @@ function closeElement(elmnt) {
     }
 }
 ///End Window Close Code///
-
-///Start Stop Code///
-function stop() {
-    console.log("stop")
-}
-///End Stop Code///

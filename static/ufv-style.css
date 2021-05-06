@@ -72,7 +72,7 @@
 }
 /*End Drag Styling*/
 
-/*Start Data Table Styling*/
+/*Start Table Styling*/
 .controlmenu_tbl{/*controlmenu tbl styling*/
     display: block;
     width: inherit;
@@ -109,7 +109,60 @@
 .tbl_row_unit{/**/
     text-align: right;
 }
-/*End Data Table Styling*/
+
+.control_tbl{/**/
+}
+
+.control_tbl th{/**/
+    text-align: center;
+    font-weight: normal;
+    padding: 0 10px 5px 10px;
+}
+
+.slider{/**/
+    -webkit-appearance: none;
+    width: 15px;
+    height: 100px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.75;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+.slider::-webkit-slider-thumb{/**/
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider:hover {/**/
+    opacity: 1;
+}
+
+#slider_manual_sensitivity{/**/
+    -webkit-appearance: slider-vertical;
+}
+
+#slider_manual_pressure{/**/
+    -webkit-appearance: slider-horizontal;
+    height: 15px;
+    width: 100px;
+}
+
+#manual_turret_rotation_container{/**/
+    text-align: center;
+    vertical-align: middle;
+}
+/*End Table Styling*/
 
 /*Start Button Styling*/
 .header_btn{/*general header btn styling*/
@@ -126,16 +179,16 @@
     background: white;
 }
 
-.header_btn:active{/**/
+.header_btn:active{/*styling for when btn clicked*/
     background: grey;
 }
 
-.open_btn{/*general open btn styling*/
+.open_btn{/*general btn styling*/
     width: 50px;
     text-align: center;
     border: hidden;
     border-radius: 2px;
-    background: white;
+    background: none;
     transition: 0.2s;
 }
 
@@ -143,8 +196,33 @@
     background: #d3d3d3;
 }
 
-.open_btn:active{
+.open_btn:active{/*styling for when btn clicked*/
     filter: brightness(80%)
+}
+
+.shutdown_btn{/*styling for shutdown btn*/
+    position: relative;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    background: none;
+    border: hidden;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.shutdown_btn:hover{/*styling for when cursor hovers over btn*/
+    background: red;
+    color: white;
+}
+
+.shutdown_clicked_btn{/*styling of btn for when system shutdown*/
+    position: relative;
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    background: #d3d3d3;
+    border: hidden;
+    border-radius: 5px;
+    transition: 0.2s;
 }
 
 .estop_btn{/**/
@@ -270,57 +348,14 @@
 }
 /*End Message Box Styling*/
 
-/*Control Styling*/
-.control_tbl{/**/
+/*Start shutdown div styling*/
+.shutdown_btn_container{/*styling for shutdown button div*/
+    margin: 5px 0 0 0;
+    padding: 5px 0 0 0;
+    width: inherit;
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.control_tbl th{/**/
-    text-align: center;
-    font-weight: normal;
-    padding: 0 10px 5px 10px;
-}
-
-.slider{/**/
-    -webkit-appearance: none;
-    width: 15px;
-    height: 100px;
-    border-radius: 5px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.75;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    display: block;
-    position: relative;
-    margin: auto;
-}
-
-.slider::-webkit-slider-thumb{/**/
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #04AA6D;
-    cursor: pointer;
-}
-
-.slider:hover {/**/
-    opacity: 1;
-}
-
-#slider_manual_sensitivity{/**/
-    -webkit-appearance: slider-vertical;
-}
-
-#slider_manual_pressure{/**/
-    -webkit-appearance: slider-horizontal;
-    height: 15px;
-    width: 100px;
-}
-
-#manual_turret_rotation_container{/**/
-    text-align: center;
-    vertical-align: middle;
-}
-/*End Control Styling*/
+/*End shutdown div styling*/

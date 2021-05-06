@@ -29,8 +29,9 @@ if ROBOTENABLED:
 def index():
     return render_template('ufv-website.html')
 
-'''
+
 #----------------JSON REQUEST HANDLERS--------------------#
+'''
 #get all stats and return through JSON
 @app.route('/getallstats', methods=['GET','POST'])
 def getallstats():
@@ -48,11 +49,6 @@ def start():
         collisiondata = robot.move_power_untildistanceto(POWER,20,4) #use a third number if you need to correct a dev
     return jsonify({ "message":"collision detected", "collisiondata":collisiondata }) #jsonify take any type and makes a JSON 
 
-#creates a route to get all the user data
-@app.route('/getallusers', methods=['GET','POST'])
-def getallusers():
-    results = database.ViewQueryHelper("SELECT * FROM users")
-    return jsonify([dict(row) for row in results]) #jsonify doesnt work with an SQLite.Row
 
 #Get the current command from brickpiinterface.py
 @app.route('/getcurrentcommand', methods=['GET','POST'])
@@ -100,14 +96,17 @@ def stop():
         robot.stop_all()
     return jsonify({ "message":"stopping" })
 
+'''
 #Shutdown the web server
 @app.route('/shutdown', methods=['GET','POST'])
 def shutdown():
-    if ROBOTENABLED:
+    '''if ROBOTENABLED:
         robot.safe_exit()
+    '''
     func = request.environ.get('werkzeug.server.shutdown')
     func()
-    return jsonify({ "message":"shutting down" })
+    return jsonify({ "msg":"shutting down" })
+'''
 
 #An example of how to receive data from a JSON object
 @app.route('/defaultdatahandler', methods=['GET','POST'])
