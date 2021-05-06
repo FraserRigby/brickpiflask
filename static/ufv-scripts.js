@@ -15,13 +15,15 @@ function return_msg(results) {
 
 //Shutdown
 function shutdown_server() {
-    element = document.getElementById("shutdown_btn");
-    element.classList.toggle('shutdown_btn');
-    element.classList.toggle('shutdown_clicked_btn');
-    clearInterval(recurring_handle);
-    setTimeout(() => {console.log("Shutting down");}, 1000);
-    JSONrequest('/shutdown', 'POST', return_msg);
-    shutdown = true;
+    if (shutdown != False) {
+        element = document.getElementById("shutdown_btn");
+        element.classList.toggle('shutdown_btn');
+        element.classList.toggle('shutdown_clicked_btn');
+        clearInterval(recurring_handle);
+        setTimeout(() => {console.log("Shutting down");}, 1000);
+        JSONrequest('/shutdown', 'POST', return_msg);
+        shutdown = true;
+    }
 }
 
 //Stop Button
