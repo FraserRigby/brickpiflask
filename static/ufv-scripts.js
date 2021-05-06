@@ -21,7 +21,9 @@ function shutdown_server() {//activated when shutdown btn pressed
         element = document.getElementById("shutdown_btn");
         element.classList.toggle('shutdown_btn');
         element.classList.toggle('shutdown_clicked_btn');
-        clearInterval(recurring_handle);
+        clearInterval(recurring_handle_currentcmd);
+        clearInterval(recurring_handle_sensordata);
+        clearInterval(recurring_handle_actuatordata);
         setTimeout(() => {console.log("Shutting down");}, 1000);
         JSONrequest('/shutdown', 'POST', return_msg);
         shutdown = true;
@@ -70,6 +72,9 @@ function waterpressure_update() {
 function manual_waterfire() {
 }
 ///End Robot Functions Code///
+
+///Start Robot Data Code///
+///End Robot Data Code///
 
 ///Start Div Drag Code///
 dragElement(document.getElementById("controlmenu_container"));
