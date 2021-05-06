@@ -22,6 +22,7 @@
     display: none;/*only controlmenu open on startup*/
     overflow: hidden;
     background: white;
+    border-radius: 5px;
 }
 
 .dragcontainer_est{/*inital drag object styling*/
@@ -31,6 +32,7 @@
     display: block;/*established object visible*/
     overflow: hidden;
     background: white;
+    border-radius: 5px;
 }
 
 #controlmenu_container{/*ensures controlmenu visible on startup*/
