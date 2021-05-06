@@ -38,6 +38,7 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     user-select: none;
+    -webkit-user-select: none;
     transition: 0.2s;
 }
 
@@ -190,6 +191,7 @@
     border-radius: 2px;
     background: none;
     user-select: none;
+    -webkit-user-select: none;
     transition: 0.2s;
 }
 
@@ -208,7 +210,6 @@
     background: none;
     border: hidden;
     border-radius: 5px;
-    user-select: none;
     transition: 0.2s;
 }
 
@@ -224,7 +225,6 @@
     background: #d3d3d3;
     border: hidden;
     border-radius: 5px;
-    user-select: none;
     transition: 0.2s;
 }
 
@@ -360,5 +360,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
 }
 /*End shutdown div styling*/
