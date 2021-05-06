@@ -169,23 +169,23 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="range" min="1" max="100" class="slider" id="slider_manual_sensitivity"><!--Sensitivity slider-->
+                            <input type="range" min="1" max="100" class="slider" id="slider_manual_sensitivity" onclick="sensitivity_update()"><!--Sensitivity slider-->
                         </td>
                         <td>
-                            <button class="arrow up" id="control_manual_traverse_forward" onclick=""></button><!--Traverse forward button-->
-                            <button class="arrow down" id="control_manual_traverse_backward" onclick=""></button><!--Travere back button-->
+                            <button class="arrow up" id="control_manual_traverse_forward" onclick="manual_traverse_forward()"></button><!--Traverse forward button-->
+                            <button class="arrow down" id="control_manual_traverse_backward" onclick="manual_traverse_backward()"></button><!--Travere back button-->
                         </td>
                         <td id="manual_turret_rotation_container">
-                            <button class="arrow left" id="control_manual_turret_left" onclick=""></button><!--Rotate turret left button-->
-                            <button class="arrow right" id="control_manual_turret_right" onclick=""></button><!--Rotate turret right button-->
+                            <button class="arrow left" id="control_manual_turret_left" onclick="manual_turret_left()"></button><!--Rotate turret left button-->
+                            <button class="arrow right" id="control_manual_turret_right" onclick="manual_turret_right()"></button><!--Rotate turret right button-->
                         </td>
                         <td>
-                            <button class="arrow up" id="control_manual_nozzle_up" onclick=""></button><!--Nozzle Up button-->
-                            <button class="arrow down" id="control_manual_nozzle_down" onclick=""></button><!--Nozzle down button-->
+                            <button class="arrow up" id="control_manual_nozzle_up" onclick="manual_nozzle_up()"></button><!--Nozzle Up button-->
+                            <button class="arrow down" id="control_manual_nozzle_down" onclick="manual_nozzle_down()"></button><!--Nozzle down button-->
                         </td>
                         <td>
-                            <input type="range" min="1" max="100" class="slider" id="slider_manual_pressure"><!--Sensitivity slider-->
-                            <button class="firewater_btn" id="control_manual_firewater" onclick="">Fire<br>Water</button><!--Fire water button-->
+                            <input type="range" min="1" max="100" class="slider" id="slider_manual_pressure" onclick="waterpressure_update()"><!--Sensitivity slider-->
+                            <button class="firewater_btn" id="control_manual_firewater" onclick="manual_waterfire()">Fire<br>Water</button><!--Fire water button-->
                         </td>
                     </tr>
                 </table>

@@ -1,9 +1,11 @@
 ///Start global variables///
 var shutdown = false; //if the server is still live
-var recurring_handle = null; //initializes recurring handle var
+var recurring_handle_currentcmd = null; //initializes recurring handle var currentcmd
+var recurring_handle_sensordata = null; //initializes recurring handle var for sensordata
+var recurring_handle_actuatordata = null; //initializes recurring handle var for actuatordata
 //recurring_handle = setInterval(get_current_cmd, 1000); //provides recurring event
 var message = document.getElementById("msg_box_msg"); //define msg element
-var msg = ''
+var msg = '';
 
 ///End global variables///
 
@@ -30,6 +32,42 @@ function shutdown_server() {//activated when shutdown btn pressed
 function stop() {//activated when stop btn pressed
     console.log("stop");
     JSONrequest('/stop', 'POST', return_msg);
+}
+
+//Update Sensitivity
+function sensitivity_update() {
+}
+
+//Manual Traverse Forward
+function manual_traverse_forward() {
+}
+
+//Manual Traverse Backward
+function manual_traverse_backward() {
+}
+
+//Manual Rotate Turret Left
+function manual_turret_left() {
+}
+
+//Manual Rotate Turret Right
+function manual_turret_right() {
+}
+
+//Manual Rotate Nozzle Up
+function manual_nozzle_up() {
+}
+
+//Manual Rotate Nozzle Down
+function manual_nozzle_down() {
+}
+
+//Update Water Pressure
+function waterpressure_update() {
+}
+
+//Manual Water Fire
+function manual_waterfire() {
 }
 ///End Robot Functions Code///
 
