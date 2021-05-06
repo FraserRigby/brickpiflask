@@ -171,6 +171,7 @@ function highlight(elmnt) {
     }
     else {
         element.style.backgroundColor = "transparent";
+        console.log('highlight return to normal')
     }
 }
 ///End Highlight Code///
