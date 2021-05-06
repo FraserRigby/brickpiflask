@@ -163,13 +163,14 @@ function closeElement(elmnt) {
 }
 ///End Window Close Code///
 
-//Highlight function for when element clicked on
+///Start Highlight Code///
 function highlight(elmnt) {
     var element = document.getElementById(elmnt);
-    if (element.style.backgroudColor != "white") {
+    if (element.style.backgroundColor != "white") {
         element.style.backgroundColor = "white";
     }
     else {
         element.style.backgroundColor = "transparent";
     }
 }
+///End Highlight Code///
