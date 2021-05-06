@@ -364,3 +364,17 @@
     -webkit-user-select: none;
 }
 /*End shutdown div styling*/
+
+/*Start Video Streaming Sytling*/
+.video_streaming_container{/*styling for videostream container*/
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+
+.video_stream{/*Video stream styling*/
+    height: 100%;
+    width: 100%;
+}
+
+/*End Video Streaming Styling*/
