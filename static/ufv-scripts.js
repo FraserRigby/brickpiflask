@@ -8,7 +8,6 @@ var message = document.getElementById("msg_box_msg"); //define msg element
 var msg = '';
 ///End global variables///
 
-
 ///Start Robot Functions Code///
 //Return message
 function return_msg(results) {
@@ -163,3 +162,14 @@ function closeElement(elmnt) {
     }
 }
 ///End Window Close Code///
+
+//Highlight function for when element clicked on
+function highlight(elmt) {
+    var element = document.getElementById(elmnt);
+    if (element.style.backgroudColor != "white") {
+        element.style.backgroundColor = "white";
+    }
+    else {
+        element.style.backgroundColor = "none";
+    }
+}
