@@ -6,7 +6,7 @@
     position: absolute;
     overflow: auto;
     background-color: none;
-    background-image: url("/flaskapp/video_feed");
+    background-image: url("{{url_for('video_feed')}}");
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
