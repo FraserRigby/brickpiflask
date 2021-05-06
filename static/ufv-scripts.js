@@ -14,8 +14,8 @@ function return_msg(results) {
 }
 
 //Shutdown
-function shutdown_server() {
-    if (shutdown != False) {
+function shutdown_server() {//activated when shutdown btn pressed
+    if (shutdown != true) {
         element = document.getElementById("shutdown_btn");
         element.classList.toggle('shutdown_btn');
         element.classList.toggle('shutdown_clicked_btn');
@@ -26,9 +26,10 @@ function shutdown_server() {
     }
 }
 
-//Stop Button
-function stop() {
-    console.log("stop")
+//Stop Processes
+function stop() {//activated when stop btn pressed
+    console.log("stop");
+    JSONrequest('/stop', 'POST', return_msg);
 }
 ///End Robot Functions Code///
 

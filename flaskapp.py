@@ -4,8 +4,10 @@ import time, sys, json
 #import yourrobot #import in your own robot functionality --> need to develop
 from datetime import datetime
 
+'''
 ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
 POWER = 30 #constant power/speed
+^^^consider if these are needed, and if so, how to adapt them'''
 
 #Global Variables
 app = Flask(__name__)
@@ -31,6 +33,27 @@ def index():
 
 
 #----------------JSON REQUEST HANDLERS--------------------#
+#Shutdown the web server
+@app.route('/shutdown', methods=['GET','POST'])
+def shutdown():
+    '''if ROBOTENABLED:
+        robot.safe_exit()
+    '''
+    func = request.environ.get('werkzeug.server.shutdown')
+    func()
+    return jsonify({ "msg":"shutting down" })
+
+#Stop current process
+@app.route('/stop', methods=['GET','POST'])
+def stop():
+    '''
+    if ROBOTENABLED:
+        robot.CurrentRoutine = "ready"
+        robot.CurrentCommand = "stop"
+        robot.stop_all()
+    '''
+    return jsonify({ "msg":"stopping" })
+
 '''
 #get all stats and return through JSON
 @app.route('/getallstats', methods=['GET','POST'])
@@ -97,15 +120,6 @@ def stop():
     return jsonify({ "message":"stopping" })
 
 '''
-#Shutdown the web server
-@app.route('/shutdown', methods=['GET','POST'])
-def shutdown():
-    '''if ROBOTENABLED:
-        robot.safe_exit()
-    '''
-    func = request.environ.get('werkzeug.server.shutdown')
-    func()
-    return jsonify({ "msg":"shutting down" })
 '''
 
 #An example of how to receive data from a JSON object
@@ -122,7 +136,7 @@ def log(message):
     return
 '''
 
-#---------------------------------------------------------------
+#---------------------------------------------------------------#
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True, threaded=True)
 
