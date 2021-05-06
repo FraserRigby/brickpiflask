@@ -213,6 +213,7 @@
 .shutdown_btn:hover{/*styling for when cursor hovers over btn*/
     background: red;
     color: white;
+    cursor: pointer;
 }
 
 .shutdown_clicked_btn{/*styling of btn for when system shutdown*/
