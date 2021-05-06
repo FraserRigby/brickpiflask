@@ -76,13 +76,6 @@ function manual_waterfire() {
 ///Start Robot Data Code///
 ///End Robot Data Code///
 
-///Start Video Stream Code///
-function video_stream() {
-    element = document.getElementById("origin");
-    element.InnerHTML = "<img src='/flaskapp/video_feed'>";
-}
-///End Video Stream Code///
-
 ///Start Div Drag Code///
 dragElement(document.getElementById("controlmenu_container"));
 dragElement(document.getElementById("sensorview_container"));
