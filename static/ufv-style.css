@@ -6,6 +6,10 @@
     position: absolute;
     overflow: auto;
     background-color: none;
+    background-image: url("/flaskapp/video_feed");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 /*Start Drag Styling*/
@@ -364,17 +368,3 @@
     -webkit-user-select: none;
 }
 /*End shutdown div styling*/
-
-/*Start Video Streaming Sytling*/
-.video_streaming_container{/*styling for videostream container*/
-    z-index: -1;
-    height: 100%;
-    width: 100%;
-}
-
-.video_stream{/*Video stream styling*/
-    height: 100%;
-    width: 100%;
-}
-
-/*End Video Streaming Styling*/
