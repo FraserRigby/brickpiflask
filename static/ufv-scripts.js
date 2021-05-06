@@ -170,6 +170,6 @@ function highlight(elmnt) {
         element.style.backgroundColor = "white";
     }
     else {
-        element.style.backgroundColor = "none";
+        element.style.backgroundColor = "transparent";
     }
 }
