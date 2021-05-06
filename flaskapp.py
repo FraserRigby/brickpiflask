@@ -1,8 +1,9 @@
 from flask import Flask, render_template, jsonify, redirect, request, session, flash
 import logging #allow loggings
 import time, sys, json
-#import yourrobot #import in your own robot functionality --> need to develop
 from datetime import datetime
+#import yourrobot #import in your own robot functionality --> need to develop
+from camerainterface.py import Camera
 
 '''
 ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
@@ -30,6 +31,20 @@ if ROBOTENABLED:
 @app.route('/', methods=['GET','POST'])
 def index():
     return render_template('ufv-website.html')
+
+def gen(camera):
+    """Video streaming generator function."""
+    while True:
+        frame = camera.get_frame()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+
+
+@app.route('/video_feed')
+def video_feed():
+    """Video streaming route. Put this in the src attribute of an img tag."""
+    return Response(gen(Camera()),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 #----------------JSON REQUEST HANDLERS--------------------#

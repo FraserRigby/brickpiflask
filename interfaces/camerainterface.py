@@ -1,6 +1,29 @@
-#Developing Pi Camera Code
-from picamera import PiCamera
-from time import sleep
+'''
+Camera code courtesy of Miguel Grinberg
+License: MIT License
+Attribute: https://github.com/miguelgrinberg/flask-video-streaming
+'''
 
-# My advice is to go to this site, if you would like to use the Pi Cam
-# https://www.hackster.io/ruchir1674/video-streaming-on-flask-server-using-rpi-ef3d75
+import io
+import time
+import picamera
+from base_camera import BaseCamera
+
+
+class Camera(BaseCamera):
+    @staticmethod
+    def frames():
+        with picamera.PiCamera() as camera:
+            # let camera warm up
+            time.sleep(2)
+
+            stream = io.BytesIO()
+            for _ in camera.capture_continuous(stream, 'jpeg',
+                                                 use_video_port=True):
+                # return current frame
+                stream.seek(0)
+                yield stream.read()
+
+                # reset stream for next frame
+                stream.seek(0)
+                stream.truncate()
