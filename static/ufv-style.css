@@ -5,11 +5,11 @@
     width: 100%;
     position: absolute;
     overflow: auto;
-    background-color: none;
-    background-image: url("{{url_for('video_feed')}}");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+}
+
+.video_stream{/*video stream element styling*/
+    position: absolute;
+    z-index: -1;
 }
 
 /*Start Drag Styling*/

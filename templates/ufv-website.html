@@ -12,7 +12,10 @@
         <script src="/static/jsonrequesthandler.js"></script><!--JSON request handler-->
         
     </head>
-    <body class="origin" id="origin"><!--container for whole of site, video steam-->
+    <body class="origin" id="origin"><!--container for whole of site-->
+        <!--Video Stream-->
+        <img src="{{url_for('video_feed')}}" class="video_stream" id="video_stream">
+
         <!--ControlMenu Window-->
         <div class="dragcontainer_init" id="controlmenu_container"><!--Creating draggable div-->
             <div class="dragcontainer_header" id="controlmenu_container_header"><!--Creating header-->
