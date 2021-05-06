@@ -166,10 +166,10 @@ function closeElement(elmnt) {
 //Highlight function for when element clicked on
 function highlight(elmnt) {
     var element = document.getElementById(elmnt);
-    if (element.style.backgroudColor != null) {
-        element.style.backgroundColor = "none";
+    if (element.style.backgroudColor != "white") {
+        element.style.backgroundColor = "white";
     }
     else {
-        element.style.backgroundColor = "white";
+        element.style.backgroundColor = "none";
     }
 }
