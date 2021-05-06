@@ -21,6 +21,7 @@
     position: absolute;
     display: none;/*only controlmenu open on startup*/
     overflow: hidden;
+    background: white;
 }
 
 .dragcontainer_est{/*inital drag object styling*/
@@ -29,11 +30,11 @@
     position: absolute;
     display: block;/*established object visible*/
     overflow: hidden;
+    background: white;
 }
 
 #controlmenu_container{/*ensures controlmenu visible on startup*/
     display: block;
-    background: white;
     color: black;
 }
 
