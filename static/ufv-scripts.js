@@ -6,8 +6,8 @@ var recurring_handle_actuatordata = null; //initializes recurring handle var for
 //recurring_handle = setInterval(get_current_cmd, 1000); //provides recurring event
 var message = document.getElementById("msg_box_msg"); //define msg element
 var msg = '';
-
 ///End global variables///
+
 
 ///Start Robot Functions Code///
 //Return message
@@ -75,6 +75,13 @@ function manual_waterfire() {
 
 ///Start Robot Data Code///
 ///End Robot Data Code///
+
+///Start Video Stream Code///
+function video_stream() {
+    element = document.getElementById("origin");
+    element.InnerHTML = "<img src='/flaskapp/video_feed'>";
+}
+///End Video Stream Code///
 
 ///Start Div Drag Code///
 dragElement(document.getElementById("controlmenu_container"));
