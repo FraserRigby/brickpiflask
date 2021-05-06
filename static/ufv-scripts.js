@@ -169,9 +169,8 @@ function highlight(elmnt) {
     if (element.style.backgroundColor == "white") {
         element.style.backgroundColor = "transparent";
     }
-    else {
+    else if (element.style.backgroundColor == 'transparent') {
         element.style.backgroundColor = "white";
-        console.log('highlight msg box')
     }
 }
 ///End Highlight Code///
