@@ -7,7 +7,7 @@ Attribute: https://github.com/miguelgrinberg/flask-video-streaming
 import io
 import time
 import picamera
-from base_camera import BaseCamera
+from interfaces.base_camera import BaseCamera
 
 
 class Camera(BaseCamera):
