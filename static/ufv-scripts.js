@@ -166,12 +166,12 @@ function closeElement(elmnt) {
 ///Start Highlight Code///
 function highlight(elmnt) {
     var element = document.getElementById(elmnt);
-    if (element.style.backgroundColor != "white") {
-        element.style.backgroundColor = "white";
+    if (element.style.backgroundColor == "white") {
+        element.style.backgroundColor = "transparent";
     }
     else {
-        element.style.backgroundColor = "transparent";
-        console.log('highlight return to normal')
+        element.style.backgroundColor = "white";
+        console.log('highlight msg box')
     }
 }
 ///End Highlight Code///
