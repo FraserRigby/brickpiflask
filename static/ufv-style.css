@@ -189,6 +189,7 @@
     border: hidden;
     border-radius: 2px;
     background: none;
+    user-select: none;
     transition: 0.2s;
 }
 
@@ -207,13 +208,13 @@
     background: none;
     border: hidden;
     border-radius: 5px;
+    user-select: none;
     transition: 0.2s;
 }
 
 .shutdown_btn:hover{/*styling for when cursor hovers over btn*/
     background: red;
     color: white;
-    cursor: pointer;
 }
 
 .shutdown_clicked_btn{/*styling of btn for when system shutdown*/
@@ -223,6 +224,7 @@
     background: #d3d3d3;
     border: hidden;
     border-radius: 5px;
+    user-select: none;
     transition: 0.2s;
 }
 
