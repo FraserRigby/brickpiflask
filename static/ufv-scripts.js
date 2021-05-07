@@ -163,20 +163,17 @@ function closeElement(elmnt) {
 }
 ///End Window Close Code///
 
-///Start Highlight Code/// --> something fishy is going on here
-function highlight(elmnt) {
+///Start Toggle Class Code///
+function highlight(elmnt, normal_class, target_class) {
     var element = document.getElementById(elmnt);
     var current_class = element.className;
-    console.log(current_class);
-    var class_normal = elmnt;
-    var class_active = elmnt + '_active';
-    if (current_class != class_active) {
-        element.classList.toggle(current_class);
-        element.classList.toggle(class_active);
+    if (current_class != target_class) {
+        element.classList.toggle(normal_class);
+        element.classList.toggle(target_class);
     }
     else {
-        element.classList.toggle(class_active);
-        element.classList.toggle(class_normal);
+        element.classList.toggle(target_class);
+        element.classList.toggle(normal_class);
     }
 }
 ///End Highlight Code///
