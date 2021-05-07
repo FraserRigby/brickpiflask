@@ -166,11 +166,16 @@ function closeElement(elmnt) {
 ///Start Highlight Code/// --> something fishy is going on here
 function highlight(elmnt) {
     var element = document.getElementById(elmnt);
-    if (element.style.backgroundColor == "transparent") {
-        element.style.backgroundColor = "white";
+    var current_class = element.className;
+    var class_normal = elmnt;
+    var class_active = elmnt + '_active';
+    if (current_class != class_active) {
+        element.classList.toggle(current_class);
+        element.classList.toggle(class_active);
     }
     else {
-        element.style.backgroundColor = "white";
+        element.classList.toggle(class_active);
+        element.classList.toggle(class_normal);
     }
 }
 ///End Highlight Code///
