@@ -14,6 +14,7 @@ class Camera(BaseCamera):
     @staticmethod
     def frames():
         with picamera.PiCamera() as camera:
+            camera.resolution = (320, 240)
             camera.hflip = True
             camera.vflip = False
 
