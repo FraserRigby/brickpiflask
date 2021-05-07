@@ -164,7 +164,7 @@ function closeElement(elmnt) {
 ///End Window Close Code///
 
 ///Start Toggle Class Code///
-function highlight(elmnt, normal_class, target_class) {
+function toggle_class(elmnt, normal_class, target_class) {
     var element = document.getElementById(elmnt);
     var current_class = element.className;
     if (current_class != target_class) {
