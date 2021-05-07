@@ -163,13 +163,13 @@ function closeElement(elmnt) {
 }
 ///End Window Close Code///
 
-///Start Highlight Code///
+///Start Highlight Code/// --> something fishy is going on here
 function highlight(elmnt) {
     var element = document.getElementById(elmnt);
-    if (element.style.backgroundColor == "white") {
-        element.style.backgroundColor = "transparent";
+    if (element.style.backgroundColor == "transparent") {
+        element.style.backgroundColor = "white";
     }
-    else if (element.style.backgroundColor == 'transparent') {
+    else {
         element.style.backgroundColor = "white";
     }
 }
