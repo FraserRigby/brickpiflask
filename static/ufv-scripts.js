@@ -167,6 +167,7 @@ function closeElement(elmnt) {
 function highlight(elmnt) {
     var element = document.getElementById(elmnt);
     var current_class = element.className;
+    console.log(current_class);
     var class_normal = elmnt;
     var class_active = elmnt + '_active';
     if (current_class != class_active) {
