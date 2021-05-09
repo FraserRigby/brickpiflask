@@ -3,6 +3,7 @@ import math
 import sys
 import logging
 import threading
+from di_sensors.easy_mutex import ifMutexAcquire, ifMutexRelease 
 from di_sensors.inertial_measurement_unit import InertialMeasurementUnit
 from di_sensors.temp_hum_press import TempHumPress
 #DO I NEED TO USE MUTEX???
