@@ -1,12 +1,32 @@
 ///Start global variables///
 var shutdown = false; //if the server is still live
+var sensitivity = 50;
+var waterpressure = 50;
 var recurring_handle_currentcmd = null; //initializes recurring handle var currentcmd
 var recurring_handle_sensordata = null; //initializes recurring handle var for sensordata
 var recurring_handle_actuatordata = null; //initializes recurring handle var for actuatordata
-//recurring_handle = setInterval(get_current_cmd, 1000); //provides recurring event
+//recurring_handle_currentcmd = setInterval(get_current_cmd, 1000); //provides recurring event
+//recurring_handle_sensordata = setInterval(get_sensor_all, 1000); //provides recurring event
+//recurring_handle_actuatordata = setInterval(get_actuator_all, 1000); //provides recurring event
 var message = document.getElementById("msg_box_msg"); //define msg element
 var msg = '';
 ///End global variables///
+
+
+///Start Data Functions Code///
+//Get command
+function get_current_cmd() {
+}
+
+//Get all sensor data
+function get_sensor_all() {
+}
+
+//Get all actuator data
+function get_actuator_all() {
+}
+///End Data Functions Code///
+
 
 ///Start Robot Functions Code///
 //Return message
@@ -35,12 +55,12 @@ function stop() {//activated when stop btn pressed
     JSONrequest('/stop', 'POST', return_msg);
 }
 
-//Update Sensitivity
-function sensitivity_update() {
+//Update Slider Variable Value
+function slider_update(slider_id, variable) {
 }
 
-//Manual Traverse Forward
-function manual_traverse_forward() {
+//Manual Actuator Operation
+function manual_actuator(btn_id, type, action) {
 }
 
 //Manual Traverse Backward
@@ -72,8 +92,6 @@ function manual_waterfire() {
 }
 ///End Robot Functions Code///
 
-///Start Robot Data Code///
-///End Robot Data Code///
 
 ///Start Div Drag Code///
 dragElement(document.getElementById("controlmenu_container"));
@@ -121,6 +139,7 @@ function dragElement(elmnt) {
 }
 ///End Div Drag Code///
 
+
 ///Start Div Collapse Code///
 function collapseElement(elmnt, btn) {
     var button = document.getElementById(btn);
@@ -135,6 +154,7 @@ function collapseElement(elmnt, btn) {
     }
 }
 ///End Div Collapse Code///
+
 
 ///Start Window Open Code///
 function openElement(elmnt) {
@@ -151,6 +171,7 @@ function openElement(elmnt) {
 }
 ///End Window Open Code///
 
+
 ///Start Window Close Code///
 function closeElement(elmnt) {
     var element = document.getElementById(elmnt);
@@ -162,6 +183,7 @@ function closeElement(elmnt) {
     }
 }
 ///End Window Close Code///
+
 
 ///Start Toggle Class Code///
 function toggle_class(elmnt, normal_class, target_class) {

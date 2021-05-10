@@ -1,6 +1,6 @@
 # This class inherits from the BrickPi interface, it should include any code for sub-routines
 # You can also over-ride any functions that you do not like. The BrickPiInterface is code created by your teacher to make using the robot easier. It is composed of snippets of code from the DexterIndustries github 
-from interfaces.brickpiinterface import BrickPiInterface
+from interfaces.robotinterface import RobotInterface
 import logging
 import time
 
@@ -11,7 +11,7 @@ import time
 ENABLED = 1
 DISABLED = 5 #if the sensor returns NOREADING more than 5 times in a row, its permanently 
 
-class Robot(BrickPiInterface):
+class Robot(RobotInterface):
     
     def __init__(self, timelimit=30, database=None):
         super().__init__(timelimit)
@@ -39,11 +39,6 @@ class Robot(BrickPiInterface):
     #gets the current routine
     def get_current_routine(self):
         return self.CurrentRoutine
-
-    #set the database inside the robot
-    def set_database(self, database):
-        self.database = database
-        return
 
     #create a function that will find a path to the victim and save path events to the database
     def find_path_victim(self):
