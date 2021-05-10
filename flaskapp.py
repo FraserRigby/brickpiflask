@@ -5,6 +5,15 @@ from datetime import datetime
 import yourrobot #import in your own robot functionality --> need to develop
 from interfaces.camerainterface import Camera
 
+'''
+Attribute:
+The code in this project is based-off that developed by Brad Nielsen.
+Many thanks to Brad for allowing the use of his code in this project,
+and for his assistance in troubleshooting.
+The base code can be found in Brad's brickpi-flask repo:
+https://github.com/bradnielsen2981/brickpi-flask
+'''
+
 #Global Variables
 app = Flask(__name__)
 app.config.from_object(__name__) #Set app configuration using above SETTINGS

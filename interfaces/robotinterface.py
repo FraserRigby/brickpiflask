@@ -1,3 +1,4 @@
+import os
 import time
 import math
 import sys
@@ -132,7 +133,7 @@ class RobotInterface():
     #Get Raspi temperature sensor reading
     def get_sensor_raspi_temp(self):
         self.currentCommand = "Get Raspi temperature."
-        temp = "-"
+        temp = float(os.popen('vcgencmd measure_temp').readline())
         return temp
 
     #Get and return dictionary of all sensors
