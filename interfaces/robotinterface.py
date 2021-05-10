@@ -14,7 +14,7 @@ from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
 class RobotInterface():
 
     ###----------ROBOT SETUP----------###
-    #Initialise log and timelimit
+    #Initialise Robot
     def __init__(self):
         self.logger = logging.getLogger()
         self.CurrentCommand = "loading"
@@ -68,21 +68,21 @@ class RobotInterface():
 
 
     ###----------MISCELLANEOUS----------###
-    #log message !!!!!THIS IS NOT WORKING UNLESS FLASK LOG USED, DONT KNOW WHY!!!!!
+    #Log message !!!!!THIS IS NOT WORKING UNLESS FLASK LOG USED, DONT KNOW WHY!!!!!
     def log(self, message):
         self.logger.info(message)
         return
 
-    #stop all actuators
+    #Stop all actuators
     def stop_all(self):
         self.CurrentCommand = "stop"
         return
 
-    #returns the current command
+    #Return current command
     def get_current_command(self):
         return self.CurrentCommand
 
-    # safely exit applicaiton, safes actuators/sensors
+    #Safely exit applicaiton, safes actuators/sensors
     def safe_exit(self):
         self.CurrentCommand = 'exit' #should exit thread
         self.stop_all() #stop all actuators
@@ -91,12 +91,18 @@ class RobotInterface():
         return
     
 
-    ###----------SENSOR COMMAND----------###
-    #get the current voltage - need to work out how to determine battery life
-    def get_battery(self):
-        return
+    ###----------SENSOR COMMANDS----------##
+    #Get thermal IR sensor reading
+    def get_sensor_thermal(self):
+        self.CurrentCommand = "Get IR temp."
+        if self.config["sensor_thermal"] == "ENABLED":
+            temp = self.sensor_thermal.get_obj_temp()
+            return temp
+        else:
+            temp = "error"
+        return temp
 
-    #get the ultrasonic sensor
+    #Get ultrasonic sensor distance reading, depending on input gets specific ultra sensor
     def get_sensor_ultra(self, distance_type):
         self.CurrentCommand = "Get ultra sensor " + distance_type + "."
         distance = None
@@ -113,15 +119,28 @@ class RobotInterface():
             else:
                 distance = "error"
         return distance
+    
+    #Get the current voltage - need to work out how to determine battery life
+    def get_sensor_battery_volts(self)
+        volts = "-"
+        return volts
 
-    def get_sensor_thermal(self):
-        self.CurrentCommand = "Get IR temp."
-        if self.config["sensor_thermal"] == "ENABLED":
-            temp = self.sensor_thermal.get_obj_temp()
-            return temp
-        else:
-            temp = "error"
+    #Get Raspi temperature sensor reading
+    def get_sensor_raspi_temp()
+        self.currentCommand = "Get Raspi temperature."
+        temp = "-"
         return temp
+
+    #Get and return dictionary of all sensors
+    def get_all_sensors(self):
+        sensordict = {} #create a dictionary for the sensors
+        sensordict['thermal'] = self.get_sensor_thermal()
+        #sensordict['distance_front'] = self.get_sensor_ultra("front")
+        sensordict['distance_turret'] = self.get_sensor_ultra("turret")
+        sensordict['battery'] = self.get_sensor_battery_volts()
+        sensordict['raspi_temp'] = self.get_sensor_raspi_temp()
+        return sensordict
+
     '''
     #updates the thermal sensor by making continual I2C transactions through a thread
     def __update_thermal_sensor_thread(self, name):
@@ -273,8 +292,7 @@ if __name__ == '__main__':
     logger = logging.getLogger()
     #logger.setLevel(logging.info)
     robot.set_log(logger)
-    print(robot.get_sensor_ultra("turret"))
-    print(robot.get_sensor_thermal())
+    print(robot.get_all_sensors())
     input("Press any key to test: ")
     robot.safe_exit()
 
