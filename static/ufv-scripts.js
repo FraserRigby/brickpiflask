@@ -2,6 +2,9 @@
 var shutdown = false; //if the server is still live
 var sensitivity = 50;
 var waterpressure = 50;
+var sensorview_container = false;
+var actuatorview_container = false;
+var graphview_container = false
 var recurring_handle_currentcmd = null; //initializes recurring handle var currentcmd
 var recurring_handle_sensordata = null; //initializes recurring handle var for sensordata
 var recurring_handle_actuatordata = null; //initializes recurring handle var for actuatordata
@@ -209,19 +212,37 @@ function closeElement(elmnt) {
 
 ///Start Recurring Code///
 function recurring_start(elmnt) {
-    if (elmnt == "sensorview_container" || elmnt =="graphview_container") {
-        recurring_handle_sensordata = setInterval(get_sensor_all, 1000);//provides recurring event
+    if (elmnt == "sensorview_container") {
+        sensorview_container = true;
     }
     else if (elmnt == "actuatorview_container") {
+        actuatorview_container = true;
+    }
+    else if (elmnt == "graphview_container") {
+        graphview_container = true;
+    }
+    if ((elmnt == "graphview_container" && sensorview_container == false) || (elmnt == "sensorview_container" && graphview_container == false)) {
+        recurring_handle_sensordata = setInterval(get_sensor_all, 1000);//provides recurring event
+    }
+    else if ((elmnt == "graphview_container" && actuatorview_container == false) || (elmnt == "actuatorview_container" && graphview_container == false)) {
         recurring_handle_actuatordata = setInterval(get_actuator_all, 1000);
     }
 }
 
 function recurring_stop(elmnt) {
-    if (elmnt == "sensorview_container" || elmnt =="graphview_container") {
-        clearInterval(recurring_handle_sensordata);
+    if (elmnt == "sensorview_container") {
+        sensorview_container = false;
     }
     else if (elmnt == "actuatorview_container") {
+        actuatorview_container = false;
+    }
+    else if (elmnt == "graphview_container") {
+        graphview_container = false;
+    }
+    if ((elmnt == "graphview_container" && sensorview_container == false) || (elmnt == "sensorview_container" && graphview_container == false)) {
+        clearInterval(recurring_handle_sensordata);
+    }
+    else if ((elmnt == "graphview_container" && actuatorview_container == false) || (elmnt == "actuatorview_container" && graphview_container == false)) {
         clearInterval(recurring_handle_actuatordata);
     }
 }
