@@ -261,7 +261,7 @@ class RobotInterface():
 if __name__ == '__main__':
     robot = RobotInterface()
     logger = logging.getLogger()
-    logger.setLevel(logging.info)
+    #logger.setLevel(logging.info)
     robot.set_log(logger)
     robot.get_ultra_sensor("turret")
     input("Press any key to test: ")
