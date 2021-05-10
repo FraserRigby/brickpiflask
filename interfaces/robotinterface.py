@@ -3,7 +3,7 @@ import math
 import sys
 import logging
 import threading
-import grovepi #grove sensor library
+#import grovepi #grove sensor library
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
 
