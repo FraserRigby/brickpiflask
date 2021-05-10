@@ -42,10 +42,10 @@ class RobotInterface():
         self.sensor_thermal = MLX90614(self.bus, self.sensor_thermal_address)
         self.config['sensor_thermal'] = "ENABLED"
         #set up ultrasonic sensor - front
-        self.sensor_distance_front = GroveUltrasonicRanger(self.sensor_distance_front)
+        self.sensor_distance_front = GroveUltrasonicRanger(self.sensor_distance_front_address)
         self.config['sensor_distance_front'] = "ENABLED"
         #set up ultrasonic sensor - turret
-        self.sensor_distance_turret = GroveUltrasonicRanger(self.sensor_distance_turret)
+        self.sensor_distance_turret = GroveUltrasonicRanger(self.sensor_distance_turret_address)
         self.config['sensor_distance_turret'] = "ENABLED"
         self.Configured_sensors = True
         return
