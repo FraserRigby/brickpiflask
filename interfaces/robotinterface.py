@@ -115,7 +115,7 @@ class RobotInterface():
                 distance = "error"
         return distance
     '''    
-    def get_ultrasonic_sensor():
+    def get_ultra_sensor():
         distance = self.sensor_distance_turret.get_distance()
         return distance
 
