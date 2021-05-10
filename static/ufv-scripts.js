@@ -35,6 +35,7 @@ function get_sensor_all() {
 
 //Return all sensor data
 function return_sensor_all(results) {
+    console.log(results)
     document.getElementById("sensor_tif").innerHTML = String(results.thermal);
     //document.getElementById("sensor_distance_front").innerHTML = String(results.distance_front);
     document.getElementById("sensor_distance_turret").innerHTML = String(results.distance_turret);
