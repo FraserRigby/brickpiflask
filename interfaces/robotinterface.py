@@ -39,7 +39,7 @@ class RobotInterface():
         #if time use this to verify sensor connection
         #set up thermal sensor
         self.bus = SMBus(1)
-        self.sensor_thermal = MLX90614(bus, self.sensor_thermal_address)
+        self.sensor_thermal = MLX90614(self.bus, self.sensor_thermal_address)
         self.config['sensor_thermal'] = "ENABLED"
         #set up ultrasonic sensor - front
         self.sensor_distance_front = GroveUltrasonicRanger(self.sensor_distance_front)
