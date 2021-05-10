@@ -3,41 +3,50 @@ import math
 import sys
 import logging
 import threading
-import grovepi
-from smbus2 import SMBus
-from mlx90614 import MLX90614
+import grovepi #grove sensor library
+from smbus2 import SMBus #smbus library for thermal sensor I2C communication
+from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
 
 '''need to take out unecessary stuff --> the original code was for brickpi'''
 '''need to import sensor and actuator drivers'''
-
-#this needs to go inside the class at somepoint, im trying to avoid confusing students
-NOREADING = 999 #just using 999 to represent no reading
-ENABLED = 1
-DISABLED = 5 #if the sensor returns NOREADING more than 5 times in a row, its permanently disabled
 
 #Created a Class to wrap the robot functionality, one of the features is the idea of keeping track of the CurrentCommand, this is important when more than one process is running...
 class RobotInterface():
 
     ###----------ROBOT SETUP----------###
     #Initialise log and timelimit
-    def __init__(self, timelimit=20):
+    def __init__(self):
         self.logger = logging.getLogger()
         self.CurrentCommand = "loading"
-        self.Configured = False #is the robot yet Configured?
-        self.timelimit = timelimit #failsafe timelimit - motors turn off after
+        self.Configured_sensors = False
+        self.Configured_actuators = False
+        self.config = {} #create a dictionary that represents if the component is configured
         self.set_ports_sensors()
         self.set_ports_actuators()
-        self.Calibrated = False
         self.CurrentCommand = "loaded" #when the device is ready for a new instruction it will be set to stop
         return
 
     #Initialise Sensor Ports
     def set_ports_sensors(self):
-        self.sensor_thermal = i2c #Thermal infrared sensor
-        self.sensor_distance_front = 5 #Front ultraSonic sensor
-        self.sensor_distance_turret = 6 #Turret ultrasonic sensor
-        self.thermal_thread = None #DO NOT REMOVE THIS - USED LATER
-        self.configure_sensors()
+        self.sensor_thermal_address = 0x5a #Thermal infrared sensor I2C address
+        self.sensor_distance_front_address = 5 #Front ultraSonic sensor port address
+        self.sensor_distance_turret_address = 6 #Turret ultrasonic sensor port address
+        return
+
+    #Configure Sensors
+    def configure_sensors(self):
+        #if time use this to verify sensor connection
+        #set up thermal sensor
+        self.bus = SMBus(1)
+        self.sensor_thermal = MLX90614(bus, self.sensor_thermal_address)
+        self.config['sensor_thermal'] = "ENABLED"
+        #set up ultrasonic sensor - front
+        self.sensor_distance_front = GroveUltrasonicRanger(self.sensor_distance_front)
+        self.config['sensor_distance_front'] = "ENABLED"
+        #set up ultrasonic sensor - turret
+        self.sensor_distance_turret = GroveUltrasonicRanger(self.sensor_distance_turret)
+        self.config['sensor_distance_turret'] = "ENABLED"
+        self.Configured_sensors = True
         return
 
     #Initialise Actuator Ports
@@ -45,38 +54,10 @@ class RobotInterface():
         self.configure_actuators()
         return
 
-    #Configure Sensors
-    def configure_sensors(self):
-        self.config = {} #create a dictionary that represents if the sensor is Configured
-        #set up thermal sensor
-        try:
-            bp.set_sensor_type(self.thermal, bp.SENSOR_TYPE.I2C, [0, 20])
-            time.sleep(1)
-            self.config['thermal'] = ENABLED
-            self.__start_thermal_infrared_thread()
-        except Exception as error:
-            self.log("Thermal Sensor not found")
-            self.config['thermal'] = DISABLED
-                #set up ultrasonic sensor
-        try:
-            bp.set_sensor_type(self.ultra, bp.SENSOR_TYPE.EV3_ULTRASONIC_CM)
-            time.sleep(1.5)
-            self.config['ultra'] = ENABLED
-        except Exception as error:
-            self.log("Ultrasonic Sensor not found")
-            self.config['ultra'] = DISABLED
-        self.Configured = True #there is a 4 second delay - before robot is Configured
-        return
-
     #Configure Actuators
     def configure_actuators()
-        return
-
-    #Start Infrared I2C Thread
-    def __start_thermal_infrared_thread(self):
-        self.thermal_thread = threading.Thread(target=self.__update_thermal_sensor_thread, args=(1,))
-        self.thermal_thread.daemon = True
-        self.thermal_thread.start()
+        #if time use this to verify actuator connection
+        self.configured_actuators = True
         return
 
     #changes the logger
@@ -93,8 +74,6 @@ class RobotInterface():
 
     #stop all actuators
     def stop_all(self):
-        bp = self.BP
-        bp.set_motor_power(self.largemotors+self.mediummotor, 0)
         self.CurrentCommand = "stop"
         return
 
@@ -104,11 +83,9 @@ class RobotInterface():
 
     # safely exit applicaiton, safes actuators/sensors
     def safe_exit(self):
-        bp = self.BP
         self.CurrentCommand = 'exit' #should exit thread
-        self.stop_all() #stop all motors
+        self.stop_all() #stop all actuators
         self.log("Exiting")
-        bp.reset_all() # Unconfigure the sensors, disable the motors
         time.sleep(2) #gives time to reset??
         return
     
@@ -116,26 +93,25 @@ class RobotInterface():
     ###----------SENSOR COMMAND----------###
     #get the current voltage - need to work out how to determine battery life
     def get_battery(self):
-        return self.BP.get_voltage_battery()
+        return
 
     #get the ultrasonic sensor
-    def get_ultra_sensor(self):
-        distance = NOREADING
-        if self.config['ultra'] >= DISABLED or not self.Configured:
-            return distance
-        bp = self.BP
-        ifMutexAcquire(USEMUTEX)
-        try:
-            distance = bp.get_sensor(self.ultra)
-            time.sleep(0.1)
-            self.config['ultra'] = ENABLED
-        except brickpi3.SensorError as error:
-            self.log("ULTRASONIC: " + str(error))
-            self.config['ultra'] += 1
-        finally:
-            ifMutexRelease(USEMUTEX) 
+    def get_ultra_sensor(self, distance_type):
+        distance = None
+        if distance_type == "front":
+            if self.config["sensor_distance_front"] == "ENABLED":
+                distance = self.sensor_distance_front.get_distance()
+                return distance
+            else:
+                return distance = "error"
+        elif distance_type == "turret":
+            if self.config["sensor_distance_turret"] == "ENABLED":
+                distance = self.sensor_distance_turret.get_distance()
+                return distance
+            else:
+                distance = "error"
         return distance
-
+    '''
     #updates the thermal sensor by making continual I2C transactions through a thread
     def __update_thermal_sensor_thread(self, name):
         while self.CurrentCommand != "exit":
@@ -278,15 +254,15 @@ class RobotInterface():
         bp.set_motor_power(self.largemotors, 0) #stop
         self.CurrentCommand = 'stop'
         return
-    
+    '''
 #--------------------------------------------------------------------
 # Only execute if this is the main file, good for testing code
 if __name__ == '__main__':
-    robot = BrickPiInterface(timelimit=20)
+    robot = RobotInterface()
     logger = logging.getLogger()
     logger.setLevel(logging.info)
     robot.set_log(logger)
-    robot.calibrate_imu(timelimit=10) #calibration might requirement movement
+    robot.get_ultra_sensor("turret")
     input("Press any key to test: ")
     robot.safe_exit()
 

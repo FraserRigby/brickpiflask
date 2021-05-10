@@ -7,7 +7,6 @@ from interfaces.camerainterface import Camera
 
 '''
 ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
-POWER = 30 #constant power/speed
 ^^^consider if these are needed, and if so, how to adapt them'''
 
 #Global Variables
@@ -20,11 +19,6 @@ if ROBOTENABLED:
     #Create Robot first. It take 4 seconds to initialise the robot, sensor view wont work until robot is created...
     robot = yourrobot.Robot()
     robot.set_log(app.logger) #set the logger inside the robot
-    if robot.get_battery() < 5: #the robot motors will disable at 6 volts
-        robot.safe_exit()
-        ROBOTENABLED = False
-    else:
-        ROBOTENABLED = robot.Configured #if the robot didnt load disable robot, otherwise Robot is enabled
 '''
 #-----------------HTML REQUEST HANDLERS----------------------------------#
 #ufv website, one page to rule them all
