@@ -121,12 +121,12 @@ class RobotInterface():
         return distance
     
     #Get the current voltage - need to work out how to determine battery life
-    def get_sensor_battery_volts(self)
+    def get_sensor_battery_volts(self):
         volts = "-"
         return volts
 
     #Get Raspi temperature sensor reading
-    def get_sensor_raspi_temp()
+    def get_sensor_raspi_temp(self):
         self.currentCommand = "Get Raspi temperature."
         temp = "-"
         return temp
