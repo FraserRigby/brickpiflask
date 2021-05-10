@@ -61,7 +61,7 @@ function shutdown_server() {//activated when shutdown btn pressed
         element.classList.toggle('shutdown_clicked_btn');
         clearInterval(recurring_handle_currentcmd);//ends recurring event
         clearInterval(recurring_handle_sensordata);
-        clearInterval(recurring_handler_actuatordata);
+        clearInterval(recurring_handle_actuatordata);
         setTimeout(() => {console.log("Shutting down");}, 1000);
         JSONrequest('/shutdown', 'POST', return_msg);
         shutdown = true;
