@@ -108,14 +108,14 @@
 }
 
 .tbl_row_name{/**/
-    padding: 0 10px 0 0;
+    padding: 0 5px 0 0;
 }
 
 .tbl_row_entry{/**/
     border: 1px dotted black;
     text-align: center;
     margin: 0;
-    width: 80px;
+    width: 50px;
 }
 
 .tbl_row_unit{/**/
