@@ -135,6 +135,7 @@ class RobotInterface():
         self.currentCommand = "Get Raspi temperature."
         temp = os.popen('vcgencmd measure_temp').readline()
         temp = temp.replace("temp=","").replace("'C\n","")
+        temp = float("{:.2f}".format(temp))
         return temp
 
     #Get and return dictionary of all sensors
