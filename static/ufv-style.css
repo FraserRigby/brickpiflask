@@ -114,8 +114,8 @@
 .tbl_row_entry{/**/
     border: 1px dotted black;
     text-align: center;
-    margin: 0 0 0 0;
-    width: 100px;
+    margin: 0;
+    width: 80px;
 }
 
 .tbl_row_unit{/**/
