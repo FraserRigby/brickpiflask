@@ -273,7 +273,7 @@ if __name__ == '__main__':
     logger = logging.getLogger()
     #logger.setLevel(logging.info)
     robot.set_log(logger)
-    print(robot.get_sensor_ultra_front("turret"))
+    print(robot.get_sensor_ultra("turret"))
     print(robot.get_sensor_thermal())
     input("Press any key to test: ")
     robot.safe_exit()
