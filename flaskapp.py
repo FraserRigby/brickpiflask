@@ -16,9 +16,9 @@ app.config.from_object(__name__) #Set app configuration using above SETTINGS
 '''#Create the Robot
 robot = None
 if ROBOTENABLED:
-    #Create Robot first. It take 4 seconds to initialise the robot, sensor view wont work until robot is created...
-    robot = yourrobot.Robot()
+    robot = yourrobot.Robot() 
     robot.set_log(app.logger) #set the logger inside the robot
+    #if needed, add parameters to whether ROBOTENABLED remain true
 '''
 #-----------------HTML REQUEST HANDLERS----------------------------------#
 #ufv website, one page to rule them all

@@ -200,20 +200,6 @@ class RobotInterface():
         bp.set_sensor_type(self.thermal, bp.SENSOR_TYPE.NONE) 
         return
 
-    #returns a dictionary of all current sensors
-    def get_all_sensors(self):
-        sensordict = {} #create a dictionary for the sensors
-        sensordict['battery'] = self.get_battery()
-        sensordict['colour'] = self.get_colour_sensor()
-        sensordict['ultrasonic'] = self.get_ultra_sensor()
-        sensordict['thermal'] = self.get_thermal_sensor()
-        sensordict['acceleration'] = self.get_linear_acceleration_IMU()
-        sensordict['compass'] = self.get_compass_IMU()
-        sensordict['gyro'] = self.get_gyro_sensor_IMU()
-        sensordict['temperature'] = self.get_temperature_IMU()
-        sensordict['orientation'] = self.get_orientation_IMU()
-        return sensordict
-
 
     ###----------MOTOR COMMANDS----------###
     #simply turns motors on
@@ -291,9 +277,9 @@ class RobotInterface():
 if __name__ == '__main__':
     robot = RobotInterface()
     logger = logging.getLogger()
-    #logger.setLevel(logging.info)
     robot.set_log(logger)
     input("Press any key to test: ")
-    print(robot.get_all_sensors())
+    test = robot.get_all_sensors()
+    print(test)
     robot.safe_exit()
 
