@@ -2,24 +2,22 @@ from flask import Flask, render_template, jsonify, redirect, request, session, f
 import logging #allow loggings
 import time, sys, json
 from datetime import datetime
-#import yourrobot #import in your own robot functionality --> need to develop
+import yourrobot #import in your own robot functionality --> need to develop
 from interfaces.camerainterface import Camera
-
-'''
-ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
-^^^consider if these are needed, and if so, how to adapt them'''
 
 #Global Variables
 app = Flask(__name__)
 app.config.from_object(__name__) #Set app configuration using above SETTINGS
+sensitivity = 0.5
+waterpressure = 0.5
 
-'''#Create the Robot
-robot = None
+robot = None #Create the Robot
+ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
 if ROBOTENABLED:
     robot = yourrobot.Robot() 
     robot.set_log(app.logger) #set the logger inside the robot
     #if needed, add parameters to whether ROBOTENABLED remain true
-'''
+
 #-----------------HTML REQUEST HANDLERS----------------------------------#
 #ufv website, one page to rule them all
 @app.route('/', methods=['GET','POST'])
@@ -43,9 +41,8 @@ def video_feed():
 #Shutdown the web server
 @app.route('/shutdown', methods=['GET','POST'])
 def shutdown():
-    '''if ROBOTENABLED:
+    if ROBOTENABLED:
         robot.safe_exit()
-    '''
     func = request.environ.get('werkzeug.server.shutdown')
     func()
     return jsonify({ "msg":"shutting down" })
@@ -53,23 +50,29 @@ def shutdown():
 #Stop current process
 @app.route('/stop', methods=['GET','POST'])
 def stop():
-    '''
     if ROBOTENABLED:
         robot.CurrentRoutine = "ready"
         robot.CurrentCommand = "stop"
         robot.stop_all()
-    '''
     return jsonify({ "msg":"stopping" })
 
-'''
-#get all stats and return through JSON
-@app.route('/getallstats', methods=['GET','POST'])
-def getallstats():
-    results=None
-    if ROBOTENABLED: #make sure robot is
-        results = robot.get_all_sensors()
+#Get current command from robotinterface
+@app.route('/get_current_cmd', methods=['GET','POST'])
+def get_current_cmd():
+    currentcommand = None
+    if ROBOTENABLED:
+        currentcommand = robot.CurrentCommand    
+    return jsonify({"currentcommand":currentcommand})
+
+#Get all sensor data
+@app.route('/get_sensor_all', methods=['GET','POST'])
+def get_sensor_all():
+    results = None
+    if ROBOTENABLED:
+        results = robot.get_sensors_all()
     return jsonify(results)
 
+'''
 #start robot moving
 @app.route('/start', methods=['GET','POST'])
 def start():

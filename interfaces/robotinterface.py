@@ -133,7 +133,7 @@ class RobotInterface():
         return temp
 
     #Get and return dictionary of all sensors
-    def get_all_sensors(self):
+    def get_sensors_all(self):
         sensordict = {} #create a dictionary for the sensors
         sensordict['thermal'] = self.get_sensor_thermal()
         #sensordict['distance_front'] = self.get_sensor_ultra("front")

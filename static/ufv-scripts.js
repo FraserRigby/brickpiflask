@@ -6,43 +6,62 @@ var recurring_handle_currentcmd = null; //initializes recurring handle var curre
 var recurring_handle_sensordata = null; //initializes recurring handle var for sensordata
 var recurring_handle_actuatordata = null; //initializes recurring handle var for actuatordata
 //recurring_handle_currentcmd = setInterval(get_current_cmd, 1000); //provides recurring event
-//recurring_handle_sensordata = setInterval(get_sensor_all, 1000); //provides recurring event
-//recurring_handle_actuatordata = setInterval(get_actuator_all, 1000); //provides recurring event
 var message = document.getElementById("msg_box_msg"); //define msg element
 var msg = '';
 ///End global variables///
 
 
 ///Start Data Functions Code///
-//Get command
+//Return message
+function return_msg(results) {
+    var msg = results.msg
+    message.innerHTML = msg;
+}
+
+//Get current command
 function get_current_cmd() {
+    JSONrequest('/get_current_cmd', 'POST', return_cmd);
+}
+
+//Return current command
+function return_cmd(results) {
+    console.log(results.currentcommand);
 }
 
 //Get all sensor data
 function get_sensor_all() {
+    JSONrequest('/get_sensor_all', 'POST', return_sensor_all)
+}
+
+//Return all sensor data
+function return_sensor_all(results) {
+    document.getElementById("sensor_tif").innerHTML = String(results.thermal);
+    //document.getElementById("sensor_distance_front").innerHTML = String(results.distance_front);
+    document.getElementById("sensor_distance_turret").innerHTML = String(results.distance_turret);
+    document.getElementById("sensor_battery").innerHTML = String(results.batter);
+    document.getElementById("sensor_raspi_temp").innerHTML = String(results.raspi_temp);
 }
 
 //Get all actuator data
 function get_actuator_all() {
 }
+
+//Return all actuator data
+function return_actuator_all() {
+}
 ///End Data Functions Code///
 
 
 ///Start Robot Functions Code///
-//Return message
-function return_msg(results) {
-    message.innerHTML = results.msg;
-}
-
 //Shutdown
 function shutdown_server() {//activated when shutdown btn pressed
     if (shutdown != true) {
         element = document.getElementById("shutdown_btn");
         element.classList.toggle('shutdown_btn');
         element.classList.toggle('shutdown_clicked_btn');
-        clearInterval(recurring_handle_currentcmd);
+        clearInterval(recurring_handle_currentcmd);//ends recurring event
         clearInterval(recurring_handle_sensordata);
-        clearInterval(recurring_handle_actuatordata);
+        clearInterval(recurring_handler_actuatordata);
         setTimeout(() => {console.log("Shutting down");}, 1000);
         JSONrequest('/shutdown', 'POST', return_msg);
         shutdown = true;
@@ -164,9 +183,11 @@ function openElement(elmnt) {
     element.classList.toggle('dragcontainer_est');
     if (button.innerHTML == 'Open') {
         button.innerHTML = "Close";
+        recurring_stop(elmnt);
     }
     else {
         button.innerHTML = "Open";
+        recurring_start(elmnt);
     }
 }
 ///End Window Open Code///
@@ -181,8 +202,30 @@ function closeElement(elmnt) {
     if (button.innerHTML != 'Open') {
         button.innerHTML = 'Open';
     }
+    recurring_stop(elmnt);
 }
 ///End Window Close Code///
+
+
+///Start Recurring Code///
+function recurring_start(elmnt) {
+    if (elmnt == "sensorview_container" || elmnt =="graphview_container") {
+        recurring_handle_sensordata = setInterval(get_sensor_all, 1000);//provides recurring event
+    }
+    else if (elmnt == "actuatorview_container") {
+        recurring_handle_actuatordata = setInterval(get_actuator_all, 1000);
+    }
+}
+
+function recurring_stop(elmnt) {
+    if (elmnt == "sensorview_container" || elmnt =="graphview_container") {
+        clearInterval(recurring_handle_sensordata);
+    }
+    else if (elmnt == "actuatorview_container") {
+        clearInterval(recurring_handle_actuatordata);
+    }
+}
+///End Recurring Code///
 
 
 ///Start Toggle Class Code///
@@ -194,7 +237,7 @@ function toggle_class(elmnt, normal_class, target_class) {
         element.classList.toggle(target_class);
     }
     else {
-        element.classList.toggle(target_class);
+        element.classList.toggle(current_class);
         element.classList.toggle(normal_class);
     }
 }
