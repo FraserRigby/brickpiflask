@@ -116,7 +116,7 @@ class RobotInterface():
 
     def get_sensor_thermal(self):
         self.CurrentCommand = "Get IR temp."
-        if self.config["sensor_thermal"] = "ENABLED":
+        if self.config["sensor_thermal"] == "ENABLED":
             temp = self.sensor_thermal.get_obj_temp()
             return temp
         else:
