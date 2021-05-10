@@ -97,7 +97,7 @@ class RobotInterface():
         self.CurrentCommand = "Get IR temp."
         if self.config["sensor_thermal"] == "ENABLED":
             temp = self.sensor_thermal.get_obj_temp()
-            temp = float(":.2f".format(temp))
+            temp = float("{:.2f}".format(temp))
             return temp
         else:
             temp = "error"
@@ -110,14 +110,14 @@ class RobotInterface():
         if distance_type == "front":
             if self.config["sensor_distance_front"] == "ENABLED":
                 distance = self.sensor_distance_front.get_distance()
-                distance = float(":.2f".format(distance))
+                distance = float("{:.2f}".format(distance))
                 return distance
             else:
                 distance = "error"
         elif distance_type == "turret":
             if self.config["sensor_distance_turret"] == "ENABLED":
                 distance = self.sensor_distance_turret.get_distance()
-                distance = float(":.2f".format(distance))
+                distance = float("{:.2f}".format(distance))
                 return distance
             else:
                 distance = "error"
