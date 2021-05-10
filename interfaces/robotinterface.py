@@ -96,8 +96,10 @@ class RobotInterface():
     def get_battery(self):
         return
 
+    '''
     #get the ultrasonic sensor
-    def get_ultra_sensor(self, distance_type):
+    def get_ultra_sensor_front(self, distance_type):
+        self.CurrentCommand = "Get ultra sensor " + distance_type + "."
         distance = None
         if distance_type == "front":
             if self.config["sensor_distance_front"] == "ENABLED":
@@ -112,6 +114,14 @@ class RobotInterface():
             else:
                 distance = "error"
         return distance
+    '''    
+    def get_ultrasonic_sensor():
+        distance = self.sensor_distance_turret.get_distance()
+        return distance
+
+    def get_thermal_sensor(self):
+        self.CurrentCommand = "Get IR temp."
+        return temp
     '''
     #updates the thermal sensor by making continual I2C transactions through a thread
     def __update_thermal_sensor_thread(self, name):
@@ -263,7 +273,7 @@ if __name__ == '__main__':
     logger = logging.getLogger()
     #logger.setLevel(logging.info)
     robot.set_log(logger)
-    print(robot.get_ultra_sensor("turret"))
+    print(robot.get_ultra_sensor())
     input("Press any key to test: ")
     robot.safe_exit()
 
