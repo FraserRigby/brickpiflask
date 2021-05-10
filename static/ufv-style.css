@@ -112,6 +112,7 @@
 }
 
 .tbl_row_entry{/**/
+    border: 1px dotted black;
     text-align: center;
     margin: 0 10px 0 0;
     width: 100px;
