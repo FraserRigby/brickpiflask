@@ -69,7 +69,7 @@ def get_current_cmd():
 def get_sensor_all():
     results = None
     if ROBOTENABLED:
-        results = robot.get_sensors_all()
+        results = robot.get_sensor_all()
     return jsonify(results)
 
 '''

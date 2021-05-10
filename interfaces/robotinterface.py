@@ -133,7 +133,7 @@ class RobotInterface():
         return temp
 
     #Get and return dictionary of all sensors
-    def get_sensors_all(self):
+    def get_sensor_all(self):
         sensordict = {} #create a dictionary for the sensors
         sensordict['thermal'] = self.get_sensor_thermal()
         #sensordict['distance_front'] = self.get_sensor_ultra("front")
@@ -279,7 +279,7 @@ if __name__ == '__main__':
     logger = logging.getLogger()
     robot.set_log(logger)
     input("Press any key to test: ")
-    test = robot.get_all_sensors()
+    test = robot.get_sensor_all()
     print(test)
     robot.safe_exit()
 

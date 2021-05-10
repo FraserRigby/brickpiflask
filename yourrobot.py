@@ -25,6 +25,6 @@ if __name__ == '__main__':
     robot.set_log(logger)
     input("Press any key to test")
     #robot.log(robot.get_all_sensors())
-    test = robot.get_all_sensors()
+    test = robot.get_sensor_all()
     print(test)
     robot.safe_exit()
