@@ -9,7 +9,7 @@ import time
 class Robot(RobotInterface):
     
     def __init__(self):
-        super().__init__(timelimit)
+        super().__init__()
         self.CurrentRoutine = 'ready' #could be useful to keep track of the current routine
         return
 
