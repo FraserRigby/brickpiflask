@@ -55,7 +55,7 @@ class RobotInterface():
         return
 
     #Configure Actuators
-    def configure_actuators()
+    def configure_actuators():
         #if time use this to verify actuator connection
         self.configured_actuators = True
         return
