@@ -30,7 +30,7 @@ class RobotInterface():
     def set_ports_sensors(self):
         self.sensor_thermal_address = 0x5a #Thermal infrared sensor I2C address
         self.sensor_distance_front_address = 5 #Front ultraSonic sensor port address
-        self.sensor_distance_turret_address = 6 #Turret ultrasonic sensor port address
+        self.sensor_distance_turret_address = 16 #Turret ultrasonic sensor port address
         self.configure_sensors()
         return
 
