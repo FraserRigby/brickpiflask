@@ -293,7 +293,7 @@ if __name__ == '__main__':
     logger = logging.getLogger()
     #logger.setLevel(logging.info)
     robot.set_log(logger)
-    print(robot.get_all_sensors())
     input("Press any key to test: ")
+    print(robot.get_all_sensors())
     robot.safe_exit()
 
