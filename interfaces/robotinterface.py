@@ -4,6 +4,8 @@ import sys
 import logging
 import threading
 import grovepi
+from smbus2 import SMBus
+from mlx90614 import MLX90614
 
 '''need to take out unecessary stuff --> the original code was for brickpi'''
 '''need to import sensor and actuator drivers'''
@@ -31,29 +33,22 @@ class RobotInterface():
 
     #Initialise Sensor Ports
     def set_ports_sensors(self):
-        self.thermal = bp.PORT_1 #Thermal infrared Sensor
-        self.ultra = bp.PORT_4 #ultraSonic Sensor
+        self.sensor_thermal = i2c #Thermal infrared sensor
+        self.sensor_distance_front = 5 #Front ultraSonic sensor
+        self.sensor_distance_turret = 6 #Turret ultrasonic sensor
         self.thermal_thread = None #DO NOT REMOVE THIS - USED LATER
         self.configure_sensors()
         return
 
     #Initialise Actuator Ports
     def set_ports_actuators(self):
+        self.configure_actuators()
         return
 
     #Configure Sensors
     def configure_sensors(self):
-        bp = self.BP
         self.config = {} #create a dictionary that represents if the sensor is Configured
-        #set up ultrasonic sensor
-        try:
-            bp.set_sensor_type(self.ultra, bp.SENSOR_TYPE.EV3_ULTRASONIC_CM)
-            time.sleep(1.5)
-            self.config['ultra'] = ENABLED
-        except Exception as error:
-            self.log("Ultrasonic Sensor not found")
-            self.config['ultra'] = DISABLED
-        #set up ultrasonic sensor
+        #set up thermal sensor
         try:
             bp.set_sensor_type(self.thermal, bp.SENSOR_TYPE.I2C, [0, 20])
             time.sleep(1)
@@ -62,11 +57,22 @@ class RobotInterface():
         except Exception as error:
             self.log("Thermal Sensor not found")
             self.config['thermal'] = DISABLED
-
+                #set up ultrasonic sensor
+        try:
+            bp.set_sensor_type(self.ultra, bp.SENSOR_TYPE.EV3_ULTRASONIC_CM)
+            time.sleep(1.5)
+            self.config['ultra'] = ENABLED
+        except Exception as error:
+            self.log("Ultrasonic Sensor not found")
+            self.config['ultra'] = DISABLED
         self.Configured = True #there is a 4 second delay - before robot is Configured
         return
 
-    #Start Infrared I2c Thread
+    #Configure Actuators
+    def configure_actuators()
+        return
+
+    #Start Infrared I2C Thread
     def __start_thermal_infrared_thread(self):
         self.thermal_thread = threading.Thread(target=self.__update_thermal_sensor_thread, args=(1,))
         self.thermal_thread.daemon = True
@@ -224,7 +230,7 @@ class RobotInterface():
         self.BP.set_motor_power(self.largemotors, 0)
         return
     
-    
+
     #UPDATED THIS FUNCTION SINCE INTERFACE TEMPLATE WAS GIVEN
     #moves forward until a colour or an object is detected- return collisiontype
     def move_power_untildistanceto(self, power, distanceto, deviation=0):
