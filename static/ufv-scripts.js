@@ -183,11 +183,11 @@ function openElement(elmnt) {
     element.classList.toggle('dragcontainer_est');
     if (button.innerHTML == 'Open') {
         button.innerHTML = "Close";
-        recurring_stop(elmnt);
+        recurring_start(elmnt);
     }
     else {
         button.innerHTML = "Open";
-        recurring_start(elmnt);
+        recurring_stop(elmnt);
     }
 }
 ///End Window Open Code///
