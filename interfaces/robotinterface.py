@@ -122,6 +122,7 @@ class RobotInterface():
     
     #Get the current voltage - need to work out how to determine battery life
     def get_sensor_battery_volts(self):
+        self.currentCommand = "Get battery voltage."
         volts = "-"
         return volts
 
