@@ -103,7 +103,7 @@ class RobotInterface():
                 distance = self.sensor_distance_front.get_distance()
                 return distance
             else:
-                return distance = "error"
+                distance = "error"
         elif distance_type == "turret":
             if self.config["sensor_distance_turret"] == "ENABLED":
                 distance = self.sensor_distance_turret.get_distance()
