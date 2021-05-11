@@ -172,7 +172,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="range" min="1" max="100" class="slider" id="slider_manual_sensitivity" onclick="sensitivity_update()"><!--Sensitivity slider-->
+                            <input type="range" min="1" max="100" class="slider" id="slider_manual_sensitivity" oninput="slider_update('slider_manual_sensitivity', 'sensitivity' )"><!--Sensitivity slider-->
                         </td>
                         <td>
                             <button class="arrow up" id="control_manual_traverse_forward" onclick="manual_traverse_forward()"></button><!--Traverse forward button-->
