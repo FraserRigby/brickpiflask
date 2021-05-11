@@ -79,6 +79,7 @@ function stop() {//activated when stop btn pressed
 
 //Update Slider Variable Value
 function slider_update(slider_id, variable) {
+    
 }
 
 //Manual Actuator Operation

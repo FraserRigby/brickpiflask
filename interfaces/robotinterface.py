@@ -7,7 +7,7 @@ import threading
 from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger #grove ultrasonic sensor library
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
-
+from adafruit_servokit import Servokit #library for actuator output via PCA9685 bonnet
 '''need to take out unecessary stuff --> the original code was for brickpi'''
 '''need to import sensor and actuator drivers'''
 
@@ -98,7 +98,7 @@ class RobotInterface():
         self.CurrentCommand = "Get IR temp."
         if self.config["sensor_thermal"] == "ENABLED":
             temp = self.sensor_thermal.get_obj_temp()
-            temp = float("{:.2f}".format(temp))
+            temp = int("{:.2f}".format(temp))
             return temp
         else:
             temp = "error"
@@ -111,14 +111,14 @@ class RobotInterface():
         if distance_type == "front":
             if self.config["sensor_distance_front"] == "ENABLED":
                 distance = self.sensor_distance_front.get_distance()
-                distance = float("{:.2f}".format(distance))
+                distance = int("{:.2f}".format(distance))
                 return distance
             else:
                 distance = "error"
         elif distance_type == "turret":
             if self.config["sensor_distance_turret"] == "ENABLED":
                 distance = self.sensor_distance_turret.get_distance()
-                distance = float("{:.2f}".format(distance))
+                distance = int("{:.2f}".format(distance))
                 return distance
             else:
                 distance = "error"
@@ -135,8 +135,8 @@ class RobotInterface():
         self.currentCommand = "Get Raspi temperature."
         temp = os.popen('vcgencmd measure_temp').readline()
         temp = temp.replace("temp=","").replace("'C\n","")
-        temp = float(temp)
-        temp = float("{:.2f}".format(temp))
+        temp = int(temp)
+        temp = int("{:.2f}".format(temp))
         return temp
 
     #Get and return dictionary of all sensors

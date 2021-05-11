@@ -17,8 +17,8 @@ https://github.com/bradnielsen2981/brickpi-flask
 #Global Variables
 app = Flask(__name__)
 app.config.from_object(__name__) #Set app configuration using above SETTINGS
-sensitivity = 0.5
-waterpressure = 0.5
+sensitivity = int(0.5)
+waterpressure = int(0.5)
 
 robot = None #Create the Robot
 ROBOTENABLED = True #this can be used to disable the robot and still edit the webserver
