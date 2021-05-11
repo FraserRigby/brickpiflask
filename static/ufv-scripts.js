@@ -222,10 +222,10 @@ function recurring_start(elmnt) {
         graphview_container = true;
     }
     if ((elmnt == "graphview_container" && sensorview_container == false) || (elmnt == "sensorview_container" && graphview_container == false)) {
-        //recurring_handle_sensordata = setInterval(get_sensor_all, 1000);//provides recurring event
+        recurring_handle_sensordata = setInterval(get_sensor_all, 1000);//provides recurring event
     }
     else if ((elmnt == "graphview_container" && actuatorview_container == false) || (elmnt == "actuatorview_container" && graphview_container == false)) {
-        //recurring_handle_actuatordata = setInterval(get_actuator_all, 1000);
+        recurring_handle_actuatordata = setInterval(get_actuator_all, 1000);
     }
 }
 
@@ -240,10 +240,10 @@ function recurring_stop(elmnt) {
         graphview_container = false;
     }
     if ((elmnt == "graphview_container" && sensorview_container == false) || (elmnt == "sensorview_container" && graphview_container == false)) {
-        //clearInterval(recurring_handle_sensordata);
+        clearInterval(recurring_handle_sensordata);
     }
     else if ((elmnt == "graphview_container" && actuatorview_container == false) || (elmnt == "actuatorview_container" && graphview_container == false)) {
-        //clearInterval(recurring_handle_actuatordata);
+        clearInterval(recurring_handle_actuatordata);
     }
 }
 ///End Recurring Code///
