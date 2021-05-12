@@ -7,7 +7,7 @@ import threading
 from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger #grove ultrasonic sensor library
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
-from adafruit_servokit import Servokit #library for actuator output via PCA9685 bonnet
+from adafruit_servokit import ServoKit #library for actuator output via PCA9685 bonnet
 '''need to take out unecessary stuff --> the original code was for brickpi'''
 '''need to import sensor and actuator drivers'''
 
