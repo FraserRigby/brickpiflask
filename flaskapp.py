@@ -103,10 +103,10 @@ def get_actuator_all():
 #Manual actuator operation
 @app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
-    global sensitivity, pressure
-    actuator = request.form["actuator"]
-    action = request.form['action']
-    action_message = 'actuator not active'
+    global sensitivity, waterpressure
+    actuator = request.form.get['actuator']
+    action = request.form.get['action']
+    action_msg = "actuator not active"
     if action == "stop":
         #stop stop_actuator(actuator)
         #get actuator data
@@ -129,7 +129,7 @@ def manual_actuator():
             #shoot water 
             # action_message = pump_water(action, waterpressure)
             placeholder = "placeholder"
-    return jsonify({"msg":action_message})
+    return jsonify({"msg":action_msg})
 
 
 '''
