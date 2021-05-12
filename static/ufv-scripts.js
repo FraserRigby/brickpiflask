@@ -81,44 +81,34 @@ function stop() {//activated when stop btn pressed
 document.getElementById("actuator_sensitivity").innerHTML = sensitivity;
 document.getElementById("actuator_waterpressure").innerHTML = waterpressure;
 
-function slider_update(slider_id, variable, output) {
+function slider_update(slider_id, output) {
     console.log("slider updating")
     var slider = document.getElementById(slider_id);
+    var value = slider.value;
     var output_elmnt = null;
-    var value_start = slider.value;
-    var value_end = slider.value;
-    var data = [];
-    var updating = true;
-    var mousedown = true;
-    var mouseover = true;
-    slider.addEventListener("onmouseup", updating_stop());
-    slider.addEventListener("onmouseout", updating_stop());
-    function updating_stop() {
-        updating = flase;
-        slider.removeEventListener("onmouseup");
-        slider.removeEventListener("onmouseout");
-    }
     if (output != "none") {
         output_elmnt = document.getElementById(output);
+        output_elmnt.innerHTML = value;
     }
-    while (updating) {
-        slider.oninput = slider_oninput();
-        function slider_oninput() {
-            output_elmnt.innerHTML = slider.value;
-            value_end = slider.value;
-            console.log('moving');
-        }
+    if (slider_id == "slider_sensitivity") {
+        sensitivity = value;
     }
-    if (value_end != value_start) {
-        if (variable == "sensitivity") {
-            sensitivity = value_end;
-        }
-        else if (variable == "waterpressure") {
-            waterpressure = value_end;
-        }
-        data[variable] = value_end
-        JSONrequest('/var_update', 'POST', return_msg, data);
+    else if (slider_id == "slider_waterpressure") {
+        waterpressure = value;
     }
+}
+
+//Transfer slider variable value
+function slider_transfer(slider_id) {
+    data = {}
+    if (slider_id == "slider_sensitivity") {
+        data["sensitivity"] = sensitivity;
+    }
+    else if (slider_id == "slider_waterpressure") {
+        data["waterpressure"] = waterpressure
+    }
+    JSONrequest('/var_update', 'POST', return_msg, data);
+    console.log("slider transfering")
 }
 
 //Manual Actuator Operation
