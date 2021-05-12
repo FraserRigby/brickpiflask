@@ -120,7 +120,7 @@ function manual_actuator(actuator, action) {
     commands = [];
     commands["actuator"] = actuator;
     commands["action"] = action;
-    JSONrequest('/manual_actuator_start', 'POST', return_msg, commands);
+    JSONrequest('/manual_actuator', 'POST', return_msg, commands);
     console.log(commands);
 }
 
