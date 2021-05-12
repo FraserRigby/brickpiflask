@@ -106,7 +106,7 @@ def manual_actuator():
     global sensitivity, pressure
     actuator = request.form["actuator"]
     action = request.form['action']
-    action_message = ''
+    action_message = 'actuator not active'
     if action == "stop":
         #stop stop_actuator(actuator)
         #get actuator data
