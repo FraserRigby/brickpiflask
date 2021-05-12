@@ -105,7 +105,7 @@ function slider_transfer(slider_id) {
         data["sensitivity"] = sensitivity;
     }
     else if (slider_id == "slider_waterpressure") {
-        data["waterpressure"] = waterpressure
+        data["waterpressure"] = waterpressure;
     }
     JSONrequest('/var_update', 'POST', return_msg, data);
     console.log("slider transfering")
