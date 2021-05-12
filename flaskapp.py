@@ -111,19 +111,24 @@ def manual_actuator():
         #stop stop_actuator(actuator)
         #get actuator data
         # action_message = stop_actuator(actuator)
+        placeholder = "placeholder"
     else:
         if actuator == "servo_traverse":
             #move forward/back 
             # action_message = servo_traverse(action, sensitivity)
+            placeholder = "placeholder"
         elif actuator ==  "servo_turret":
             #rotate left/right 
             # action_message = servo_turret(action, sensitivity)
+            placeholder = "placeholder"
         elif actuator == "servo_nozzle":
             #rotate up/down 
             # action_message = servo_nozzle(action, sensitivity)
+            placeholder = "placeholder"
         elif actuator = "pump_water":
             #shoot water 
             # action_message = pump_water(action, waterpressure)
+            placeholder = "placeholder"
     return jsonify({"msg":action_message})
 
 
