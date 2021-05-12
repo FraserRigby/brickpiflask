@@ -116,7 +116,7 @@ function slider_transfer(slider_id) {
 
 //Manual Actuator Operation
 function manual_actuator(actuator, action) {
-    commands = [];
+    commands = {};
     commands["actuator"] = actuator;
     commands["action"] = action;
     JSONrequest('/manual_actuator', 'POST', return_msg, commands);
