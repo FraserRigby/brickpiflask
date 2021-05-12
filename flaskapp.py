@@ -69,11 +69,12 @@ def stop():
 @app.route('/var_update', methods=['GET','POST'])
 def var_update():
     global sensitivity, waterpressure
-    for entry in request.form:
+    data = request.form
+    for entry in data:
         if entry == "sensitivity":
-            sensitivity = request.form[entry]
+            sensitivity = data[entry]
         elif entry == "waterpressure":
-            waterpressure = request.form[entry]
+            waterpressure = data[entry]
     return jsonify({"msg":"variable updated"})
 
 #Get current command from robotinterface
@@ -103,33 +104,33 @@ def get_actuator_all():
 #Manual actuator operation
 @app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
-    if request.method == 'POST':
-        global sensitivity, waterpressure
-        actuator = request.form.get["actuator"]
-        action = request.form.get["action"]
-        action_msg = "actuator not active"
-        if action == "stop":
-            #stop stop_actuator(actuator)
-            #get actuator data
-            # action_message = stop_actuator(actuator)
+    global sensitivity, waterpressure
+    data = request.form
+    actuator = data["actuator"]
+    action = data["action"]
+    action_msg = "actuator not active"
+    if action == "stop":
+        #stop stop_actuator(actuator)
+        #get actuator data
+        # action_message = stop_actuator(actuator)
+        placeholder = "placeholder"
+    else:
+        if actuator == "servo_traverse":
+            #move forward/back 
+            # action_message = servo_traverse(action, sensitivity)
             placeholder = "placeholder"
-        else:
-            if actuator == "servo_traverse":
-                #move forward/back 
-                # action_message = servo_traverse(action, sensitivity)
-                placeholder = "placeholder"
-            elif actuator ==  "servo_turret":
-                #rotate left/right 
-                # action_message = servo_turret(action, sensitivity)
-                placeholder = "placeholder"
-            elif actuator == "servo_nozzle":
-                #rotate up/down 
-                # action_message = servo_nozzle(action, sensitivity)
-                placeholder = "placeholder"
-            elif actuator == "pump_water":
-                #shoot water 
-                # action_message = pump_water(action, waterpressure)
-                placeholder = "placeholder"
+        elif actuator ==  "servo_turret":
+            #rotate left/right 
+            # action_message = servo_turret(action, sensitivity)
+            placeholder = "placeholder"
+        elif actuator == "servo_nozzle":
+            #rotate up/down 
+            # action_message = servo_nozzle(action, sensitivity)
+            placeholder = "placeholder"
+        elif actuator == "pump_water":
+            #shoot water 
+            # action_message = pump_water(action, waterpressure)
+            placeholder = "placeholder"
     return jsonify({"msg":action_msg})
 
 
