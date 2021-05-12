@@ -1,7 +1,7 @@
 ///Start global variables///
 var shutdown = false; //if the server is still live
-var sensitivity = int(document.getElementById("slider_sensitivity").value);
-var waterpressure = int(document.getElementById("slider_waterpressure").value);
+var sensitivity = document.getElementById("slider_sensitivity").value;
+var waterpressure = document.getElementById("slider_waterpressure").value;
 var sensorview_container = false;
 var actuatorview_container = false;
 var graphview_container = false
