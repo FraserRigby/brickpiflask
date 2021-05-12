@@ -88,16 +88,25 @@ function slider_update(slider_id, variable, output) {
     var value_start = slider.value;
     var value_end = slider.value;
     var data = [];
+    var updating = true;
+    var mousedown = true;
+    var mouseover = true;
+    slider.addEventListener("onmouseup", updating_stop());
+    slider.addEventListener("onmouseout", updating_stop());
+    function updating_stop() {
+        updating = flase;
+        slider.removeEventListener("onmouseup");
+        slider.removeEventListener("onmouseout");
+    }
     if (output != "none") {
         output_elmnt = document.getElementById(output);
     }
-    function slider_oninput() {
-        output_elmnt.innerHTML = slider.value;
-        value_end = slider.value;
-        console.log('moving');
-    }
-    while ((slider.onmousedown) && (slider.onmouseover)) {
+    while (updating) {
         slider.oninput = slider_oninput();
+        function slider_oninput() {
+            output_elmnt.innerHTML = slider.value;
+            value_end = slider.value;
+            console.log('moving');
     }
     if (value_end != value_start) {
         if (variable == "sensitivity") {
@@ -109,8 +118,6 @@ function slider_update(slider_id, variable, output) {
         data[variable] = value_end
         JSONrequest('/var_update', 'POST', return_msg, data);
     }
-    console.log(value_end);
-    console.log(value_end);
 }
 
 //Manual Actuator Operation
