@@ -1,3 +1,4 @@
+###----------IMPORTING/DEFINING----------###
 # This class inherits from the robot interface, it should include any code for sub-routines
 from interfaces.robotinterface import RobotInterface
 import logging

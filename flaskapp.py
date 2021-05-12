@@ -1,3 +1,4 @@
+###----------IMPORTING/DEFINING----------###
 from flask import Flask, render_template, jsonify, redirect, request, session, flash, Response
 import logging #allow loggings
 import time, sys, json
@@ -27,8 +28,8 @@ if ROBOTENABLED:
     robot.set_log(app.logger) #set the logger inside the robot
     #if needed, add parameters to whether ROBOTENABLED remain true
 
-#-----------------HTML REQUEST HANDLERS----------------------------------#
-#ufv website, one page to rule them all
+###----------HTML REQUEST HANDLERS----------###
+#UFV website, one page to rule them all!
 @app.route('/', methods=['GET','POST'])
 def index():
     return render_template('ufv-website.html')
@@ -46,7 +47,7 @@ def video_feed():
     return Response(gen(Camera()), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-#----------------JSON REQUEST HANDLERS--------------------#
+###----------JSON REQUEST HANDLERS----------###
 #Shutdown the web server
 @app.route('/shutdown', methods=['GET','POST'])
 def shutdown():

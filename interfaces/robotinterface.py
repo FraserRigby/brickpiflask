@@ -1,3 +1,4 @@
+###----------IMPORTING/DEFINING----------###
 import os
 import time
 import math
@@ -14,7 +15,7 @@ from adafruit_servokit import ServoKit #library for actuator output via PCA9685 
 #Created a Class to wrap the robot functionality, one of the features is the idea of keeping track of the CurrentCommand, this is important when more than one process is running...
 class RobotInterface():
 
-    ###----------ROBOT SETUP----------###
+###----------ROBOT SETUP----------###
     #Initialise Robot
     def __init__(self):
         self.logger = logging.getLogger()
@@ -68,7 +69,7 @@ class RobotInterface():
         return
 
 
-    ###----------MISCELLANEOUS----------###
+###----------MISCELLANEOUS----------###
     #Log message !!!!!THIS IS NOT WORKING UNLESS FLASK LOG USED, DONT KNOW WHY!!!!!
     def log(self, message):
         self.logger.info(message)
@@ -92,7 +93,7 @@ class RobotInterface():
         return
     
 
-    ###----------SENSOR COMMANDS----------##
+###----------SENSOR COMMANDS----------##
     #Get thermal IR sensor reading
     def get_sensor_thermal(self):
         self.CurrentCommand = "Get IR temp."
@@ -149,66 +150,12 @@ class RobotInterface():
         sensordict['raspi_temp'] = self.get_sensor_raspi_temp()
         return sensordict
 
+
+###----------ACTUATOR COMMANDS----------###
+
+
+
     '''
-    #updates the thermal sensor by making continual I2C transactions through a thread
-    def __update_thermal_sensor_thread(self, name):
-        while self.CurrentCommand != "exit":
-            self.update_thermal_sensor()
-        return
-
-    #updates the thermal sensor by making a single I2C transaction
-    def update_thermal_sensor(self):
-        if self.config['thermal'] >= DISABLED:
-            self.CurrentCommand = 'exit' #end thread
-            return
-        bp = self.BP
-        TIR_I2C_ADDR        = 0x0E      # TIR I2C device address 
-        TIR_AMBIENT         = 0x00      # Ambient Temp
-        TIR_OBJECT          = 0x01      # Object Temp
-        TIR_SET_EMISSIVITY  = 0x02      
-        TIR_GET_EMISSIVITY  = 0x03
-        TIR_CHK_EMISSIVITY  = 0x04
-        TIR_RESET           = 0x05
-        try:
-            bp.transact_i2c(self.thermal, TIR_I2C_ADDR, [TIR_OBJECT], 2)
-            time.sleep(0.01)
-        except Exception as error:
-            self.log("THERMAL UPDATE: " + str(error))
-        finally:
-            pass
-        return
-
-    #return the infrared temperature - if usethread=True - it uses the thread set up in init
-    def get_thermal_sensor(self, usethread=True):
-        temp = NOREADING
-        if self.config['thermal'] >= DISABLED or not self.Configured:
-            return temp
-        bp = self.BP
-        if not usethread:
-            self.update_thermal_sensor() #not necessary if thread is running
-        ifMutexAcquire(USEMUTEX)
-        try:
-            value = bp.get_sensor(self.thermal) # read the sensor values
-            time.sleep(0.01)
-            self.config['thermal'] = ENABLED
-            temp = (float)((value[1] << 8) + value[0]) # join the MSB and LSB part
-            temp = temp * 0.02 - 0.01                  # Converting to Celcius
-            temp = temp - 273.15                       
-        except Exception as error:
-            self.log("THERMAL READ: " + str(error))
-            self.config['thermal'] += 1
-        finally:
-            ifMutexRelease(USEMUTEX)    
-        return float("%3.f" % temp)
-
-    #disable thermal sensor - might be needed to reenable motors (they disable for some reason when thermal sensor is active)
-    def disable_thermal_sensor(self):
-        bp = self.BP
-        bp.set_sensor_type(self.thermal, bp.SENSOR_TYPE.NONE) 
-        return
-
-
-    ###----------MOTOR COMMANDS----------###
     #simply turns motors on
     def move_power(self, power, deviation=0):
         bp = self.BP
