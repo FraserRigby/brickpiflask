@@ -82,7 +82,6 @@ document.getElementById("actuator_sensitivity").innerHTML = sensitivity;
 document.getElementById("actuator_waterpressure").innerHTML = waterpressure;
 
 function slider_update(slider_id, output) {
-    console.log("slider updating")
     var slider = document.getElementById(slider_id);
     var value = parseInt(slider.value);
     var output_elmnt = null;
@@ -96,24 +95,33 @@ function slider_update(slider_id, output) {
     else if (slider_id == "slider_waterpressure") {
         waterpressure = value;
     }
+    console.log("slider updating")
 }
 
 //Transfer slider variable value
 function slider_transfer(slider_id) {
-    var data = {}
+    var data = {};
     if (slider_id == "slider_sensitivity") {
         data["sensitivity"] = sensitivity;
+        sensitivity = sensitivity/100
     }
     else if (slider_id == "slider_waterpressure") {
         data["waterpressure"] = waterpressure;
+        waterpressure = waterpressure/100
+
     }
     JSONrequest('/var_update', 'POST', return_msg, data);
-    console.log("slider transfering")
-    console.log(data)
+    console.log("slider transfering");
+    console.log(data);
 }
 
 //Manual Actuator Operation
-function manual_actuator(btn_id, type, action) {
+function manual_actuator(actuator, action) {
+    commands = [];
+    commands["actuator"] = actuator;
+    commands["action"] = action;
+    JSONrequest('/manual_actuator_start', 'POST', return_msg, commands);
+    console.log(commands);
 }
 
 //Manual Traverse Backward
@@ -256,7 +264,7 @@ function recurring_start(elmnt) {
         recurring_handle_sensordata = setInterval(get_sensor_all, 1000);//provides recurring event
     }
     else if ((elmnt == "graphview_container" && actuatorview_container == false) || (elmnt == "actuatorview_container" && graphview_container == false)) {
-        recurring_handle_actuatordata = setInterval(get_actuator_all, 1000);
+        //recurring_handle_actuatordata = setInterval(get_actuator_all, 1000);
     }
 }
 
@@ -274,7 +282,7 @@ function recurring_stop(elmnt) {
         clearInterval(recurring_handle_sensordata);
     }
     else if ((elmnt == "graphview_container" && actuatorview_container == false) || (elmnt == "actuatorview_container" && graphview_container == false)) {
-        clearInterval(recurring_handle_actuatordata);
+        //clearInterval(recurring_handle_actuatordata);
     }
 }
 ///End Recurring Code///

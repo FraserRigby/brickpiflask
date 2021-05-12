@@ -175,7 +175,7 @@
                             <input type="range" min="1" max="100" value="50" class="slider" id="slider_sensitivity" oninput="slider_update('slider_sensitivity', 'actuator_sensitivity')" onmouseup="slider_transfer('slider_sensitivity')"><!--Sensitivity slider-->
                         </td>
                         <td>
-                            <button class="arrow up" id="control_manual_traverse_forward" onclick="manual_traverse_forward()"></button><!--Traverse forward button-->
+                            <button class="arrow up" id="control_manual_traverse_forward" onclick="manual_actuator('servo_traverse', '+')" onmouseup="manual_actuator('servo_traverse', '+')"></button><!--Traverse forward button-->
                             <button class="arrow down" id="control_manual_traverse_backward" onclick="manual_traverse_backward()"></button><!--Travere back button-->
                         </td>
                         <td id="manual_turret_rotation_container">

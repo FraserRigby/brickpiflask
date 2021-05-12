@@ -68,12 +68,11 @@ def stop():
 #Updating variables from user input
 @app.route('/var_update', methods=['GET','POST'])
 def var_update():
+    global sensitivity, waterpressure
     for entry in request.form:
         if entry == "sensitivity":
-            global sensitivity
             sensitivity = request.form[entry]
         elif entry == "waterpressure":
-            global waterpressure
             waterpressure = request.form[entry]
     return jsonify({"msg":"variable updated"})
 
@@ -92,6 +91,41 @@ def get_sensor_all():
     if ROBOTENABLED:
         results = robot.get_sensor_all()
     return jsonify(results)
+
+#Get all actuator data
+@app.route('/get_actuator_all', methods=['GET','POST'])
+def get_actuator_all():
+    results = None
+    if ROBOTENABLED:
+        results = robot.get_actuator_all()
+    return jsonify(results)
+
+#Manual actuator operation
+@app.route('/manual_actuator', methods='GET','POST')
+def manual_actuator():
+    global sensitivity, pressure
+    actuator = request.form["actuator"]
+    action = request.form['action']
+    action_message = ''
+    if action == "stop":
+        #stop stop_actuator(actuator)
+        #get actuator data
+        # action_message = stop_actuator(actuator)
+    else:
+        if actuator == "servo_traverse":
+            #move forward/back 
+            # action_message = servo_traverse(action, sensitivity)
+        elif actuator ==  "servo_turret":
+            #rotate left/right 
+            # action_message = servo_turret(action, sensitivity)
+        elif actuator == "servo_nozzle":
+            #rotate up/down 
+            # action_message = servo_nozzle(action, sensitivity)
+        elif actuator = "pump_water":
+            #shoot water 
+            # action_message = pump_water(action, waterpressure)
+    return jsonify({"msg":action_message})
+
 
 '''
 #start robot moving
