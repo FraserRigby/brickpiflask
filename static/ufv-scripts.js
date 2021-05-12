@@ -87,16 +87,17 @@ function slider_update(slider_id, variable, output) {
     var output_elmnt = null;
     var value_start = slider.value;
     var value_end = slider.value;
-    var data = []
+    var data = [];
     if (output != "none") {
         output_elmnt = document.getElementById(output);
     }
+    function slider_oninput() {
+        output_elmnt.innerHTML = slider.value;
+        value_end = slider.value;
+        console.log('moving');
+    }
     while ((slider.onmousedown) && (slider.onmouseover)) {
         slider.oninput = slider_oninput();
-        function slider_oninput() {
-            output_elmnt.innerHTML = slider.value;
-            value_end = slider.value;
-        }
     }
     if (value_end != value_start) {
         if (variable == "sensitivity") {
@@ -106,8 +107,10 @@ function slider_update(slider_id, variable, output) {
             waterpressure = value_end;
         }
         data[variable] = value_end
-        JSONrequest('/var_update', 'POST', return_msg, data)
+        JSONrequest('/var_update', 'POST', return_msg, data);
     }
+    console.log(value_end);
+    console.log(value_end);
 }
 
 //Manual Actuator Operation
