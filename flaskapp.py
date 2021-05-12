@@ -72,11 +72,9 @@ def var_update():
         if entry == "sensitivity":
             global sensitivity
             sensitivity = request.form[entry]
-            print(sensitivity)
         elif entry == "waterpressure":
             global waterpressure
             waterpressure = request.form[entry]
-            print(waterpressure)
     return jsonify({"msg":"variable updated"})
 
 #Get current command from robotinterface
