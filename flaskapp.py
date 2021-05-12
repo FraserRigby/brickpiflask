@@ -70,8 +70,10 @@ def stop():
 def var_update():
     for entry in request.form:
         if entry == "sensitivity":
+            global sensitivity
             sensitivity = request.form[entry]
         elif entry == "waterpressure":
+            global waterpressure
             waterpressure = request.form[entry]
         print(sensitivity, waterpressure)
     return jsonify({"msg":"variable updated"})
