@@ -69,8 +69,10 @@ def stop():
 @app.route('/var_update', methods=['GET','POST'])
 def var_update(data):
     for entry in data:
-        eval(entry) = data[entry]
-    print(data)
+        if entry == "sensitivity":
+            sensitivity = data[entry]
+        elif entry == "waterpressure":
+            waterpressure = data[entry]
     return jsonify({"msg":"variable updated"})
 
 #Get current command from robotinterface

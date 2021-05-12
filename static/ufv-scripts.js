@@ -85,12 +85,13 @@ function slider_update(slider_id, variable, output) {
     console.log("slider updating")
     var slider = document.getElementById(slider_id);
     var output_elmnt = null;
-    var value_start = eval(variable);
-    var value_end = null;
+    var value_start = slider.value;
+    var value_end = slider.value;
+    var data = []
     if (output != "none") {
         output_elmnt = document.getElementById(output);
     }
-    while ((slider.onmouseup) || (!slider.onmouseover)) {
+    while ((slider.onmousedown) && (slider.onmouseover)) {
         slider.oninput = slider_oninput();
         function slider_oninput() {
             output_elmnt.innerHTML = slider.value;
@@ -98,6 +99,12 @@ function slider_update(slider_id, variable, output) {
         }
     }
     if (value_end != value_start) {
+        if (variable == "sensitivity") {
+            sensitivity = value_end;
+        }
+        else if (variable == "waterpressure") {
+            waterpressure = value_end;
+        }
         data[variable] = value_end
         JSONrequest('/var_update', 'POST', return_msg, data)
     }
