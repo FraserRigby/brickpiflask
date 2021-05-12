@@ -299,7 +299,7 @@ if __name__ == '__main__':
     robot.set_log(logger)
     input("Press any key to test: ")
     robot.actuator.continuous_servo[0].throttle = 1
-    sleep(2)
+    time.sleep(4)
     robot.actuator.continuous_servo[0].throttle = 0
     test = robot.get_sensor_all()
     print(test)
