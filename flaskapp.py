@@ -54,7 +54,7 @@ def shutdown():
         robot.safe_exit()
     func = request.environ.get('werkzeug.server.shutdown')
     func()
-    return jsonify({ "msg":"shutting down" })
+    return jsonify({"msg":"shutting down"})
 
 #Stop current process
 @app.route('/stop', methods=['GET','POST'])
@@ -63,7 +63,7 @@ def stop():
         robot.CurrentRoutine = "ready"
         robot.CurrentCommand = "stop"
         robot.stop_all()
-    return jsonify({ "msg":"stopping" })
+    return jsonify({"msg":"stopping"})
 
 #Updating variables from user input
 @app.route('/var_update', methods=['GET','POST'])
@@ -101,7 +101,7 @@ def get_actuator_all():
     return jsonify(results)
 
 #Manual actuator operation
-@app.route('/manual_actuator', methods='GET','POST')
+@app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
     global sensitivity, pressure
     actuator = request.form["actuator"]
@@ -125,7 +125,7 @@ def manual_actuator():
             #rotate up/down 
             # action_message = servo_nozzle(action, sensitivity)
             placeholder = "placeholder"
-        elif actuator = "pump_water":
+        elif actuator == "pump_water":
             #shoot water 
             # action_message = pump_water(action, waterpressure)
             placeholder = "placeholder"
