@@ -68,6 +68,7 @@ def stop():
 #Updating variables from user input
 @app.route('/var_update', methods=['GET','POST'])
 def var_update(data):
+    print(data)
     for entry in data:
         if entry == "sensitivity":
             sensitivity = data[entry]
