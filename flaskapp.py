@@ -110,6 +110,7 @@ def manual_actuator():
     actuator = data.get("actuator")
     action = data.get("action")
     action_msg = "actuator not active"
+    print(actuator, action)
     if action == "stop":
         #stop actuator
         action_msg = robot.stop_actuator(actuator)
