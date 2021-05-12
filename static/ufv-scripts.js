@@ -107,6 +107,7 @@ function slider_update(slider_id, variable, output) {
             output_elmnt.innerHTML = slider.value;
             value_end = slider.value;
             console.log('moving');
+        }
     }
     if (value_end != value_start) {
         if (variable == "sensitivity") {
