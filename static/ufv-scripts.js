@@ -102,12 +102,12 @@ function slider_update(slider_id, output) {
 function slider_transfer(slider_id) {
     var data = {};
     if (slider_id == "slider_sensitivity") {
-        data["sensitivity"] = sensitivity;
         sensitivity = sensitivity/100
+        data["sensitivity"] = sensitivity;
     }
     else if (slider_id == "slider_waterpressure") {
-        data["waterpressure"] = waterpressure;
         waterpressure = waterpressure/100
+        data["waterpressure"] = waterpressure;
     }
     JSONrequest('/var_update', 'POST', return_msg, data);
     console.log("slider transfering");
