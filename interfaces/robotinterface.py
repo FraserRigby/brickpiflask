@@ -72,7 +72,7 @@ class RobotInterface():
         #Set up nozzle servo
         self.config['servo_nozzle'] = "ENABLED"
         #set up water pump
-        self.config['pump_water']
+        self.config['pump_water'] = "ENABLED"
         self.Configured_actuators = True
         return
 
@@ -218,7 +218,7 @@ class RobotInterface():
             self.servo_continuous[port] = waterpressure
             msg = "pump_water firing"
         return msg
-        
+
     '''
     #simply turns motors on
     def move_power(self, power, deviation=0):
