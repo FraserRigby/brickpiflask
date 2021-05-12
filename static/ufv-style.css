@@ -159,11 +159,11 @@
     opacity: 1;
 }
 
-#slider_manual_sensitivity{/**/
+#slider_sensitivity{/**/
     -webkit-appearance: slider-vertical;
 }
 
-#slider_manual_pressure{/**/
+#slider_pressure{/**/
     -webkit-appearance: slider-horizontal;
     height: 15px;
     width: 100px;
