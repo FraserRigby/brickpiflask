@@ -73,9 +73,9 @@ def var_update():
     data = request.form
     for entry in data:
         if entry == "sensitivity":
-            sensitivity = data[entry]
+            sensitivity = data.get[entry]
         elif entry == "waterpressure":
-            waterpressure = data[entry]
+            waterpressure = data.get[entry]
     return jsonify({"msg":"variable updated"})
 
 #Get current command from robotinterface
@@ -106,8 +106,9 @@ def get_actuator_all():
 @app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
     global sensitivity, waterpressure
-    actuator = request.form.get("actuator")
-    action = request.form.get("action")
+    data = request.form
+    actuator = data.get("actuator")
+    action = data.get("action")
     action_msg = "actuator not active"
     print(actuator, action)
     if action == "stop":
