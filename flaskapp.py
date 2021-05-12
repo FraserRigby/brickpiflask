@@ -117,6 +117,7 @@ def manual_actuator():
         if actuator == "servo_traverse":
             #move forward/back 
             action_msg = robot.servo_traverse(action, sensitivity)
+            print("move, or at least do something!!!")
         elif actuator ==  "servo_turret":
             #rotate left/right 
             action_msg = robot.servo_turret(action, sensitivity)
