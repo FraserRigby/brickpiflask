@@ -125,12 +125,12 @@
                     </tr>
                     <tr class="tbl_row">
                         <td class="tbl_row_name">ServoSensitivity:</th>
-                        <td class="tbl_row_entry" id="actuator_servo_sensitivity">-</td>
+                        <td class="tbl_row_entry" id="actuator_sensitivity">-</td>
                         <td class="tbl_row_unit">%</td>
                     </tr>
                     <tr class="tbl_row">
                         <td class="tbl_row_name">Pump:</th>
-                        <td class="tbl_row_entry" id="actuator_pump_power">-</td>
+                        <td class="tbl_row_entry" id="actuator_waterpressure">-</td>
                         <td class="tbl_row_unit">%</td>
                     </tr>
                 </table>
@@ -172,7 +172,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <input type="range" min="1" max="100" class="slider" id="slider_manual_sensitivity" oninput="slider_update('slider_manual_sensitivity', 'sensitivity' )"><!--Sensitivity slider-->
+                            <input type="range" min="1" max="100" class="slider" id="slider_sensitivity" onclick="slider_update('slider_sensitivity', 'sensitivity', 'actuator_sensitivity')"><!--Sensitivity slider-->
                         </td>
                         <td>
                             <button class="arrow up" id="control_manual_traverse_forward" onclick="manual_traverse_forward()"></button><!--Traverse forward button-->
@@ -187,7 +187,7 @@
                             <button class="arrow down" id="control_manual_nozzle_down" onclick="manual_nozzle_down()"></button><!--Nozzle down button-->
                         </td>
                         <td>
-                            <input type="range" min="1" max="100" class="slider" id="slider_manual_pressure" onclick="waterpressure_update()"><!--Sensitivity slider-->
+                            <input type="range" min="1" max="100" class="slider" id="slider_waterpressure" onclick="slider_update('slider_waterpressure', 'waterpressure', 'actuator_waterpressure')"><!--Sensitivity slider-->
                             <button class="firewater_btn" id="control_manual_firewater" onclick="manual_waterfire()">Fire<br>Water</button><!--Fire water button-->
                         </td>
                     </tr>

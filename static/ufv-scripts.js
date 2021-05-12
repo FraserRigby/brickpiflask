@@ -1,7 +1,7 @@
 ///Start global variables///
 var shutdown = false; //if the server is still live
-var sensitivity = 50;
-var waterpressure = 50;
+var sensitivity = document.getElementById("slider_sensitivity").value;
+var waterpressure = document.getElementById("slider_waterpressure").value;
 var sensorview_container = false;
 var actuatorview_container = false;
 var graphview_container = false
@@ -12,7 +12,6 @@ var recurring_handle_actuatordata = null; //initializes recurring handle var for
 var message = document.getElementById("msg_box_msg"); //define msg element
 var msg = '';
 ///End global variables///
-
 
 ///Start Data Functions Code///
 //Return message
@@ -59,6 +58,7 @@ function return_actuator_all() {
 //Shutdown
 function shutdown_server() {//activated when shutdown btn pressed
     if (shutdown != true) {
+        console.log("shutdown")
         element = document.getElementById("shutdown_btn");
         element.classList.toggle('shutdown_btn');
         element.classList.toggle('shutdown_clicked_btn');
@@ -73,13 +73,34 @@ function shutdown_server() {//activated when shutdown btn pressed
 
 //Stop Processes
 function stop() {//activated when stop btn pressed
-    console.log("stop");
+    console.log("stopping");
     JSONrequest('/stop', 'POST', return_msg);
 }
 
 //Update Slider Variable Value
-function slider_update(slider_id, variable) {
-    
+document.getElementById("actuator_sensitivity").innerHTML = sensitivity;
+document.getElementById("actuator_waterpressure").innerHTML = waterpressure;
+
+function slider_update(slider_id, variable, output) {
+    console.log("slider updating")
+    var slider = document.getElementById(slider_id);
+    var output_elmnt = null;
+    var value_start = eval(variable);
+    var value_end = null;
+    if (output != "none") {
+        output_elmnt = document.getElementById(output);
+    }
+    while ((slider.onmouseup) || (!slider.onmouseover)) {
+        slider.oninput = slider_oninput();
+        function slider_oninput() {
+            output_elmnt.innerHTML = slider.value;
+            value_end = slider.value;
+        }
+    }
+    if (value_end != value_start) {
+        data[variable] = value_end
+        JSONrequest('/var_update', 'POST', return_msg, data)
+    }
 }
 
 //Manual Actuator Operation

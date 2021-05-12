@@ -65,6 +65,14 @@ def stop():
         robot.stop_all()
     return jsonify({ "msg":"stopping" })
 
+#Updating variables from user input
+@app.route('/var_update', methods=['GET','POST'])
+def var_update(data):
+    for entry in data:
+        eval(entry) = data[entry]
+    print(data)
+    return jsonify({"msg":"variable updated"})
+
 #Get current command from robotinterface
 @app.route('/get_current_cmd', methods=['GET','POST'])
 def get_current_cmd():
