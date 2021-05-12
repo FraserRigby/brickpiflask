@@ -107,8 +107,8 @@ def get_actuator_all():
 def manual_actuator():
     global sensitivity, waterpressure
     data = request.form
-    actuator = data["actuator"]
-    action = data["action"]
+    actuator = data.get("actuator")
+    action = data.get("action")
     action_msg = "actuator not active"
     if action == "stop":
         #stop stop_actuator(actuator)
