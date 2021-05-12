@@ -38,15 +38,14 @@ class RobotInterface():
 
     #Configure Sensors
     def configure_sensors(self):
-        #if time use this to verify sensor connection
-        #set up thermal sensor
+        #Set up thermal sensor
         self.bus = SMBus(1)
         self.sensor_thermal = MLX90614(self.bus, self.sensor_thermal_address)
         self.config['sensor_thermal'] = "ENABLED"
-        #set up ultrasonic sensor - front
+        #Set up ultrasonic sensor - front
         self.sensor_distance_front = GroveUltrasonicRanger(self.sensor_distance_front_address)
         self.config['sensor_distance_front'] = "ENABLED"
-        #set up ultrasonic sensor - turret
+        #Set up ultrasonic sensor - turret
         self.sensor_distance_turret = GroveUltrasonicRanger(self.sensor_distance_turret_address)
         self.config['sensor_distance_turret'] = "ENABLED"
         self.Configured_sensors = True
@@ -54,12 +53,26 @@ class RobotInterface():
 
     #Initialise Actuator Ports
     def set_ports_actuators(self):
+        self.actuator = ServoKit(channels=16) #initialise actuators
+        self.actuator_servo_traverse = 0 #traverse servo
+        self.actuator_servo_turret = 1 # turret servo
+        self.actuator_servo_nozzle = 2 #nozzle servo
+        self.actuator_pump_water = 3 #water pump
         self.configure_actuators()
         return
 
     #Configure Actuators
     def configure_actuators(self):
-        #if time use this to verify actuator connection
+        self.servo = self.actuator.servo
+        self.servo_continuous = self.actuator.continuous_servo
+        #Set up traverse servo
+        self.config['servo_traverse'] = "ENABLED"
+        #Set up turret servo
+        self.config['servo_turret'] = "ENABLED"
+        #Set up nozzle servo
+        self.config['servo_nozzle'] = "ENABLED"
+        #set up water pump
+        self.config['pump_water']
         self.Configured_actuators = True
         return
 
@@ -152,9 +165,60 @@ class RobotInterface():
 
 
 ###----------ACTUATOR COMMANDS----------###
+    #Get all actuator data
+    def get_actuator_all(self):
+        actuatordict = {}
+        actuatordict['servo_traverse'] = "-"
+        actuatordict['servo_turret'] = self.servo[self.actuator_servo_turret].angle
+        actuatordict['servo_nozzle'] = self.servo[self.actuator_servo_nozzle].angle
+        return actuatordict
 
+    #Stop actuator
+    def stop_actuator(self, actuator):
+        self.servo_continuous[eval("self.actuator_" + actuator)] = 0
+        msg = actuator + "stopping"
+        return msg
 
+    #Traverse servo
+    def servo_traverse(self, action, sensitivity):
+        port = self.actuator_servo_traverse
+        if action == "+":
+            self.servo_continuous[port] = sensitivity
+            msg = "servo_traverse forward"
+        elif action == "-":
+            self.servo_continuous[port] = -1*sensitivity
+            msg = "servo_traverse backward"
+        return msg
 
+    #Turret servo
+    def servo_turret(self, action, sensitivity):
+        port = self.actuator_servo_turret
+        if action == "+":
+            self.servo_continuous[port] = sensitivity
+            msg = "servo_turret rotate right"
+        elif action == "-":
+            self.servo_continuous[port] = -1*sensitivity
+            msg = "servo_turret rotate left"
+        return msg
+
+    #Nozzle servo
+    def servo_nozzle(self, action, sensitivity):
+        port = self.actuator_servo_nozzle
+        if action == "+":
+            self.servo_continuous[port] = sensitivity
+            msg = "servo_nozzle rotate up"
+        elif action == "-":
+            self.servo_continuous[port] = -1*sensitivity
+        return msg
+
+    #Water pump
+    def pump_water(self, action, waterpressure):
+        port = self.actuator_pump_water
+        if action == "fire":
+            self.servo_continuous[port] = waterpressure
+            msg = "pump_water firing"
+        return msg
+        
     '''
     #simply turns motors on
     def move_power(self, power, deviation=0):

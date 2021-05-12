@@ -111,27 +111,21 @@ def manual_actuator():
     action = data.get("action")
     action_msg = "actuator not active"
     if action == "stop":
-        #stop stop_actuator(actuator)
-        #get actuator data
-        # action_message = stop_actuator(actuator)
-        placeholder = "placeholder"
+        #stop actuator
+        action_msg = robot.stop_actuator(actuator)
     else:
         if actuator == "servo_traverse":
             #move forward/back 
-            # action_message = servo_traverse(action, sensitivity)
-            placeholder = "placeholder"
+            action_msg = robot.servo_traverse(action, sensitivity)
         elif actuator ==  "servo_turret":
             #rotate left/right 
-            # action_message = servo_turret(action, sensitivity)
-            placeholder = "placeholder"
+            action_msg = robot.servo_turret(action, sensitivity)
         elif actuator == "servo_nozzle":
             #rotate up/down 
-            # action_message = servo_nozzle(action, sensitivity)
-            placeholder = "placeholder"
+            action_msg = robot.servo_nozzle(action, sensitivity)
         elif actuator == "pump_water":
             #shoot water 
-            # action_message = pump_water(action, waterpressure)
-            placeholder = "placeholder"
+            action_msg = robot.pump_water(action, waterpressure)
     return jsonify({"msg":action_msg})
 
 
