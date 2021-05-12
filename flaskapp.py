@@ -103,7 +103,7 @@ def get_actuator_all():
 #Manual actuator operation
 @app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
-    if request.form == 'POST':
+    if request.method == 'POST':
         global sensitivity, waterpressure
         actuator = request.form.get["actuator"]
         action = request.form.get["action"]
