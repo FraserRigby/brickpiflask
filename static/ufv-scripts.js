@@ -100,7 +100,7 @@ function slider_update(slider_id, output) {
 
 //Transfer slider variable value
 function slider_transfer(slider_id) {
-    data = {}
+    var data = {}
     if (slider_id == "slider_sensitivity") {
         data["sensitivity"] = sensitivity;
     }
