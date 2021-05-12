@@ -176,19 +176,19 @@
                         </td>
                         <td>
                             <button class="arrow up" id="control_manual_traverse_forward" onmousedown="manual_actuator('servo_traverse', '+')" onmouseup="manual_actuator('servo_traverse', 'stop')"></button><!--Traverse forward button-->
-                            <button class="arrow down" id="control_manual_traverse_backward" onclick="manual_traverse_backward()"></button><!--Travere back button-->
+                            <button class="arrow down" id="control_manual_traverse_backward" onmousedown="manual_actuator('servo_traverse', '-')" onmouseup="manual_actuator('servo_traverse', 'stop')"></button><!--Travere back button-->
                         </td>
                         <td id="manual_turret_rotation_container">
-                            <button class="arrow left" id="control_manual_turret_left" onclick="manual_turret_left()"></button><!--Rotate turret left button-->
-                            <button class="arrow right" id="control_manual_turret_right" onclick="manual_turret_right()"></button><!--Rotate turret right button-->
+                            <button class="arrow left" id="control_manual_turret_left" onmousedown="manual_actuator('servo_turret', '-')" onmouseup="manual_actuator('servo_turret', 'stop')"></button><!--Rotate turret left button-->
+                            <button class="arrow right" id="control_manual_turret_right" onmousedown="manual_actuator('servo_turret', '+')" onmouseup="manual_actuator('servo_turret', 'stop')"></button><!--Rotate turret right button-->
                         </td>
                         <td>
-                            <button class="arrow up" id="control_manual_nozzle_up" onclick="manual_nozzle_up()"></button><!--Nozzle Up button-->
-                            <button class="arrow down" id="control_manual_nozzle_down" onclick="manual_nozzle_down()"></button><!--Nozzle down button-->
+                            <button class="arrow up" id="control_manual_nozzle_up" onmousedown="manual_actuator('servo_nozzle', '+')" onmouseup="manual_actuator('servo_nozzle', 'stop')"></button><!--Nozzle Up button-->
+                            <button class="arrow down" id="control_manual_nozzle_down" onmousedown="manual_actuator('servo_nozzle', '-')" onmouseup="manual_actuator('servo_nozzle', 'stop')"></button><!--Nozzle down button-->
                         </td>
                         <td>
                             <input type="range" min="1" max="100" value="50" class="slider" id="slider_waterpressure" oninput="slider_update('slider_waterpressure', 'actuator_waterpressure')" onmouseup="slider_transfer('slider_waterpressure')"><!--Sensitivity slider-->
-                            <button class="firewater_btn" id="control_manual_firewater" onclick="manual_waterfire()">Fire<br>Water</button><!--Fire water button-->
+                            <button class="firewater_btn" id="control_manual_firewater" onmousedown="manual_actuator('pump_water', 'fire')" onmouseup="manual_actuator('pump_water', 'stop')">Fire<br>Water</button><!--Fire water button-->
                         </td>
                     </tr>
                 </table>
