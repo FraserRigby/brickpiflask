@@ -75,7 +75,6 @@ def var_update():
             sensitivity = data[entry]
         elif entry == "waterpressure":
             waterpressure = data[entry]
-    print(sensitivity, waterpressure)
     return jsonify({"msg":"variable updated"})
 
 #Get current command from robotinterface
