@@ -84,7 +84,6 @@ document.getElementById("actuator_waterpressure").innerHTML = waterpressure;
 function slider_update(slider_id, output) {
     var slider = document.getElementById(slider_id);
     var input = parseFloat(slider.value);
-    //troubleshooting, testing if float
     var output_elmnt = null;
     if (output != "none") {
         output_elmnt = document.getElementById(output);
