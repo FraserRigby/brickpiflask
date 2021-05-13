@@ -108,7 +108,7 @@ def manual_actuator():
     global sensitivity, waterpressure
     #troubleshooting, testing if float
     if isinstance(sensitivity, float):
-        print("sensitivity float flaskapp")
+        print("sensitivity float flaskapp", sensitivity)
     actuator = request.form.get("actuator")
     action = request.form.get("action")
     action_msg = "actuator not active"
@@ -120,7 +120,6 @@ def manual_actuator():
         if actuator == "servo_traverse":
             #move forward/back 
             action_msg = robot.servo_traverse(action, sensitivity)
-            print("move, or at least do something!!!")
         elif actuator ==  "servo_turret":
             #rotate left/right 
             action_msg = robot.servo_turret(action, sensitivity)
