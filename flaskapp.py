@@ -106,8 +106,8 @@ def get_actuator_all():
 @app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
     global sensitivity, waterpressure
-    float(sensitivity)
-    float(waterpressure)
+    #float(sensitivity)
+    #float(waterpressure)
     actuator = request.form.get("actuator")
     action = request.form.get("action")
     action_msg = "actuator not active"
