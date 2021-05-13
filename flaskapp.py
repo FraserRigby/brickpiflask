@@ -69,12 +69,13 @@ def stop():
 #Updating variables from user input
 @app.route('/var_update', methods=['GET','POST'])
 def var_update():
+    data = request.form
     global sensitivity, waterpressure
-    for entry in request.form:
+    for entry in data:
         if entry == "sensitivity":
-            sensitivity = request.form.get[entry]
+            sensitivity = data.get(entry)
         elif entry == "waterpressure":
-            waterpressure = request.form.get[entry]
+            waterpressure = data.get(entry)
     return jsonify({"msg":"variable updated"})
 
 #Get current command from robotinterface
