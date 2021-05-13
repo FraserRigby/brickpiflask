@@ -115,7 +115,6 @@ function slider_transfer(slider_id) {
     }
     JSONrequest('/var_update', 'POST', return_msg, data);
     console.log("slider transfering");
-    get_actuator_all();
 }
 
 //Manual Actuator Operation
@@ -125,7 +124,7 @@ function manual_actuator(actuator, action) {
     commands["action"] = action;
     JSONrequest('/manual_actuator', 'POST', return_msg, commands);
     console.log(commands);
-    JSONrequest('/')
+    get_actuator_all();
 }
 ///End Robot Functions Code///
 
