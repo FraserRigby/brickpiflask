@@ -85,9 +85,6 @@ function slider_update(slider_id, output) {
     var slider = document.getElementById(slider_id);
     var input = parseFloat(slider.value);
     //troubleshooting, testing if float
-    if (input instanceof Float) {
-        console.log("input float")
-    }
     var output_elmnt = null;
     if (output != "none") {
         output_elmnt = document.getElementById(output);
@@ -105,10 +102,6 @@ function slider_update(slider_id, output) {
 //Transfer slider variable value
 function slider_transfer(slider_id) {
     var data = {};
-    //troubleshooting, testing if float
-    if (sensitivity instanceof Float) {
-        console.log("sensitivity float")
-    }
     if (slider_id == "slider_sensitivity") {
         sensitivity = sensitivity/100;
         data["sensitivity"] = sensitivity;
