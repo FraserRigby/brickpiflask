@@ -194,11 +194,12 @@ class RobotInterface():
     #Turret servo
     def servo_turret(self, action, sensitivity):
         port = self.actuator_servo_turret
+        float(sensitivity)
         if action == "+":
-            self.servo_continuous[port].throttle = float(-1*sensitivity)
+            self.servo_continuous[port].throttle = -1*sensitivity
             msg = "servo_turret rotate right"
         elif action == "-":
-            self.servo_continuous[port].throttle = float(sensitivity)
+            self.servo_continuous[port].throttle = sensitivity
             msg = "servo_turret rotate left"
         return msg
 
