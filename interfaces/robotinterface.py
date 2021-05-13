@@ -114,8 +114,10 @@ class RobotInterface():
     #Return select actuators to default position on shutdown
     def actuator_shutdown_reset(self):
         self.CurrentCommand = "actuator shutdown reset"
+        '''
         for actuator in self.actuator_shutdown_reset_list:
             self.actuator.servo[actuator].angle = 0
+        '''
         return
 
     #Safely exit applicaiton, safes actuators/sensors
@@ -187,13 +189,32 @@ class RobotInterface():
 
 
 ###----------ACTUATOR COMMANDS----------###
+    #Get traverse servo data
+    def get_actuator_servo_traverse(self):
+        data = "-"
+        return data
+
+    #Get turret servo data
+    def get_actuator_servo_turret(self):
+        angle = self.servo[self.actuator_servo_turret].angle
+        angle = float(angle)
+        angle = float("{:.2f}".format(angle))
+        return angle
+
+    #Get nozzle servo data
+    def get_actuator_servo_nozzle(self):
+        angle = self.servo[self.actuator_servo_nozzle].angle
+        angle = float(angle)
+        angle = float("{:.2f}".format(angle))
+        return angle
+
     #Get all actuator data
     def get_actuator_all(self):
         self.CurrentCommand = "get all actuator data"
         actuatordict = {}
-        actuatordict['servo_traverse'] = "-"
-        actuatordict['servo_turret'] = self.servo[self.actuator_servo_turret].angle
-        actuatordict['servo_nozzle'] = self.servo[self.actuator_servo_nozzle].angle
+        actuatordict['servo_traverse'] = self.get_actuator_servo_traverse()
+        actuatordict['servo_turret'] = self.get_actuator_servo_turret()
+        actuatordict['servo_nozzle'] = self.get_actuator_servo_nozzle()
         return actuatordict
 
     #Stop actuator
