@@ -210,7 +210,7 @@ class RobotInterface():
             self.servo_continuous[port].throttle = sensitivity
             msg = "servo_nozzle rotate up"
         elif action == "-":
-            self.servo_continuous[port].throttle = -1*sensitivity)
+            self.servo_continuous[port].throttle = -1*sensitivity
         return msg
 
     #Water pump
