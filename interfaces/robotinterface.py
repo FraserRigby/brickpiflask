@@ -184,7 +184,7 @@ class RobotInterface():
     def servo_traverse(self, action, sensitivity):
         port = self.actuator_servo_traverse
         #troubleshooting, testing if float
-        print("robointerface sensitivity is " + type(sensitivity))
+        print("robointerface sensitivity is", type(sensitivity))
         if action == "+":
             self.servo_continuous[port].throttle = sensitivity
             msg = "servo_traverse forward"
