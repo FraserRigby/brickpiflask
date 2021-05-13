@@ -97,7 +97,7 @@ function slider_update(slider_id, output) {
         waterpressure = input;
     }
     console.log("slider updating");
-    console.log(typeof input);
+    console.log(typeof(input));
 }
 
 //Transfer slider variable value
@@ -114,7 +114,7 @@ function slider_transfer(slider_id) {
     JSONrequest('/var_update', 'POST', return_msg, data);
     console.log("slider transfering");
     console.log(data);
-    console.log(typeof sensitivity);
+    console.log(typeof(sensitivity));
 }
 
 //Manual Actuator Operation
