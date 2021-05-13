@@ -177,7 +177,7 @@ class RobotInterface():
     def stop_actuator(self, actuator):
         port = eval("self.actuator_" + actuator)
         self.servo_continuous[port].throttle = 0
-        msg = actuator + "stopping"
+        msg = actuator + " stopping"
         return msg
 
     #Traverse servo
