@@ -109,6 +109,8 @@ def manual_actuator():
     #troubleshooting, testing if float
     if isinstance(sensitivity, float):
         print("sensitivity float flaskapp", sensitivity)
+    else:
+        print("sensitivity not float flaskapp", sensitivity)
     actuator = request.form.get("actuator")
     action = request.form.get("action")
     action_msg = "actuator not active"
