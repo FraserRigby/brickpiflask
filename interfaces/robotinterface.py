@@ -198,7 +198,7 @@ class RobotInterface():
             self.servo_continuous[port].throttle = sensitivity
             msg = "servo_turret rotate right"
         elif action == "-":
-            self.servo_continuous[port] = -1*sensitivity
+            self.servo_continuous[port].throttle = -1*sensitivity
             msg = "servo_turret rotate left"
         return msg
 
