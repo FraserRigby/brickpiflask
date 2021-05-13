@@ -106,8 +106,6 @@ def get_actuator_all():
 @app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
     global sensitivity, waterpressure
-    #troubleshooting, testing if float
-    print("flaskapp sensitivity is", type(sensitivity))
     actuator = request.form.get("actuator")
     action = request.form.get("action")
     action_msg = "actuator not active"
