@@ -122,34 +122,6 @@ function manual_actuator(actuator, action) {
     JSONrequest('/manual_actuator', 'POST', return_msg, commands);
     console.log(commands);
 }
-
-//Manual Traverse Backward
-function manual_traverse_backward() {
-}
-
-//Manual Rotate Turret Left
-function manual_turret_left() {
-}
-
-//Manual Rotate Turret Right
-function manual_turret_right() {
-}
-
-//Manual Rotate Nozzle Up
-function manual_nozzle_up() {
-}
-
-//Manual Rotate Nozzle Down
-function manual_nozzle_down() {
-}
-
-//Update Water Pressure
-function waterpressure_update() {
-}
-
-//Manual Water Fire
-function manual_waterfire() {
-}
 ///End Robot Functions Code///
 
 
