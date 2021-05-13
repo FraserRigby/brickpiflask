@@ -32,7 +32,7 @@ function return_cmd(results) {
 
 //Get all sensor data
 function get_sensor_all() {
-    JSONrequest('/get_sensor_all', 'POST', return_sensor_all)
+    JSONrequest('/get_sensor_all', 'POST', return_sensor_all);
 }
 
 //Return all sensor data
@@ -46,10 +46,14 @@ function return_sensor_all(results) {
 
 //Get all actuator data
 function get_actuator_all() {
+    JSONrequest('/get_actuator_all', 'POST', return_actuator_all);
 }
 
 //Return all actuator data
-function return_actuator_all() {
+function return_actuator_all(results) {
+    document.getElementById("actuator_driveservo").innerHTML = String(results.servo_traverse);
+    document.getElementById("actuator_turretservo").innerHTML = String(results.servo_turret);
+    document.getElementById("actuator_nozzleservo").innerHTML = String(results.servo_nozzle);
 }
 ///End Data Functions Code///
 
@@ -71,10 +75,10 @@ function shutdown_server() {//activated when shutdown btn pressed
     }
 }
 
-//Stop Processes
-function stop() {//activated when stop btn pressed
+//Stop All Processes
+function stop_all() {//activated when stop btn pressed
     console.log("stopping");
-    JSONrequest('/stop', 'POST', return_msg);
+    JSONrequest('/stop_all', 'POST', return_msg);
 }
 
 //Update Slider Variable Value
@@ -111,7 +115,7 @@ function slider_transfer(slider_id) {
     }
     JSONrequest('/var_update', 'POST', return_msg, data);
     console.log("slider transfering");
-    console.log(data);
+    get_actuator_all();
 }
 
 //Manual Actuator Operation
@@ -121,6 +125,7 @@ function manual_actuator(actuator, action) {
     commands["action"] = action;
     JSONrequest('/manual_actuator', 'POST', return_msg, commands);
     console.log(commands);
+    JSONrequest('/')
 }
 ///End Robot Functions Code///
 

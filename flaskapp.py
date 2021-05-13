@@ -52,80 +52,87 @@ def video_feed():
 @app.route('/shutdown', methods=['GET','POST'])
 def shutdown():
     if ROBOTENABLED:
+        robot.stop_all()
+        robot.actuator_shutdown_reset()
         robot.safe_exit()
     func = request.environ.get('werkzeug.server.shutdown')
     func()
     return jsonify({"msg":"shutting down"})
 
 #Stop current process
-@app.route('/stop', methods=['GET','POST'])
-def stop():
+@app.route('/stop_all', methods=['GET','POST'])
+def stop_all():
     if ROBOTENABLED:
         robot.CurrentRoutine = "ready"
         robot.CurrentCommand = "stop"
-        robot.stop_all()
-    return jsonify({"msg":"stopping"})
+        msg = robot.stop_all()
+    return jsonify({"msg":msg})
 
 #Updating variables from user input
 @app.route('/var_update', methods=['GET','POST'])
 def var_update():
-    data = request.form
-    global sensitivity, waterpressure
-    for entry in data:
-        if entry == "sensitivity":
-            sensitivity = float(data.get(entry))
-        elif entry == "waterpressure":
-            waterpressure = float(data.get(entry))
+    if ROBOTENABLED:
+        data = request.form
+        global sensitivity, waterpressure
+        for entry in data:
+            if entry == "sensitivity":
+                sensitivity = float(data.get(entry))
+            elif entry == "waterpressure":
+                waterpressure = float(data.get(entry))
     return jsonify({"msg":"variable updated"})
 
 #Get current command from robotinterface
 @app.route('/get_current_cmd', methods=['GET','POST'])
 def get_current_cmd():
-    currentcommand = None
     if ROBOTENABLED:
-        currentcommand = robot.CurrentCommand    
+        currentcommand = None
+        if ROBOTENABLED:
+            currentcommand = robot.CurrentCommand    
     return jsonify({"currentcommand":currentcommand})
 
 #Get all sensor data
 @app.route('/get_sensor_all', methods=['GET','POST'])
 def get_sensor_all():
-    results = None
     if ROBOTENABLED:
-        results = robot.get_sensor_all()
+        results = None
+        if ROBOTENABLED:
+            results = robot.get_sensor_all()
     return jsonify(results)
 
 #Get all actuator data
 @app.route('/get_actuator_all', methods=['GET','POST'])
 def get_actuator_all():
-    results = None
     if ROBOTENABLED:
-        results = robot.get_actuator_all()
+        results = None
+        if ROBOTENABLED:
+            results = robot.get_actuator_all()
     return jsonify(results)
 
 #Manual actuator operation
 @app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
-    global sensitivity, waterpressure
-    actuator = request.form.get("actuator")
-    action = request.form.get("action")
-    action_msg = "actuator not active"
-    print(actuator, action)
-    if action == "stop":
-        #stop actuator
-        action_msg = robot.stop_actuator(actuator)
-    else:
-        if actuator == "servo_traverse":
-            #move forward/back 
-            action_msg = robot.servo_traverse(action, sensitivity)
-        elif actuator ==  "servo_turret":
-            #rotate left/right 
-            action_msg = robot.servo_turret(action, sensitivity)
-        elif actuator == "servo_nozzle":
-            #rotate up/down 
-            action_msg = robot.servo_nozzle(action, sensitivity)
-        elif actuator == "pump_water":
-            #shoot water 
-            action_msg = robot.pump_water(action, waterpressure)
+    if ROBOTENABLED:
+        global sensitivity, waterpressure
+        actuator = request.form.get("actuator")
+        action = request.form.get("action")
+        action_msg = "actuator not active"
+        print(actuator, action)
+        if action == "stop":
+            #stop actuator
+            action_msg = robot.stop_actuator(actuator)
+        else:
+            if actuator == "servo_traverse":
+                #move forward/back 
+                action_msg = robot.servo_traverse(action, sensitivity)
+            elif actuator ==  "servo_turret":
+                #rotate left/right 
+                action_msg = robot.servo_turret(action, sensitivity)
+            elif actuator == "servo_nozzle":
+                #rotate up/down 
+                action_msg = robot.servo_nozzle(action, sensitivity)
+            elif actuator == "pump_water":
+                #shoot water 
+                action_msg = robot.pump_water(action, waterpressure)
     return jsonify({"msg":action_msg})
 
 

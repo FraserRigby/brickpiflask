@@ -65,6 +65,7 @@ class RobotInterface():
     def configure_actuators(self):
         self.servo = self.actuator.servo
         self.servo_continuous = self.actuator.continuous_servo
+        self.actuator_shutdown_reset_list = [self.actuator_servo_turret, self.actuator_servo_nozzle]
         #Set up traverse servo
         self.config['servo_traverse'] = "ENABLED"
         #Set up turret servo
@@ -88,15 +89,21 @@ class RobotInterface():
         self.logger.info(message)
         return
 
+    #Return current command
+    def get_current_command(self):
+        return self.CurrentCommand
+
     #Stop all actuators
     def stop_all(self):
         self.CurrentCommand = "stop"
         self.actuator.throttle = 0
-        return
+        msg = "stopping"
+        return msg
 
-    #Return current command
-    def get_current_command(self):
-        return self.CurrentCommand
+    def actuator_shutdown_reset(self):
+        for actuator in self.actuator_shutdown_reset_list:
+            self.actuator.servo[actuator].angle = 0
+        return
 
     #Safely exit applicaiton, safes actuators/sensors
     def safe_exit(self):
