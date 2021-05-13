@@ -87,7 +87,7 @@ function slider_update(slider_id, output) {
     var output_elmnt = null;
     if (output != "none") {
         output_elmnt = document.getElementById(output);
-        output_elmnt.innerHTML = value;
+        output_elmnt.innerHTML = input;
     }
     if (slider_id == "slider_sensitivity") {
         sensitivity = input;
