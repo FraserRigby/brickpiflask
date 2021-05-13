@@ -83,17 +83,17 @@ document.getElementById("actuator_waterpressure").innerHTML = waterpressure;
 
 function slider_update(slider_id, output) {
     var slider = document.getElementById(slider_id);
-    var value = parseFloat(slider.value);
+    var input = parseFloat(slider.value);
     var output_elmnt = null;
     if (output != "none") {
         output_elmnt = document.getElementById(output);
         output_elmnt.innerHTML = value;
     }
     if (slider_id == "slider_sensitivity") {
-        sensitivity = value;
+        sensitivity = input;
     }
     else if (slider_id == "slider_waterpressure") {
-        waterpressure = value;
+        waterpressure = input;
     }
     console.log("slider updating");
     console.log(value);
@@ -103,11 +103,11 @@ function slider_update(slider_id, output) {
 function slider_transfer(slider_id) {
     var data = {};
     if (slider_id == "slider_sensitivity") {
-        sensitivity = parseFloat(sensitivity/100)
+        sensitivity = sensitivity/100;
         data["sensitivity"] = sensitivity;
     }
     else if (slider_id == "slider_waterpressure") {
-        waterpressure = parseFloat(waterpressure/100)
+        waterpressure = waterpressure/100;
         data["waterpressure"] = waterpressure;
     }
     JSONrequest('/var_update', 'POST', return_msg, data);
