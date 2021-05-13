@@ -106,7 +106,7 @@ function slider_update(slider_id, output) {
 function slider_transfer(slider_id) {
     var data = {};
     //troubleshooting, testing if float
-    if (sensitivity instanceof float) {
+    if (sensitivity instanceof Float) {
         console.log("sensitivity float")
     }
     if (slider_id == "slider_sensitivity") {
