@@ -107,10 +107,7 @@ def get_actuator_all():
 def manual_actuator():
     global sensitivity, waterpressure
     #troubleshooting, testing if float
-    if isinstance(sensitivity, float):
-        print("sensitivity float flaskapp", sensitivity)
-    elif isinstance(sensitivity, str):
-        print("sensitivity str float flaskapp", sensitivity)
+    print("flaskapp sensitivity is " + type(sensitivity))
     actuator = request.form.get("actuator")
     action = request.form.get("action")
     action_msg = "actuator not active"
