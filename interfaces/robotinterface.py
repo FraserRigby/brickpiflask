@@ -193,7 +193,6 @@ class RobotInterface():
 
     #Turret servo
     def servo_turret(self, action, sensitivity):
-        float(sensitivity)
         port = self.actuator_servo_turret
         if action == "+":
             self.servo_continuous[port].throttle = -1*sensitivity
@@ -205,7 +204,6 @@ class RobotInterface():
 
     #Nozzle servo
     def servo_nozzle(self, action, sensitivity):
-        float(sensitivity)
         port = self.actuator_servo_nozzle
         if action == "+":
             self.servo_continuous[port].throttle = sensitivity
