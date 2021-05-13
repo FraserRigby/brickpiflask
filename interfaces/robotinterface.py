@@ -186,8 +186,8 @@ class RobotInterface():
         #troubleshooting, testing if float
         if isinstance(sensitivity, float):
             print("sensitivity float robointerface", sensitivity)
-        else:
-            print("sensitivity not float robointerface", sensitivity)
+        elif isinstance(sensitivity, str):
+            print("sensitivity str robointerface", sensitivity)
         if action == "+":
             self.servo_continuous[port].throttle = sensitivity
             msg = "servo_traverse forward"
