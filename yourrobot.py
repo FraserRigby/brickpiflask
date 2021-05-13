@@ -4,8 +4,6 @@ from interfaces.robotinterface import RobotInterface
 import logging
 import time
 
-'''need to take out unecessary stuff --> the original code was for brickpi'''
-
 #This class is encapsualtes routines which execute the elementary functions established in the RobotInterface object
 class Robot(RobotInterface):
     
@@ -25,7 +23,6 @@ if __name__ == '__main__':
     logger = logging.getLogger()
     robot.set_log(logger)
     input("Press any key to test")
-    #robot.log(robot.get_all_sensors())
     test = robot.get_sensor_all()
     print(test)
     robot.safe_exit()

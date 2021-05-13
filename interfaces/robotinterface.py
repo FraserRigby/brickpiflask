@@ -9,8 +9,13 @@ from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger #grove ultrasoni
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
 from adafruit_servokit import ServoKit #library for actuator output via PCA9685 bonnet
-'''need to take out unecessary stuff --> the original code was for brickpi'''
-'''need to import sensor and actuator drivers'''
+
+'''
+Libraries:
+grove.py Seeed-Studio MIT License--> https://github.com/Seeed-Studio/grove.py
+PyMLX90614 Connor Kneebone MIT License--> https://github.com/sightsdev/PyMLX90614
+Adafruit_CircuitPython_ServoKit Adafruit MIT License--> https://github.com/adafruit/Adafruit_CircuitPython_ServoKit
+'''
 
 #Created a Class to wrap the robot functionality, one of the features is the idea of keeping track of the CurrentCommand, this is important when more than one process is running...
 class RobotInterface():
@@ -30,6 +35,7 @@ class RobotInterface():
 
     #Initialise Sensor Ports
     def set_ports_sensors(self):
+        self.CurrentCommand = "initialise sensors"
         self.sensor_thermal_address = 0x5a #Thermal infrared sensor I2C address
         self.sensor_distance_front_address = 5 #Front ultraSonic sensor port address
         self.sensor_distance_turret_address = 16 #Turret ultrasonic sensor port address
@@ -38,6 +44,7 @@ class RobotInterface():
 
     #Configure Sensors
     def configure_sensors(self):
+        self.CurrentCommand = "configure sensors"
         #Set up thermal sensor
         self.bus = SMBus(1)
         self.sensor_thermal = MLX90614(self.bus, self.sensor_thermal_address)
@@ -53,6 +60,7 @@ class RobotInterface():
 
     #Initialise Actuator Ports
     def set_ports_actuators(self):
+        self.CurrentCommand = "initialise actuators"
         self.actuator = ServoKit(channels=16) #initialise actuators
         self.actuator_servo_traverse = 0 #traverse servo
         self.actuator_servo_turret = 1 # turret servo
@@ -63,6 +71,7 @@ class RobotInterface():
 
     #Configure Actuators
     def configure_actuators(self):
+        self.CurrentCommand = "configure actuators"
         self.servo = self.actuator.servo
         self.servo_continuous = self.actuator.continuous_servo
         self.actuator_shutdown_reset_list = [self.actuator_servo_turret, self.actuator_servo_nozzle]
@@ -79,6 +88,7 @@ class RobotInterface():
 
     #changes the logger
     def set_log(self, logger):
+        self.CurrentCommand = "initialise logger"
         self.logger=logger
         return
 
@@ -86,6 +96,7 @@ class RobotInterface():
 ###----------MISCELLANEOUS----------###
     #Log message !!!!!THIS IS NOT WORKING UNLESS FLASK LOG USED, DONT KNOW WHY!!!!!
     def log(self, message):
+        self.CurrentCommand = "activate logger"
         self.logger.info(message)
         return
 
@@ -95,12 +106,14 @@ class RobotInterface():
 
     #Stop all actuators
     def stop_all(self):
-        self.CurrentCommand = "stop"
+        self.CurrentCommand = "stop all"
         self.actuator.throttle = 0
         msg = "stopping"
         return msg
 
+    #Return select actuators to default position on shutdown
     def actuator_shutdown_reset(self):
+        self.CurrentCommand = "actuator shutdown reset"
         for actuator in self.actuator_shutdown_reset_list:
             self.actuator.servo[actuator].angle = 0
         return
@@ -117,7 +130,7 @@ class RobotInterface():
 ###----------SENSOR COMMANDS----------##
     #Get thermal IR sensor reading
     def get_sensor_thermal(self):
-        self.CurrentCommand = "Get IR temp."
+        self.CurrentCommand = "get ir temp"
         if self.config["sensor_thermal"] == "ENABLED":
             temp = self.sensor_thermal.get_obj_temp()
             temp = float("{:.2f}".format(temp))
@@ -128,7 +141,7 @@ class RobotInterface():
 
     #Get ultrasonic sensor distance reading, depending on input gets specific ultra sensor
     def get_sensor_ultra(self, distance_type):
-        self.CurrentCommand = "Get ultra sensor " + distance_type + "."
+        self.CurrentCommand = "get ultra sensor " + distance_type
         distance = None
         if distance_type == "front":
             if self.config["sensor_distance_front"] == "ENABLED":
@@ -148,13 +161,13 @@ class RobotInterface():
     
     #Get the current voltage - need to work out how to determine battery life
     def get_sensor_battery_volts(self):
-        self.currentCommand = "Get battery voltage."
+        self.CurrentCommand = "get battery voltage"
         volts = "-"
         return volts
 
     #Get Raspi temperature sensor reading
     def get_sensor_raspi_temp(self):
-        self.currentCommand = "Get Raspi temperature."
+        self.CurrentCommand = "get Raspi temperature"
         temp = os.popen('vcgencmd measure_temp').readline()
         temp = temp.replace("temp=","").replace("'C\n","")
         temp = float(temp)
@@ -163,6 +176,7 @@ class RobotInterface():
 
     #Get and return dictionary of all sensors
     def get_sensor_all(self):
+        self.CurrentCommand = "get all sensor data"
         sensordict = {} #create a dictionary for the sensors
         sensordict['thermal'] = self.get_sensor_thermal()
         #sensordict['distance_front'] = self.get_sensor_ultra("front")
@@ -175,6 +189,7 @@ class RobotInterface():
 ###----------ACTUATOR COMMANDS----------###
     #Get all actuator data
     def get_actuator_all(self):
+        self.CurrentCommand = "get all actuator data"
         actuatordict = {}
         actuatordict['servo_traverse'] = "-"
         actuatordict['servo_turret'] = self.servo[self.actuator_servo_turret].angle
@@ -183,6 +198,7 @@ class RobotInterface():
 
     #Stop actuator
     def stop_actuator(self, actuator):
+        self.CurrentCommand = "stop " + actuator
         port = eval("self.actuator_" + actuator)
         self.servo_continuous[port].throttle = 0
         msg = actuator + " stopping"
@@ -192,9 +208,11 @@ class RobotInterface():
     def servo_traverse(self, action, sensitivity):
         port = self.actuator_servo_traverse
         if action == "+":
+            self.CurrentCommand = "traverse forward"
             self.servo_continuous[port].throttle = sensitivity
             msg = "servo_traverse forward"
         elif action == "-":
+            self.CurrentCommand = "traverse backward"
             self.servo_continuous[port].throttle = -1*sensitivity
             msg = "servo_traverse backward"
         return msg
@@ -203,9 +221,11 @@ class RobotInterface():
     def servo_turret(self, action, sensitivity):
         port = self.actuator_servo_turret
         if action == "+":
+            self.CurrentCommand = "rotate turret right"
             self.servo_continuous[port].throttle = -1*sensitivity
             msg = "servo_turret rotate right"
         elif action == "-":
+            self.CurrentCommand = "rotate turret left"
             self.servo_continuous[port].throttle = sensitivity
             msg = "servo_turret rotate left"
         return msg
@@ -214,9 +234,11 @@ class RobotInterface():
     def servo_nozzle(self, action, sensitivity):
         port = self.actuator_servo_nozzle
         if action == "+":
+            self.CurrentCommand = "rotate nozzle up"
             self.servo_continuous[port].throttle = sensitivity
             msg = "servo_nozzle rotate up"
         elif action == "-":
+            self.CurrentCommand = "rotate nozzle down"
             self.servo_continuous[port].throttle = -1*sensitivity
             msg = "servo_nozzle rotate down"
         return msg
@@ -225,81 +247,11 @@ class RobotInterface():
     def pump_water(self, action, waterpressure):
         port = self.actuator_pump_water
         if action == "fire":
+            self.CurrentCommand = "fire water"
             self.servo_continuous[port].throttle = waterpressure
             msg = "pump_water firing"
         return msg
 
-    '''
-    #simply turns motors on
-    def move_power(self, power, deviation=0):
-        bp = self.BP
-        self.CurrentCommand = "move_power"
-        bp.set_motor_power(self.rightmotor, power)
-        bp.set_motor_power(self.leftmotor, power + deviation)
-        return
-
-    #moves for the specified time (seconds) and power - use negative power to reverse
-    def move_power_time(self, power, t, deviation=0):
-        bp = self.BP
-        self.CurrentCommand = "move_power_time"
-        timelimit = time.time() + t
-        bp.set_motor_power(self.rightmotor, power)
-        bp.set_motor_power(self.leftmotor, power + deviation)
-        while time.time() < timelimit and self.CurrentCommand != "stop":
-            continue
-        self.CurrentCommand = "stop"
-        self.BP.set_motor_power(self.largemotors, 0)
-        return
-    
-
-    #UPDATED THIS FUNCTION SINCE INTERFACE TEMPLATE WAS GIVEN
-    #moves forward until a colour or an object is detected- return collisiontype
-    def move_power_untildistanceto(self, power, distanceto, deviation=0):
-        if self.config['ultra'] >= DISABLED or not self.Configured:
-            return 0
-        self.CurrentCommand = "move_power_untildistanceto"
-        bp = self.BP
-        distancedetected = 300 # to set an initial distance detected before loop
-        elapsedtime = 0; starttime = time.time(); timelimit = starttime + self.timelimit  #all timelimits are a backup plan
-        collisiontype = None
-        #Turn motors on
-        bp.set_motor_power(self.rightmotor, power)
-        bp.set_motor_power(self.leftmotor, power + deviation)
-        while (self.CurrentCommand != "stop" and time.time() < timelimit):
-
-            ##if sensor fails, or distanceto has been reached quit, or distancedetected = 0
-            distancedetected = self.get_ultra_sensor()
-            self.log("MOVING - Distance detected: " + str(distancedetected))
-            if ((self.config['ultra'] > DISABLED) or (distancedetected < distanceto and distancedetected != 0.0)): 
-                collisiontype = "objectdetected"
-                break 
-
-            ##insert other tests e.g if red colour
-            colour = self.get_colour_sensor()
-            if colour == "Red":
-                collisiontype = "junctiondetected"
-                break
-            elif colour == "Green":
-                collisiontype = "searchareadetected"
-                break
-            
-        self.CurrentCommand = "stop"
-        elapsedtime = time.time() - starttime
-        bp.set_motor_power(self.largemotors, 0)
-        return {"collisiontype":collisiontype,"elapsedtime":elapsedtime}  
-
-    #Rotate power and time, -power to reverse
-    def rotate_power_time(self, power, t):
-        self.CurrentCommand = "rotate_power_time"
-        bp = self.BP
-        target = time.time() + t
-        while time.time() < target and self.CurrentCommand != 'stop':
-            bp.set_motor_power(self.rightmotor, -power)
-            bp.set_motor_power(self.leftmotor, power)
-        bp.set_motor_power(self.largemotors, 0) #stop
-        self.CurrentCommand = 'stop'
-        return
-    '''
 #--------------------------------------------------------------------
 # Only execute if this is the main file, good for testing code
 if __name__ == '__main__':

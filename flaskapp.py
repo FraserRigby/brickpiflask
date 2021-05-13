@@ -84,28 +84,39 @@ def var_update():
 #Get current command from robotinterface
 @app.route('/get_current_cmd', methods=['GET','POST'])
 def get_current_cmd():
+    currentcommand = None
     if ROBOTENABLED:
-        currentcommand = None
-        if ROBOTENABLED:
-            currentcommand = robot.CurrentCommand    
+        currentcommand = robot.CurrentCommand    
     return jsonify({"currentcommand":currentcommand})
+
+#Get current routine form yourrobot
+@app.route('/get_current_routine', methods=['GET','POST'])
+def get_current_routine():
+    currentroutine = None
+    if ROBOTENABLED:
+        currentroutine = robot.CurrentRoutine
+    return jsonify({"currentroutine":currentroutine})
+
+#Get configuration status
+@app.route('/get_config', methods=['GET','POST'])
+def get_config():
+    if ROBOTENABLED:
+        return jsonify({"configured":ROBOTENABLED, "config":robot.config})
 
 #Get all sensor data
 @app.route('/get_sensor_all', methods=['GET','POST'])
 def get_sensor_all():
+    results = None
     if ROBOTENABLED:
-        results = None
-        if ROBOTENABLED:
-            results = robot.get_sensor_all()
+        results = robot.get_sensor_all()
     return jsonify(results)
 
 #Get all actuator data
 @app.route('/get_actuator_all', methods=['GET','POST'])
 def get_actuator_all():
+    results = None
     if ROBOTENABLED:
-        results = None
-        if ROBOTENABLED:
-            results = robot.get_actuator_all()
+        results = robot.get_actuator_all()
     return jsonify(results)
 
 #Manual actuator operation
@@ -135,67 +146,7 @@ def manual_actuator():
                 action_msg = robot.pump_water(action, waterpressure)
     return jsonify({"msg":action_msg})
 
-
 '''
-#start robot moving
-@app.route('/start', methods=['GET','POST'])
-def start():
-    collisiondata = None
-    if ROBOTENABLED: #make sure robot is
-        #collisiondata = {"collisiontype":collisiontype,"elapsedtime":elapsedtime} 
-        collisiondata = robot.move_power_untildistanceto(POWER,20,4) #use a third number if you need to correct a dev
-    return jsonify({ "message":"collision detected", "collisiondata":collisiondata }) #jsonify take any type and makes a JSON 
-
-
-#Get the current command from brickpiinterface.py
-@app.route('/getcurrentcommand', methods=['GET','POST'])
-def getcurrentcommand():
-    currentcommand = None
-    if ROBOTENABLED:
-        currentcommand = robot.CurrentCommand    
-    return jsonify({"currentcommand":currentcommand})
-
-#get the current routine from robot.py
-@app.route('/getcurrentroutine', methods=['GET','POST'])
-def getcurrentroutine():
-    currentroutine= None
-    if ROBOTENABLED:
-        currentroutine = robot.CurrentRoutine
-    return jsonify({"currentroutine":currentroutine})
-
-#get the configuration status from brickpiinterface
-@app.route('/getconfigured', methods=['GET','POST'])
-def getconfigured():
-    return jsonify({"configured":ROBOTENABLED})
-
-#Start callibration of the IMU sensor
-@app.route('/getcalibration', methods=['GET','POST'])
-def getcalibration():
-    calibration = None
-    if ROBOTENABLED:
-        if not robot.Calibrated:
-            calibration = robot.calibrate_imu()
-    return jsonify({"calibration":calibration})
-
-#Start callibration of the IMU sensor
-@app.route('/reconfigIMU', methods=['GET','POST'])
-def reconfigIMU():
-    if ROBOTENABLED:
-        robot.reconfig_IMU()
-    return jsonify({"message":"reconfiguring_IMU"})
-
-#Stop current process
-@app.route('/stop', methods=['GET','POST'])
-def stop():
-    if ROBOTENABLED:
-        robot.CurrentRoutine = "ready"
-        robot.CurrentCommand = "stop"
-        robot.stop_all()
-    return jsonify({ "message":"stopping" })
-
-'''
-'''
-
 #An example of how to receive data from a JSON object
 @app.route('/defaultdatahandler', methods=['GET','POST'])
 def defaultdatahandler():
