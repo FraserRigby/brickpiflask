@@ -184,10 +184,10 @@ class RobotInterface():
     def servo_traverse(self, action, sensitivity):
         port = self.actuator_servo_traverse
         if action == "+":
-            self.servo_continuous[port].throttle = sensitivity
+            self.servo_continuous[port].throttle = float(sensitivity)
             msg = "servo_traverse forward"
         elif action == "-":
-            self.servo_continuous[port].throttle = -1*sensitivity
+            self.servo_continuous[port].throttle = float(-1*sensitivity)
             msg = "servo_traverse backward"
         return msg
 
@@ -195,10 +195,10 @@ class RobotInterface():
     def servo_turret(self, action, sensitivity):
         port = self.actuator_servo_turret
         if action == "+":
-            self.servo_continuous[port].throttle = -1*sensitivity
+            self.servo_continuous[port].throttle = float(-1*sensitivity)
             msg = "servo_turret rotate right"
         elif action == "-":
-            self.servo_continuous[port].throttle = 1*sensitivity
+            self.servo_continuous[port].throttle = float(sensitivity)
             msg = "servo_turret rotate left"
         return msg
 
@@ -214,7 +214,6 @@ class RobotInterface():
 
     #Water pump
     def pump_water(self, action, waterpressure):
-        float(waterpressure)
         port = self.actuator_pump_water
         if action == "fire":
             self.servo_continuous[port].throttle = waterpressure
