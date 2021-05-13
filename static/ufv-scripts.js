@@ -1,7 +1,7 @@
 ///Start global variables///
 var shutdown = false; //if the server is still live
-var sensitivity = parseInt(document.getElementById("slider_sensitivity").value);
-var waterpressure = parseInt(document.getElementById("slider_waterpressure").value);
+var sensitivity = parseFloat(document.getElementById("slider_sensitivity").value);
+var waterpressure = parseFloat(document.getElementById("slider_waterpressure").value);
 var sensorview_container = false;
 var actuatorview_container = false;
 var graphview_container = false
@@ -83,7 +83,7 @@ document.getElementById("actuator_waterpressure").innerHTML = waterpressure;
 
 function slider_update(slider_id, output) {
     var slider = document.getElementById(slider_id);
-    var value = parseInt(slider.value);
+    var value = parseFloat(slider.value);
     var output_elmnt = null;
     if (output != "none") {
         output_elmnt = document.getElementById(output);
