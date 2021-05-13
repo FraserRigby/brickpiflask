@@ -108,11 +108,13 @@ def manual_actuator():
     global sensitivity, waterpressure
     #float(sensitivity)
     #float(waterpressure)
+    #troubleshooting, testing if float
+    if isinstance(sensitivity, float):
+        print = "sensitivity float"
     actuator = request.form.get("actuator")
     action = request.form.get("action")
     action_msg = "actuator not active"
     print(actuator, action)
-    print(sensitivity, waterpressure)
     if action == "stop":
         #stop actuator
         action_msg = robot.stop_actuator(actuator)
