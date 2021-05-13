@@ -95,7 +95,8 @@ function slider_update(slider_id, output) {
     else if (slider_id == "slider_waterpressure") {
         waterpressure = value;
     }
-    console.log("slider updating")
+    console.log("slider updating");
+    console.log(value);
 }
 
 //Transfer slider variable value
