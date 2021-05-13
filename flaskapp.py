@@ -73,9 +73,9 @@ def var_update():
     global sensitivity, waterpressure
     for entry in data:
         if entry == "sensitivity":
-            sensitivity = data.get(entry)
+            sensitivity = float(data.get(entry))
         elif entry == "waterpressure":
-            waterpressure = data.get(entry)
+            waterpressure = float(data.get(entry))
     return jsonify({"msg":"variable updated"})
 
 #Get current command from robotinterface
