@@ -91,7 +91,6 @@ function slider_update(slider_id, output) {
     }
     if (slider_id == "slider_sensitivity") {
         sensitivity = input;
-        console.log(sensitivity)
     }
     else if (slider_id == "slider_waterpressure") {
         waterpressure = input;
