@@ -181,7 +181,7 @@ class RobotInterface():
         self.CurrentCommand = "get all sensor data"
         sensordict = {} #create a dictionary for the sensors
         sensordict['thermal'] = self.get_sensor_thermal()
-        #sensordict['distance_front'] = self.get_sensor_ultra("front")
+        sensordict['distance_front'] = self.get_sensor_ultra("front")
         sensordict['distance_turret'] = self.get_sensor_ultra("turret")
         sensordict['battery'] = self.get_sensor_battery_volts()
         sensordict['raspi_temp'] = self.get_sensor_raspi_temp()
