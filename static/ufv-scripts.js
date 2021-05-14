@@ -124,7 +124,9 @@ function manual_actuator(actuator, action) {
     commands["action"] = action;
     JSONrequest('/manual_actuator', 'POST', return_msg, commands);
     console.log(commands);
-    get_actuator_all();
+    if (action == "stop") {
+        get_actuator_all();
+    }
 }
 ///End Robot Functions Code///
 
