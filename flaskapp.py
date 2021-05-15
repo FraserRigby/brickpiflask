@@ -144,7 +144,8 @@ def manual_actuator():
             elif actuator == "pump_water":
                 #shoot water 
                 action_msg = robot.pump_water(action, waterpressure)
-    return jsonify({"msg":action_msg})
+        results = get_actuator_all()
+    return jsonify({"msg":action_msg, "actuatordata":results})
 
 '''
 #An example of how to receive data from a JSON object
