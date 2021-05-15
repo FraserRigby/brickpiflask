@@ -196,14 +196,14 @@ class RobotInterface():
 
     #Get turret servo data
     def get_actuator_servo_turret(self):
-        angle = self.servo[self.actuator_servo_turret].angle
+        angle = self.servo_continuous[self.actuator_servo_turret].angle
         angle = float(angle%360)
         angle = float("{:.2f}".format(angle))
         return angle
 
     #Get nozzle servo data
     def get_actuator_servo_nozzle(self):
-        angle = self.servo[self.actuator_servo_nozzle].angle
+        angle = self.servo_continuous[self.actuator_servo_nozzle].angle
         angle = float(angle%360)
         angle = float("{:.2f}".format(angle))
         return angle
