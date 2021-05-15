@@ -119,11 +119,17 @@ function slider_transfer(slider_id) {
 
 //Manual Actuator Operation
 function manual_actuator(actuator, action) {
+    if (action != "stop") {
+        get_actuator_all()
+    }
     commands = {};
     commands["actuator"] = actuator;
     commands["action"] = action;
-    JSONrequest('/manual_actuator', 'POST', (return_msg, get_actuator_all), commands);
+    JSONrequest('/manual_actuator', 'POST', return_msg, commands);
     console.log(commands);
+    if (action == "stop") {
+        get_actuator_all()
+    }
 }
 ///End Robot Functions Code///
 

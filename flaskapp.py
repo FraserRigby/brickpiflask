@@ -131,9 +131,7 @@ def manual_actuator():
         if action == "stop":
             #stop actuator
             action_msg = robot.stop_actuator(actuator)
-            results = get_actuator_all()
         else:
-            results = get_actuator_all()
             if actuator == "servo_traverse":
                 #move forward/back 
                 action_msg = robot.servo_traverse(action, sensitivity)
@@ -146,7 +144,7 @@ def manual_actuator():
             elif actuator == "pump_water":
                 #shoot water 
                 action_msg = robot.pump_water(action, waterpressure)
-    return (jsonify({"msg":action_msg}), results)
+    return jsonify({"msg":action_msg})
 
 '''
 #An example of how to receive data from a JSON object
