@@ -25,6 +25,7 @@ Implementation Notes
 
 import board
 from adafruit_pca9685 import PCA9685
+from interfaces.adafruit_motor_adapted import servo
 
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ServoKit.git"
@@ -111,7 +112,7 @@ class _Servo:
         self.kit = kit
 
     def __getitem__(self, servo_channel):
-        from adafruit_motor_adapted import servo  # pylint: disable=import-outside-toplevel
+        from interfaces.adafruit_motor_adapted import servo  # pylint: disable=import-outside-toplevel
 
         num_channels = self.kit._channels
         if servo_channel >= num_channels or servo_channel < 0:

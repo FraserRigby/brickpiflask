@@ -8,7 +8,7 @@ import threading
 from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger #grove ultrasonic sensor library
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
-from adafruit_servokit import ServoKit #library for actuator output via PCA9685 bonnet
+from interfaces.adafruit_servokit_adapted import ServoKit #library for actuator output via PCA9685 bonnet
 
 '''
 Libraries:
@@ -243,11 +243,11 @@ class RobotInterface():
         port = self.actuator_servo_turret
         if action == "+":
             self.CurrentCommand = "rotate turret right"
-            self.servo_continuous[port].throttle = -1*sensitivity
+            self.servo[port].throttle = -1*sensitivity
             msg = "servo_turret rotate right"
         elif action == "-":
             self.CurrentCommand = "rotate turret left"
-            self.servo_continuous[port].throttle = sensitivity
+            self.servo[port].throttle = sensitivity
             msg = "servo_turret rotate left"
         return msg
 
@@ -256,11 +256,11 @@ class RobotInterface():
         port = self.actuator_servo_nozzle
         if action == "+":
             self.CurrentCommand = "rotate nozzle up"
-            self.servo_continuous[port].throttle = sensitivity
+            self.servo[port].throttle = sensitivity
             msg = "servo_nozzle rotate up"
         elif action == "-":
             self.CurrentCommand = "rotate nozzle down"
-            self.servo_continuous[port].throttle = -1*sensitivity
+            self.servo[port].throttle = -1*sensitivity
             msg = "servo_nozzle rotate down"
         return msg
 
@@ -269,7 +269,7 @@ class RobotInterface():
         port = self.actuator_pump_water
         if action == "fire":
             self.CurrentCommand = "fire water"
-            self.servo_continuous[port].throttle = waterpressure
+            self.servo[port].throttle = waterpressure
             msg = "pump_water firing"
         return msg
 
