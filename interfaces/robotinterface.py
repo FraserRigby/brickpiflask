@@ -221,7 +221,7 @@ class RobotInterface():
     def stop_actuator(self, actuator):
         self.CurrentCommand = "stop " + actuator
         port = eval("self.actuator_" + actuator)
-        self.servo_continuous[port].throttle = 0
+        self.servo[port].throttle = 0
         msg = actuator + " stopping"
         return msg
 
@@ -230,11 +230,11 @@ class RobotInterface():
         port = self.actuator_servo_traverse
         if action == "+":
             self.CurrentCommand = "traverse forward"
-            self.servo_continuous[port].throttle = sensitivity
+            self.servo[port].throttle = sensitivity
             msg = "servo_traverse forward"
         elif action == "-":
             self.CurrentCommand = "traverse backward"
-            self.servo_continuous[port].throttle = -1*sensitivity
+            self.servo[port].throttle = -1*sensitivity
             msg = "servo_traverse backward"
         return msg
 
