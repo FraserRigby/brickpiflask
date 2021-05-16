@@ -71,7 +71,7 @@ class ServoKit:
         self._servo = _Servo(self)
         #self._continuous_servo = _ContinuousServo(self)
 
-    '''
+    
     @property
     def servo(self):
         """:class:`~adafruit_motor.servo.Servo` controls for standard servos.
@@ -87,6 +87,7 @@ class ServoKit:
         """
         return self._servo
 
+    '''
     @property
     def continuous_servo(self):
         """:class:`~adafruit_motor.servo.ContinuousServo` controls for continuous rotation
