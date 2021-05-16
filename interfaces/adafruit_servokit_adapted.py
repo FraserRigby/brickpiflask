@@ -70,7 +70,7 @@ class ServoKit:
         self._pca.frequency = frequency
 
         self._servo = _Servo(self)
-        self._continuous_servo = _ContinuousServo(self)
+        #self._continuous_servo = _ContinuousServo(self)
 
     @property
     def servo(self):
