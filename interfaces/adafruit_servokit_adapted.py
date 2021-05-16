@@ -25,7 +25,6 @@ Implementation Notes
 
 import board
 from adafruit_pca9685 import PCA9685
-import interfaces.adafruit_motor_adapted
 
 __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ServoKit.git"
@@ -72,6 +71,7 @@ class ServoKit:
         self._servo = _Servo(self)
         #self._continuous_servo = _ContinuousServo(self)
 
+    '''
     @property
     def servo(self):
         """:class:`~adafruit_motor.servo.Servo` controls for standard servos.
@@ -104,7 +104,7 @@ class ServoKit:
             kit.continuous_servo[0].throttle = 0
         """
         return self._continuous_servo
-
+    '''
 
 class _Servo:
     # pylint: disable=protected-access
@@ -119,10 +119,10 @@ class _Servo:
             raise ValueError("servo must be 0-{}!".format(num_channels - 1))
         servo = self.kit._items[servo_channel]
         if servo is None:
-            servo = adafruit_motor.servo.Servo(self.kit._pca.channels[servo_channel])
+            servo = interfaces.adafruit_motor_adapted.Servo(self.kit._pca.channels[servo_channel])
             self.kit._items[servo_channel] = servo
             return servo
-        if isinstance(self.kit._items[servo_channel], adafruit_motor.servo.Servo):
+        if isinstance(self.kit._items[servo_channel], interfaces.adafruit_motor_adapted.Servo):
             return servo
         raise ValueError("Channel {} is already in use.".format(servo_channel))
 
