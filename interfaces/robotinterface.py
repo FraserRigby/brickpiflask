@@ -73,7 +73,6 @@ class RobotInterface():
     def configure_actuators(self):
         self.CurrentCommand = "configure actuators"
         self.servo = self.actuator.servo
-        self.servo_continuous = self.actuator.continuous_servo
         self.actuator_shutdown_reset_list = [self.actuator_servo_turret, self.actuator_servo_nozzle]
         #Set up traverse servo
         self.config['servo_traverse'] = "ENABLED"
