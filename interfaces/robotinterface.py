@@ -5,6 +5,7 @@ import math
 import sys
 import logging
 import threading
+import Rpi.GPIO as GPIO
 from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger #grove ultrasonic sensor library
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
@@ -66,7 +67,8 @@ class RobotInterface():
         self.actuator_servo_traverse = 0 #traverse servo
         self.actuator_servo_turret = 1 # turret servo
         self.actuator_servo_nozzle = 2 #nozzle servo
-        self.actuator_pump_water = 3 #water pump
+        #self.actuator_pump_water = 3 #water pump
+        self.actuator_pump_water = 16 #water pump backup gpio address
         self.configure_actuators()
         return
 
@@ -83,6 +85,8 @@ class RobotInterface():
         #Set up nozzle servo
         self.config['servo_nozzle'] = "ENABLED"
         #set up water pump
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self.actuator_pump_water, GPIO.OUT)
         self.config['pump_water'] = "ENABLED"
         self.Configured_actuators = True
         return
@@ -224,7 +228,10 @@ class RobotInterface():
     def stop_actuator(self, actuator):
         self.CurrentCommand = "stop " + actuator
         port = eval("self.actuator_" + actuator)
-        self.servo[port].throttle = 0
+        if actuator == "pump_warer":
+            GPIO.output(port, GPIO.HIGH)
+        else:
+            self.servo[port].throttle = 0
         msg = actuator + " stopping"
         return msg
 
@@ -272,7 +279,8 @@ class RobotInterface():
         port = self.actuator_pump_water
         if action == "fire":
             self.CurrentCommand = "fire water"
-            self.servo[port].throttle = waterpressure
+            #self.servo[port].throttle = waterpressure
+
             msg = "pump_water firing"
         return msg
 
