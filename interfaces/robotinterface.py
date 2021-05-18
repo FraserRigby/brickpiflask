@@ -228,7 +228,8 @@ class RobotInterface():
     def stop_actuator(self, actuator):
         self.CurrentCommand = "stop " + actuator
         port = eval("self.actuator_" + actuator)
-        if actuator == "pump_warer":
+        print(actuator)
+        if actuator == "pump_water":
             GPIO.output(port, GPIO.LOW)
         else:
             self.servo[port].throttle = 0
