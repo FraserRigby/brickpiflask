@@ -21,11 +21,11 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
     :param int min_pulse: The minimum pulse length of the servo in microseconds.
     :param int max_pulse: The maximum pulse length of the servo in microseconds."""
 
-    def __init__(self, pwm_out, *, min_pulse=0, max_pulse=3000):
+    def __init__(self, pwm_out, *, min_pulse=750, max_pulse=2250):
         self._pwm_out = pwm_out
         self.set_pulse_width_range(min_pulse, max_pulse)
 
-    def set_pulse_width_range(self, min_pulse=0, max_pulse=3000):
+    def set_pulse_width_range(self, min_pulse=750, max_pulse=2250):
         """Change min and max pulse widths."""
         self._min_duty = int((min_pulse * self._pwm_out.frequency) / 1000000 * 0xFFFF)
         max_duty = (max_pulse * self._pwm_out.frequency) / 1000000 * 0xFFFF
