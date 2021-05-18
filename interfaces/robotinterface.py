@@ -229,7 +229,7 @@ class RobotInterface():
         self.CurrentCommand = "stop " + actuator
         port = eval("self.actuator_" + actuator)
         if actuator == "pump_warer":
-            GPIO.output(port, GPIO.HIGH)
+            GPIO.output(port, GPIO.LOW)
         else:
             self.servo[port].throttle = 0
         msg = actuator + " stopping"
@@ -280,7 +280,7 @@ class RobotInterface():
         if action == "fire":
             self.CurrentCommand = "fire water"
             #self.servo[port].throttle = waterpressure
-
+            GPIO.output(port, GPIO.HIGH)
             msg = "pump_water firing"
         return msg
 
