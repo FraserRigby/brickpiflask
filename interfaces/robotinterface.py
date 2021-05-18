@@ -68,7 +68,7 @@ class RobotInterface():
         self.actuator_servo_turret = 1 # turret servo
         self.actuator_servo_nozzle = 2 #nozzle servo
         #self.actuator_pump_water = 3 #water pump
-        self.actuator_pump_water = 36 #water pump backup gpio address
+        self.actuator_pump_water = 16 #water pump backup gpio address
         self.configure_actuators()
         return
 
@@ -85,6 +85,7 @@ class RobotInterface():
         #Set up nozzle servo
         self.config['servo_nozzle'] = "ENABLED"
         #set up water pump
+        GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.actuator_pump_water, GPIO.OUT)
         self.config['pump_water'] = "ENABLED"
         self.Configured_actuators = True
