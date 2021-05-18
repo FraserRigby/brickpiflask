@@ -5,7 +5,7 @@ import math
 import sys
 import logging
 import threading
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger #grove ultrasonic sensor library
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
