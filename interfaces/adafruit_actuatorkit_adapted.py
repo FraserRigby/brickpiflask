@@ -230,7 +230,7 @@ class _DCMotor:
             raise ValueError("servo must be 0-{}!".format(num_channels - 1))
         motor = self.kit._items[motor_channel]
         if motor is None:
-            motor = interfaces.adafruit_actuator_adapted.DCMotor(self.kit._pca.channels[motor_channel])
+            motor = interfaces.adafruit_actuator_adapted.DCMotor(self.kit._pca.channels[motor_channel], self.kit._pca.channels[motor_channel])
             self.kit._items[motor_channel] = motor
             return motor
         if isinstance(self.kit._items[motor_channel], interfaces.adafruit_actuator_adapted.DCMotor):
