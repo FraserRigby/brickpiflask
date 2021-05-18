@@ -3,6 +3,7 @@ import os
 import time
 import math
 import sys
+import board
 import logging
 import threading
 import RPi.GPIO as GPIO
@@ -10,13 +11,15 @@ from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger #grove ultrasoni
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
 #from adafruit_servokit import ServoKit #library for actuator output via PCA9685 bonnet
-from interfaces.adafruit_servokit_adapted import ServoKit #library for actuator output via PCA9685 bonnet
+from interfaces.adafruit_actuatorkit_adapted import ActuatorKit #library for servo actuator output via PCA9685 bonnet
 
 '''
 Libraries:
+RPi.GPIO Ben Croston MIT License--> https://pypi.org/project/RPi.GPIO/
 grove.py Seeed-Studio MIT License--> https://github.com/Seeed-Studio/grove.py
 PyMLX90614 Connor Kneebone MIT License--> https://github.com/sightsdev/PyMLX90614
 Adafruit_CircuitPython_ServoKit Adafruit MIT License--> https://github.com/adafruit/Adafruit_CircuitPython_ServoKit
+Adafruit_CircuitPython_MotorKit Adafruit MIT License--> https://github.com/adafruit/Adafruit_CircuitPython_MotorKit
 '''
 
 #Created a Class to wrap the robot functionality, one of the features is the idea of keeping track of the CurrentCommand, this is important when more than one process is running...
@@ -63,12 +66,13 @@ class RobotInterface():
     #Initialise Actuator Ports
     def set_ports_actuators(self):
         self.CurrentCommand = "initialise actuators"
-        self.actuator = ServoKit(channels=16) #initialise actuators
+        self.actuator = ActuatorKit(channels=16) #initialise actuators
         self.actuator_servo_traverse = 0 #traverse servo
         self.actuator_servo_turret = 1 # turret servo
         self.actuator_servo_nozzle = 2 #nozzle servo
-        self.actuator_pump_water = 3 #water pump
+        #self.actuator_pump_water = 3 #water pump
         #self.actuator_pump_water = 16 #water pump backup gpio address
+        self.actuator_pump_water = 3
         self.configure_actuators()
         return
 
@@ -77,6 +81,8 @@ class RobotInterface():
         self.CurrentCommand = "configure actuators"
         self.servo = self.actuator.servo
         #self.servo_continuous = self.actuator.continuous_servo
+        self.dcmotor = self.actuator.dcmotor
+        #self.stepper = self.actuator.stepper
         self.actuator_shutdown_reset_list = [self.actuator_servo_turret, self.actuator_servo_nozzle]
         #Set up traverse servo
         self.config['servo_traverse'] = "ENABLED"
@@ -231,7 +237,10 @@ class RobotInterface():
             GPIO.output(port, GPIO.LOW)
         else:
             self.servo[port].throttle = 0'''
-        self.servo[port].throttle = 0
+        if actuator == "pump_water":
+            self.dcmotor[port].throttle = 0
+        else:
+            self.servo[port].throttle = 0
         msg = actuator + " stopping"
         return msg
 
@@ -279,7 +288,8 @@ class RobotInterface():
         port = self.actuator_pump_water
         if action == "fire":
             self.CurrentCommand = "fire water"
-            self.servo[port].throttle = waterpressure
+            self.dcmotor[port].throttle = 0
+            #self.servo[port].throttle = waterpressure
             #GPIO.output(port, GPIO.HIGH)
             msg = "pump_water firing"
         return msg

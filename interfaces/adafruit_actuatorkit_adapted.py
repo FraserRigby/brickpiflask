@@ -30,7 +30,7 @@ __version__ = "0.0.0-auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_ServoKit.git"
 
 
-class ServoKit:
+class ActuatorKit:
     """Class representing an Adafruit PWM/Servo FeatherWing, Shield or Pi HAT and Bonnet kits.
     Automatically uses the I2C bus on a Feather, Metro or Raspberry Pi.
     Initialise the PCA9685 chip at ``address``.
@@ -70,6 +70,8 @@ class ServoKit:
 
         self._servo = _Servo(self)
         #self._continuous_servo = _ContinuousServo(self)
+        self._dcmotor = _DCMotor(self)
+        #self._stepper = _StepperMotor(self)
 
     
     @property
@@ -87,8 +89,8 @@ class ServoKit:
         """
         return self._servo
 
-    '''
-    @property
+    
+    '''@property
     def continuous_servo(self):
         """:class:`~adafruit_motor.servo.ContinuousServo` controls for continuous rotation
         servos.
@@ -104,34 +106,89 @@ class ServoKit:
             time.sleep(1)
             kit.continuous_servo[0].throttle = 0
         """
-        return self._continuous_servo
-    '''
+        return self._continuous_servo'''
 
+    @property
+    def dcmotor(self):
+        """:py:class:``~adafruit_motor.motor.DCMotor`` controls for motor 1.
+        The following image shows the location of the M1 terminal on the DC/Stepper FeatherWing.
+        The label on the FeatherWing is found on the bottom of the board.
+        The terminal is labeled on the top of the Shield and Pi Hat.
+        .. image :: ../docs/_static/motor_featherwing/m1.jpg
+          :alt: Motor 1 location
+        This example moves the motor forwards for one fifth of a second at full speed.
+        .. code-block:: python
+            import time
+            from adafruit_motorkit import motorkit
+            kit = MotorKit()
+            kit.motor1.throttle = 1.0
+            time.sleep(0.2)
+            kit.motor1.throttle = 0
+        """
+        return self._dcmotor
+
+    '''@property
+    def stepper1(self):
+        """:py:class:``~adafruit_motor.stepper.StepperMotor`` controls for one connected to stepper
+        1 (also labeled motor 1 and motor 2).
+         The following image shows the location of the stepper1 terminals on the DC/Stepper
+         FeatherWing. stepper1 is made up of the M1 and M2 terminals.
+         The labels on the FeatherWing are found on the bottom of the board.
+         The terminals are labeled on the top of the Shield and Pi Hat.
+         .. image :: ../docs/_static/motor_featherwing/stepper1.jpg
+           :alt: Stepper 1 location
+         This example moves the stepper motor 100 steps forwards.
+         .. code-block:: python
+             from adafruit_motorkit import MotorKit
+             kit = MotorKit()
+             for i in range(100):
+                 kit.stepper1.onestep()
+        """
+        if not self._stepper1:
+            from adafruit_motor import (  # pylint: disable=import-outside-toplevel
+                stepper,
+            )
+
+            if self._motor1 or self._motor2:
+                raise RuntimeError(
+                    "Cannot use stepper1 at the same time as motor1 or motor2."
+                )
+            self._pca.channels[8].duty_cycle = 0xFFFF
+            self._pca.channels[13].duty_cycle = 0xFFFF
+            self._stepper1 = stepper.StepperMotor(
+                self._pca.channels[10],
+                self._pca.channels[9],
+                self._pca.channels[11],
+                self._pca.channels[12],
+                microsteps=self._steppers_microsteps,
+            )
+        return self._stepper1'''
+
+'''START SERVO CODE'''
 class _Servo:
     # pylint: disable=protected-access
     def __init__(self, kit):
         self.kit = kit
 
     def __getitem__(self, servo_channel):
-        import interfaces.adafruit_motor_adapted  # pylint: disable=import-outside-toplevel
+        import interfaces.adafruit_actuator_adapted  # pylint: disable=import-outside-toplevel
 
         num_channels = self.kit._channels
         if servo_channel >= num_channels or servo_channel < 0:
             raise ValueError("servo must be 0-{}!".format(num_channels - 1))
         servo = self.kit._items[servo_channel]
         if servo is None:
-            servo = interfaces.adafruit_motor_adapted.Servo(self.kit._pca.channels[servo_channel])
+            servo = interfaces.adafruit_actuator_adapted.Servo(self.kit._pca.channels[servo_channel])
             self.kit._items[servo_channel] = servo
             return servo
-        if isinstance(self.kit._items[servo_channel], interfaces.adafruit_motor_adapted.Servo):
+        if isinstance(self.kit._items[servo_channel], interfaces.adafruit_actuator_adapted.Servo):
             return servo
         raise ValueError("Channel {} is already in use.".format(servo_channel))
 
     def __len__(self):
         return len(self.kit._items)
 
-'''
-class _ContinuousServo:
+'''class _ContinuousServo:
     # pylint: disable=protected-access
     def __init__(self, kit):
         self.kit = kit
@@ -156,5 +213,33 @@ class _ContinuousServo:
         raise ValueError("Channel {} is already in use.".format(servo_channel))
 
     def __len__(self):
+        return len(self.kit._items)'''
+'''END SERVO CODE'''
+
+'''START MOTOR CODE'''
+class _DCMotor:
+    # pylint: disable=protected-access
+    def __init__(self, kit):
+        self.kit = kit
+
+    def __getitem__(self, motor_channel):
+        import interfaces.adafruit_actuator_adapted  # pylint: disable=import-outside-toplevel
+
+        num_channels = self.kit._channels
+        if motor_channel >= num_channels or motor_channel < 0:
+            raise ValueError("servo must be 0-{}!".format(num_channels - 1))
+        motor = self.kit._items[motor_channel]
+        if motor is None:
+            motor = interfaces.adafruit_motor_adapted.Servo(self.kit._pca.channels[motor_channel])
+            self.kit._items[motor_channel] = motor
+            return motor
+        if isinstance(self.kit._items[motor_channel], interfaces.adafruit_actuator_adapted.Motor):
+            return motor
+        raise ValueError("Channel {} is already in use.".format(motor_channel))
+
+    def __len__(self):
         return len(self.kit._items)
-'''
+'''END MOTOR CODE'''
+
+'''START STEPER CODE'''
+'''END STEPPER CODE'''
