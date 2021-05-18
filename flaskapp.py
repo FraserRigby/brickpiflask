@@ -131,6 +131,7 @@ def manual_actuator():
         if action == "stop":
             #stop actuator
             action_msg = robot.stop_actuator(actuator)
+            print(actuator)
         else:
             if actuator == "servo_traverse":
                 #move forward/back 
