@@ -85,7 +85,6 @@ class RobotInterface():
         #Set up nozzle servo
         self.config['servo_nozzle'] = "ENABLED"
         #set up water pump
-        GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.actuator_pump_water, GPIO.OUT)
         self.config['pump_water'] = "ENABLED"
         self.Configured_actuators = True
