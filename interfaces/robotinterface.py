@@ -68,7 +68,7 @@ class RobotInterface():
         self.actuator_servo_turret = 1 # turret servo
         self.actuator_servo_nozzle = 2 #nozzle servo
         #self.actuator_pump_water = 3 #water pump
-        self.actuator_pump_water = 16 #water pump backup gpio address
+        self.actuator_pump_water = 36 #water pump backup gpio address
         self.configure_actuators()
         return
 
