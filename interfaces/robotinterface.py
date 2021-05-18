@@ -67,8 +67,8 @@ class RobotInterface():
         self.actuator_servo_traverse = 0 #traverse servo
         self.actuator_servo_turret = 1 # turret servo
         self.actuator_servo_nozzle = 2 #nozzle servo
-        #self.actuator_pump_water = 3 #water pump
-        self.actuator_pump_water = 16 #water pump backup gpio address
+        self.actuator_pump_water = 3 #water pump
+        #self.actuator_pump_water = 16 #water pump backup gpio address
         self.configure_actuators()
         return
 
@@ -85,8 +85,7 @@ class RobotInterface():
         #Set up nozzle servo
         self.config['servo_nozzle'] = "ENABLED"
         #set up water pump
-        GPIO.setmode(GPIO.BCM)
-        GPIO.setup(self.actuator_pump_water, GPIO.OUT)
+        #GPIO.setup(self.actuator_pump_water, GPIO.OUT)
         self.config['pump_water'] = "ENABLED"
         self.Configured_actuators = True
         return
@@ -229,10 +228,11 @@ class RobotInterface():
         self.CurrentCommand = "stop " + actuator
         port = eval("self.actuator_" + actuator)
         print(actuator)
-        if actuator == "pump_water":
+        '''if actuator == "pump_water":
             GPIO.output(port, GPIO.LOW)
         else:
-            self.servo[port].throttle = 0
+            self.servo[port].throttle = 0'''
+        self.servo[port].throttle = 0
         msg = actuator + " stopping"
         return msg
 
@@ -280,8 +280,8 @@ class RobotInterface():
         port = self.actuator_pump_water
         if action == "fire":
             self.CurrentCommand = "fire water"
-            #self.servo[port].throttle = waterpressure
-            GPIO.output(port, GPIO.HIGH)
+            self.servo[port].throttle = waterpressure
+            #GPIO.output(port, GPIO.HIGH)
             msg = "pump_water firing"
         return msg
 
