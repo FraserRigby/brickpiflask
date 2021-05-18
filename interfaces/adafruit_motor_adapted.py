@@ -119,6 +119,8 @@ class Servo(_BaseServo):
         if value is None:
             raise ValueError("Continuous servos cannot spin freely")
         self.fraction = (value + 1) / 2
+        if value == 0:
+            self.fraction = 0
 
     def __enter__(self):
         return self
