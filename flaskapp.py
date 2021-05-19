@@ -127,7 +127,7 @@ def manual_actuator():
         actuator = request.form.get("actuator")
         action = request.form.get("action")
         action_msg = "actuator not active"
-        print(actuator, action)
+        print(actuator, action, "sensitivity =", sensitivity, "waterpressure =", waterpressure)
         if action == "stop":
             #stop actuator
             action_msg = robot.stop_actuator(actuator)
