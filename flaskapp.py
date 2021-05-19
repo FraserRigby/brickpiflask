@@ -122,28 +122,87 @@ def get_actuator_all():
 #Manual actuator operation
 @app.route('/manual_actuator', methods=['GET','POST'])
 def manual_actuator():
+    action_msg = "actuator not active"
     if ROBOTENABLED:
         global sensitivity, waterpressure
         actuator = request.form.get("actuator")
         action = request.form.get("action")
-        action_msg = "actuator not active"
         print(actuator, action, "sensitivity =", sensitivity, "waterpressure =", waterpressure)
         if action == "stop":
             #stop actuator
             action_msg = robot.stop_actuator(actuator)
+            return jsonify({"msg":action_msg})
         else:
             if actuator == "servo_traverse":
                 #move forward/back 
                 action_msg = robot.servo_traverse(action, sensitivity)
+                return jsonify({"msg":action_msg})
             elif actuator ==  "servo_turret":
                 #rotate left/right 
                 action_msg = robot.servo_turret(action, sensitivity)
+                return jsonify({"msg":action_msg})
             elif actuator == "servo_nozzle":
                 #rotate up/down 
                 action_msg = robot.servo_nozzle(action, sensitivity)
+                return jsonify({"msg":action_msg})
             elif actuator == "pump_water":
                 #shoot water 
                 action_msg = robot.pump_water(action, waterpressure)
+    return jsonify({"msg":action_msg})
+
+'''need to put in msg flashing to ui for these'''
+#SemiAuto actuator operation
+@app.route('/semiauto_actuator', methods=['GET', 'POST'])
+def semiauto_actuator():
+    action_msg = "not available"
+    if ROBOTENABLED:
+        global sensitivity, waterpressure
+        action = request.form.get("actuator")
+        print(action)
+        if action == "servo_turret_face_right":
+            #rotate turret to face left
+            action_msg = robot.servo_turret_face_left()
+            return jsonify({"msg":action_msg})
+        elif action == "servo_turret_face_right":
+            #rotate turret to face right
+            action_msg = robot.servo_turret_face_right()
+            return jsonify({"msg":action_msg})
+        elif action == "search_front_semi":
+            #search in front of robot with user controlling where robot looks
+            action_msg = robot.search_front_semi()
+            return jsonify({"msg":action_msg})
+        elif action == "search_front_auto":
+            #search in front of robot with robot controlling where it looks
+            action_msg = robot.search_front_auto(sensitivity)
+            return jsonify({"msg":action_msg})
+        elif action == "search_forward":
+            #search as robot moves forward
+            action_msg = robot.search_forward(sensitivity)
+            return jsonify({"msg":action_msg})
+        elif action == "search_backward":
+            #search as robot moves backward
+            action_msg = robot.search_backward(sensitivity)
+            return jsonify({"msg":action_msg})
+        elif action == "get_firing_solution":
+            #calculate firing solution, maybe tune actuators based on calculation --> work in progress
+            action_msg = robot.get_firing_solution()
+            return jsonify({"msg":action_msg})
+        elif action == "fire_extinguish":
+            #extinguish fire
+            action_msg = robot.fire_extinguish(waterpressure)
+    return jsonify({"msg":action_msg})
+
+#Auto actuator operation
+@app.route('/auto_actuation', methods=['GET', 'POST'])
+def auto_actuation():
+    action_msg = "not available"
+    if ROBOTENABLED:
+        global sensitivity, waterpressure
+        action = request.form.get["action"]
+        print(action)
+        if action == "full_auto":
+            #basically do everything the robot needs to do automatically, based off the semiauto code
+            action_msg = robot.full_auto(sensitivity, waterpressure)
     return jsonify({"msg":action_msg})
 
 '''

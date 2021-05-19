@@ -19,10 +19,7 @@ RPi.GPIO Ben Croston MIT License--> https://pypi.org/project/RPi.GPIO/
 grove.py Seeed-Studio MIT License--> https://github.com/Seeed-Studio/grove.py
 PyMLX90614 Connor Kneebone MIT License--> https://github.com/sightsdev/PyMLX90614
 Adafruit_CircuitPython_ServoKit Adafruit MIT License--> https://github.com/adafruit/Adafruit_CircuitPython_ServoKit
-Adafruit_CircuitPython_MotorKit Adafruit MIT License--> https://github.com/adafruit/Adafruit_CircuitPython_MotorKit
 '''
-
-#---> create own pwm code???, will need to ask instrumentation, check docs, change flaskapp.py, robotinterface.py, & actuator files
 
 #Created a Class to wrap the robot functionality, one of the features is the idea of keeping track of the CurrentCommand, this is important when more than one process is running...
 class RobotInterface():
@@ -32,6 +29,7 @@ class RobotInterface():
     def __init__(self):
         self.logger = logging.getLogger()
         self.CurrentCommand = "loading"
+        self.CurrentRoutine = "ready"
         self.Configured_sensors = False
         self.Configured_actuators = False
         self.config = {} #create a dictionary that represents if the component is configured

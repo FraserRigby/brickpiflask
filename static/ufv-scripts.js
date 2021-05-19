@@ -125,6 +125,22 @@ function manual_actuator(actuator, action) {
     JSONrequest('/manual_actuator', 'POST', return_msg, commands);
     console.log(commands);
 }
+
+//SemiAuto Actuator Operation
+function semiauto_actuator(action) {
+    commands = {}
+    commands["action"] = action
+    JSONrequest('/semiauto_actuator', 'POST', return_msg, commands)
+    console.log(commands)
+}
+
+//Auto Actuator Operation
+function auto_actuator(action) {
+    commands = {}
+    commands["action"] = action
+    JSONrequest('/auto_actuator', 'POST', return_msg, commands)
+}
+
 ///End Robot Functions Code///
 
 
