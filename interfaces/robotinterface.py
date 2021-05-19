@@ -245,8 +245,8 @@ class RobotInterface():
         if actuator == "pump_water":
             self.dcpump[port].throttle = 0
         elif actuator == "servo_traverse":
-            self.servo[port_left] = 0
-            self.servo[port_right] = 0
+            self.servo[port_left].throttle = 0
+            self.servo[port_right].throttle = 0
         else:
             self.servo[port].throttle = 0
         msg = actuator + " stopping"
