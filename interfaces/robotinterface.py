@@ -121,6 +121,7 @@ class RobotInterface():
     def stop_all(self):
         self.CurrentCommand = "stop all"
         self.servo.throttle = 0
+        self.dcpump.throttle = 0
         msg = "stopping"
         return msg
 
