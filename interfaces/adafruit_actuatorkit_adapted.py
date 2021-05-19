@@ -70,99 +70,30 @@ class ActuatorKit:
 
         self._servo = _Servo(self)
         #self._continuous_servo = _ContinuousServo(self)
-        self._dcmotor = _DCMotor(self)
+        self._dcpump = _DCPump(self)
+        #self._dcmotor = _DCMotor(self)
         #self._stepper = _StepperMotor(self)
 
     
     @property
     def servo(self):
-        """:class:`~adafruit_motor.servo.Servo` controls for standard servos.
-        This FeatherWing example rotates a servo on channel ``0`` to ``180`` degrees for one second,
-        and then returns it to ``0`` degrees.
-        .. code-block:: python
-            import time
-            from adafruit_servokit import ServoKit
-            kit = ServoKit(channels=8)
-            kit.servo[0].angle = 180
-            time.sleep(1)
-            kit.servo[0].angle = 0
-        """
         return self._servo
 
-    
     '''@property
     def continuous_servo(self):
-        """:class:`~adafruit_motor.servo.ContinuousServo` controls for continuous rotation
-        servos.
-        This FeatherWing example rotates a continuous rotation servo on channel ``0`` forward for
-        one second, then backward for one second, and then stops the rotation.
-        .. code-block:: python
-            import time
-            from adafruit_servokit import ServoKit
-            kit = ServoKit(channels=8)
-            kit.continuous_servo[0].throttle = 1
-            time.sleep(1)
-            kit.continuous_servo[0].throttle = -1
-            time.sleep(1)
-            kit.continuous_servo[0].throttle = 0
-        """
         return self._continuous_servo'''
 
     @property
-    def dcmotor(self):
-        """:py:class:``~adafruit_motor.motor.DCMotor`` controls for motor 1.
-        The following image shows the location of the M1 terminal on the DC/Stepper FeatherWing.
-        The label on the FeatherWing is found on the bottom of the board.
-        The terminal is labeled on the top of the Shield and Pi Hat.
-        .. image :: ../docs/_static/motor_featherwing/m1.jpg
-          :alt: Motor 1 location
-        This example moves the motor forwards for one fifth of a second at full speed.
-        .. code-block:: python
-            import time
-            from adafruit_motorkit import motorkit
-            kit = MotorKit()
-            kit.motor1.throttle = 1.0
-            time.sleep(0.2)
-            kit.motor1.throttle = 0
-        """
-        return self._dcmotor
+    def dcpump(self):
+        return self._dcpump
 
     '''@property
-    def stepper1(self):
-        """:py:class:``~adafruit_motor.stepper.StepperMotor`` controls for one connected to stepper
-        1 (also labeled motor 1 and motor 2).
-         The following image shows the location of the stepper1 terminals on the DC/Stepper
-         FeatherWing. stepper1 is made up of the M1 and M2 terminals.
-         The labels on the FeatherWing are found on the bottom of the board.
-         The terminals are labeled on the top of the Shield and Pi Hat.
-         .. image :: ../docs/_static/motor_featherwing/stepper1.jpg
-           :alt: Stepper 1 location
-         This example moves the stepper motor 100 steps forwards.
-         .. code-block:: python
-             from adafruit_motorkit import MotorKit
-             kit = MotorKit()
-             for i in range(100):
-                 kit.stepper1.onestep()
-        """
-        if not self._stepper1:
-            from adafruit_motor import (  # pylint: disable=import-outside-toplevel
-                stepper,
-            )
+    def dcmotor(self):
+        return self._dcmotor'''
 
-            if self._motor1 or self._motor2:
-                raise RuntimeError(
-                    "Cannot use stepper1 at the same time as motor1 or motor2."
-                )
-            self._pca.channels[8].duty_cycle = 0xFFFF
-            self._pca.channels[13].duty_cycle = 0xFFFF
-            self._stepper1 = stepper.StepperMotor(
-                self._pca.channels[10],
-                self._pca.channels[9],
-                self._pca.channels[11],
-                self._pca.channels[12],
-                microsteps=self._steppers_microsteps,
-            )
-        return self._stepper1'''
+    '''@property
+    def stepper(self):
+        return self._stepper'''
 
 '''START SERVO CODE'''
 class _Servo:
@@ -216,8 +147,33 @@ class _Servo:
         return len(self.kit._items)'''
 '''END SERVO CODE'''
 
+'''START PUMP CODE'''
+class _DCPump:
+    # pylint: disable=protected-access
+    def __init__(self, kit):
+        self.kit = kit
+
+    def __getitem__(self, dcpump_channel):
+        import interfaces.adafruit_actuator_adapted  # pylint: disable=import-outside-toplevel
+
+        num_channels = self.kit._channels
+        if dcpump_channel >= num_channels or dcpump_channel < 0:
+            raise ValueError("servo must be 0-{}!".format(num_channels - 1))
+        servo = self.kit._items[dcpump_channel]
+        if servo is None:
+            servo = interfaces.adafruit_actuator_adapted.DCPump(self.kit._pca.channels[dcpump_channel])
+            self.kit._items[dcpump_channel] = servo
+            return servo
+        if isinstance(self.kit._items[dcpump_channel], interfaces.adafruit_actuator_adapted.Servo):
+            return servo
+        raise ValueError("Channel {} is already in use.".format(dcpump_channel))
+
+    def __len__(self):
+        return len(self.kit._items)
+'''END PUMP CODE'''
+
 '''START MOTOR CODE'''
-class _DCMotor:
+'''class _DCMotor:
     # pylint: disable=protected-access
     def __init__(self, kit):
         self.kit = kit
@@ -238,8 +194,12 @@ class _DCMotor:
         raise ValueError("Channel {} is already in use.".format(motor_channel))
 
     def __len__(self):
-        return len(self.kit._items)
+        return len(self.kit._items)'''
 '''END MOTOR CODE'''
+
+'''START PUMP CODE'''
+
+'''END PUMP CODE'''
 
 '''START STEPER CODE'''
 '''END STEPPER CODE'''

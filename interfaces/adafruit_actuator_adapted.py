@@ -24,6 +24,7 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
 
     def __init__(self, pwm_out, *, min_pulse=750, max_pulse=2250):
         self._pwm_out = pwm_out
+        self._pwm_out.duty_cycle = 0
         self.set_pulse_width_range(min_pulse, max_pulse)
 
     def set_pulse_width_range(self, min_pulse=750, max_pulse=2250):
@@ -44,7 +45,7 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
 
     @fraction.setter
     def fraction(self, value):
-        if value is None:
+        if value == 0:
             self._pwm_out.duty_cycle = 0  # disable the motor
             return
         if not 0.0 <= value <= 1.0:
@@ -128,8 +129,30 @@ class Servo(_BaseServo):
         self.throttle = 0
 '''END SERVO CODE'''
 
+'''START PUMP CODE'''
+class DCPump(_BaseServo):
+
+    def __init__(self, pwm_out, *, min_pulse="", max_pulse=""):
+        super().__init__(pwm_out, min_pulse=min_pulse, max_pulse=max_pulse)
+        self._pwm = pwm_out
+
+    @property
+    def throttle(self):
+        return self.fraction * 2 - 1
+
+    @throttle.setter
+    def throttle(self, value):
+        if value < 1.0 and value > -1.0:
+            self.fraction = (value + 1) / 2
+        elif value is None:
+            self.fraction = 0
+        else:
+            raise ValueError("Throttle must be between -1.0 and 1.0")
+
+'''END PUMP CODE'''
+
 '''MOTOR CODE'''
-#SPDX-FileCopyrightText: 2021 Scott Shawcroft for Adafruit Industries
+'''#SPDX-FileCopyrightText: 2021 Scott Shawcroft for Adafruit Industries
 #
 # SPDX-License-Identifier: MIT
 
@@ -235,7 +258,7 @@ class DCMotor:
         return self
 
     def __exit__(self, exception_type, exception_value, traceback):
-        self.throttle = None
+        self.throttle = None'''
 '''END MOTOR CODE'''
 
 '''START STEPPER CODE'''

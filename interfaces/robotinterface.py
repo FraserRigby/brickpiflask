@@ -22,6 +22,8 @@ Adafruit_CircuitPython_ServoKit Adafruit MIT License--> https://github.com/adafr
 Adafruit_CircuitPython_MotorKit Adafruit MIT License--> https://github.com/adafruit/Adafruit_CircuitPython_MotorKit
 '''
 
+---> create own pwm code???, will need to ask instrumentation, check docs, change flaskapp.py, robotinterface.py, & actuator files
+
 #Created a Class to wrap the robot functionality, one of the features is the idea of keeping track of the CurrentCommand, this is important when more than one process is running...
 class RobotInterface():
 
@@ -70,9 +72,8 @@ class RobotInterface():
         self.actuator_servo_traverse = 0 #traverse servo
         self.actuator_servo_turret = 1 # turret servo
         self.actuator_servo_nozzle = 2 #nozzle servo
-        #self.actuator_pump_water = 3 #water pump
+        self.actuator_pump_water = 3 #water pump
         #self.actuator_pump_water = 16 #water pump backup gpio address
-        self.actuator_pump_water = 3
         self.configure_actuators()
         return
 
@@ -81,7 +82,8 @@ class RobotInterface():
         self.CurrentCommand = "configure actuators"
         self.servo = self.actuator.servo
         #self.servo_continuous = self.actuator.continuous_servo
-        self.dcmotor = self.actuator.dcmotor
+        self.dcpump = self.actuator.dcpump
+        #self.dcmotor = self.actuator.dcmotor
         #self.stepper = self.actuator.stepper
         self.actuator_shutdown_reset_list = [self.actuator_servo_turret, self.actuator_servo_nozzle]
         #Set up traverse servo
@@ -238,7 +240,7 @@ class RobotInterface():
         else:
             self.servo[port].throttle = 0'''
         if actuator == "pump_water":
-            self.dcmotor[port].throttle = 0
+            self.dcpump[port].throttle = 0
         else:
             self.servo[port].throttle = 0
         msg = actuator + " stopping"
@@ -288,7 +290,7 @@ class RobotInterface():
         port = self.actuator_pump_water
         if action == "fire":
             self.CurrentCommand = "fire water"
-            self.dcmotor[port].throttle = 0
+            self.dcpump[port].throttle = waterpressure
             #self.servo[port].throttle = waterpressure
             #GPIO.output(port, GPIO.HIGH)
             msg = "pump_water firing"
