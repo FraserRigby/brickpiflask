@@ -133,7 +133,7 @@ class Servo(_BaseServo):
 '''START PUMP CODE'''
 class DCPump(_BaseServo):
 
-    def __init__(self, pwm_out, *, min_pulse=750, max_pulse=2250):
+    def __init__(self, pwm_out, *, min_pulse=750, max_pulse=5000):
         super().__init__(pwm_out, min_pulse=min_pulse, max_pulse=max_pulse)
         self._pwm = pwm_out
 
