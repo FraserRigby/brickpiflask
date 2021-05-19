@@ -159,13 +159,13 @@ class _DCPump:
         num_channels = self.kit._channels
         if dcpump_channel >= num_channels or dcpump_channel < 0:
             raise ValueError("servo must be 0-{}!".format(num_channels - 1))
-        servo = self.kit._items[dcpump_channel]
-        if servo is None:
-            servo = interfaces.adafruit_actuator_adapted.DCPump(self.kit._pca.channels[dcpump_channel])
-            self.kit._items[dcpump_channel] = servo
-            return servo
+        dcpump = self.kit._items[dcpump_channel]
+        if dcpump is None:
+            dcpump = interfaces.adafruit_actuator_adapted.DCPump(self.kit._pca.channels[dcpump_channel])
+            self.kit._items[dcpump_channel] = dcpump
+            return dcpump
         if isinstance(self.kit._items[dcpump_channel], interfaces.adafruit_actuator_adapted.DCPump):
-            return servo
+            return dcpump
         raise ValueError("Channel {} is already in use.".format(dcpump_channel))
 
     def __len__(self):

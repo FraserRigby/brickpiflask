@@ -24,6 +24,7 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
 
     def __init__(self, pwm_out, *, min_pulse=750, max_pulse=2250):
         self._pwm_out = pwm_out
+        self._pwm_out.duty_cycle = 0
         self.set_pulse_width_range(min_pulse, max_pulse)
 
     def set_pulse_width_range(self, min_pulse=750, max_pulse=2250):
@@ -141,7 +142,7 @@ class DCPump(_BaseServo):
 
     @throttle.setter
     def throttle(self, value):
-        if value <= 1.0 and value >= -1.0:
+        if value < 1.0 and value > -1.0:
             self.fraction = (value + 1) / 2
         elif value is None:
             self.fraction = 0
