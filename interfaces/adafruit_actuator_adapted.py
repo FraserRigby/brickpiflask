@@ -117,7 +117,7 @@ class Servo(_BaseServo):
 
     @throttle.setter
     def throttle(self, value):
-        if value >= 1.0 or value < -1.0:
+        if value >= 1.0 or value <= -1.0:
             raise ValueError("Throttle must be between -1.0 and 1.0")
         if value is None:
             raise ValueError("Continuous servos cannot spin freely")
@@ -133,7 +133,7 @@ class Servo(_BaseServo):
 '''START PUMP CODE'''
 class DCPump(_BaseServo):
 
-    def __init__(self, pwm_out, *, min_pulse=750, max_pulse=5000):
+    def __init__(self, pwm_out, *, min_pulse=750, max_pulse=10000):
         super().__init__(pwm_out, min_pulse=min_pulse, max_pulse=max_pulse)
         self._pwm = pwm_out
 
