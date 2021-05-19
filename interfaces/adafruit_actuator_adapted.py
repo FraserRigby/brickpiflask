@@ -48,7 +48,7 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
         if value == 0:
             self._pwm_out.duty_cycle = 0  # disable the motor
             return
-        if not -1.0 <= value <= 1.0:
+        if not 0.0 <= value <= 1.0:
             raise ValueError("Must be 0.0 to 1.0")
         duty_cycle = self._min_duty + int(value * self._duty_range)
         self._pwm_out.duty_cycle = duty_cycle
@@ -143,7 +143,7 @@ class DCPump(_BaseServo):
     @throttle.setter
     def throttle(self, value):
         if value <= 1.0 and value >= -1.0 and value != 0:
-            self.fraction = -1*value
+            self.fraction = value
         elif value is None or value == 0:
             self.fraction = 0
         else:
