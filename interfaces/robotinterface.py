@@ -69,8 +69,9 @@ class RobotInterface():
     def set_ports_actuators(self):
         self.CurrentCommand = "initialise actuators"
         self.actuator = ActuatorKit(channels=16) #initialise actuators
-        self.actuator_servo_traverse_left = 0 #traverse servo
-        self.actuator_servo_traverse_right = 1
+        self.actuator_servo_traverse = None #pseudo definition of traverse servo port
+        self.actuator_servo_traverse_left = 0 #traverse servo left
+        self.actuator_servo_traverse_right = 1 #traverse servo right
         self.actuator_servo_turret = 2 # turret servo
         self.actuator_servo_nozzle = 3 #nozzle servo
         self.actuator_pump_water = 4 #water pump
