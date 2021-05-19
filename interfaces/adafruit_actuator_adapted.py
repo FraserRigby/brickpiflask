@@ -143,7 +143,7 @@ class DCPump(_BaseServo):
     @throttle.setter
     def throttle(self, value):
         if value <= 1.0 and value >= -1.0 and value != 0:
-            self.fraction = value
+            self.fraction = -1*value
         elif value is None or value == 0:
             self.fraction = 0
         else:
