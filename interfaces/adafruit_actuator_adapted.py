@@ -45,7 +45,6 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
 
     @fraction.setter
     def fraction(self, value):
-        print(value)
         if value == 0:
             self._pwm_out.duty_cycle = 0  # disable the motor
             return
@@ -121,7 +120,7 @@ class Servo(_BaseServo):
             raise ValueError("Throttle must be between -1.0 and 1.0")
         if value is None:
             raise ValueError("Continuous servos cannot spin freely")
-        self.fraction = value
+        self.fraction = (value + 1) / 2
 
     def __enter__(self):
         return self
