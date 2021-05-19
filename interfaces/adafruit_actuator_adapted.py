@@ -117,7 +117,7 @@ class Servo(_BaseServo):
 
     @throttle.setter
     def throttle(self, value):
-        if value >= 1.0 or value =< -1.0:
+        if value >= 1.0 or value < -1.0:
             raise ValueError("Throttle must be between -1.0 and 1.0")
         if value is None:
             raise ValueError("Continuous servos cannot spin freely")
@@ -143,7 +143,7 @@ class DCPump(_BaseServo):
 
     @throttle.setter
     def throttle(self, value):
-        if value <= 1.0 and value >= -1.0 and value != 0:
+        if value <= 1.0 and value => -1.0 and value != 0:
             self.fraction = value
         elif value is None or value == 0:
             self.fraction = 0
