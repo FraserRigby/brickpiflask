@@ -47,7 +47,6 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
     def fraction(self, value):
         if value == 0:
             self._pwm_out.duty_cycle = 0  # disable the motor
-            print("duty cycle 0")
             return
         if not 0.0 <= value <= 1.0:
             raise ValueError("Must be 0.0 to 1.0")
