@@ -119,6 +119,7 @@ class RobotInterface():
     #Stop all actuators
     def stop_all(self):
         self.CurrentCommand = "stop all"
+        self.CurrentRoutine = "ready"
         self.servo.throttle = 0
         self.dcpump.throttle = 0
         msg = "stopping"
