@@ -208,13 +208,6 @@ class Robot(RobotInterface):
         msg = "full_auto routine completed/stopping"
         return msg
 
-                
-            
-
-            
-
-
-
 #--------------------------------------------------------------------
 #Only execute if this is the main file, this section is good for testing code
 if __name__ == '__main__':
