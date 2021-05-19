@@ -120,7 +120,7 @@ class Servo(_BaseServo):
             raise ValueError("Throttle must be between -1.0 and 1.0")
         if value is None:
             raise ValueError("Continuous servos cannot spin freely")
-        self.fraction = value + 1
+        self.fraction = value
 
     def __enter__(self):
         return self
