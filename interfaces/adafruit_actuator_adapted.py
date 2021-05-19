@@ -142,13 +142,18 @@ class DCPump(_BaseServo):
 
     @throttle.setter
     def throttle(self, value):
-        if value < 1.0 and value > -1.0:
+        if value <= 1.0 and value >= -1.0:
             self.fraction = (value + 1) / 2
         elif value is None:
             self.fraction = 0
         else:
             raise ValueError("Throttle must be between -1.0 and 1.0")
+            
+    def __enter__(self):
+        return self
 
+    def __exit__(self, exception_type, exception_value, traceback):
+        self.throttle = 0
 '''END PUMP CODE'''
 
 '''MOTOR CODE'''
