@@ -112,7 +112,7 @@ class Servo(_BaseServo):
         """How much power is being delivered to the motor. Values range from ``-1.0`` (full
         throttle reverse) to ``1.0`` (full throttle forwards.) ``0`` will stop the motor from
         spinning."""
-        return self.fraction * 2 - 1
+        return self.fraction
 
     @throttle.setter
     def throttle(self, value):
@@ -120,7 +120,7 @@ class Servo(_BaseServo):
             raise ValueError("Throttle must be between -1.0 and 1.0")
         if value is None:
             raise ValueError("Continuous servos cannot spin freely")
-        self.fraction = (value + 1) / 2
+        self.fraction = value + 1
 
     def __enter__(self):
         return self
