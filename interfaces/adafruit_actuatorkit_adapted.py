@@ -164,7 +164,7 @@ class _DCPump:
             servo = interfaces.adafruit_actuator_adapted.DCPump(self.kit._pca.channels[dcpump_channel])
             self.kit._items[dcpump_channel] = servo
             return servo
-        if isinstance(self.kit._items[dcpump_channel], interfaces.adafruit_actuator_adapted.Servo):
+        if isinstance(self.kit._items[dcpump_channel], interfaces.adafruit_actuator_adapted.DCPump):
             return servo
         raise ValueError("Channel {} is already in use.".format(dcpump_channel))
 
