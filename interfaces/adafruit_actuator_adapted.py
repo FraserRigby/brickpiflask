@@ -45,6 +45,7 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
 
     @fraction.setter
     def fraction(self, value):
+        print(value)
         if value == 0:
             self._pwm_out.duty_cycle = 0  # disable the motor
             return
