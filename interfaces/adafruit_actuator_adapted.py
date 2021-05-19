@@ -48,7 +48,7 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
         if value == 0:
             self._pwm_out.duty_cycle = 0  # disable the motor
             return
-        if not -1.0 <= value <= 1.0:
+        if not 0.0 <= value <= 1.0:
             raise ValueError("Must be 0.0 to 1.0")
         duty_cycle = self._min_duty + int(value * self._duty_range)
         self._pwm_out.duty_cycle = duty_cycle
@@ -112,7 +112,7 @@ class Servo(_BaseServo):
         """How much power is being delivered to the motor. Values range from ``-1.0`` (full
         throttle reverse) to ``1.0`` (full throttle forwards.) ``0`` will stop the motor from
         spinning."""
-        return self.fraction
+        return self.fraction * 2 - 1
 
     @throttle.setter
     def throttle(self, value):
@@ -120,7 +120,7 @@ class Servo(_BaseServo):
             raise ValueError("Throttle must be between -1.0 and 1.0")
         if value is None:
             raise ValueError("Continuous servos cannot spin freely")
-        self.fraction = value
+        self.fraction = (value + 1) / 2
 
     def __enter__(self):
         return self
