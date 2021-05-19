@@ -69,10 +69,11 @@ class RobotInterface():
     def set_ports_actuators(self):
         self.CurrentCommand = "initialise actuators"
         self.actuator = ActuatorKit(channels=16) #initialise actuators
-        self.actuator_servo_traverse = 0 #traverse servo
-        self.actuator_servo_turret = 1 # turret servo
-        self.actuator_servo_nozzle = 2 #nozzle servo
-        self.actuator_pump_water = 3 #water pump
+        self.actuator_servo_traverse_left = 0 #traverse servo
+        self.actuator_servo_traverse_right = 1
+        self.actuator_servo_turret = 2 # turret servo
+        self.actuator_servo_nozzle = 3 #nozzle servo
+        self.actuator_pump_water = 4 #water pump
         #self.actuator_pump_water = 16 #water pump backup gpio address
         self.configure_actuators()
         return
@@ -235,12 +236,17 @@ class RobotInterface():
     def stop_actuator(self, actuator):
         self.CurrentCommand = "stop " + actuator
         port = eval("self.actuator_" + actuator)
+        port_left = self.actuator_servo_traverse_left
+        port_right = self.actuator_servo_traverse_right
         '''if actuator == "pump_water":
             GPIO.output(port, GPIO.LOW)
         else:
             self.servo[port].throttle = 0'''
         if actuator == "pump_water":
             self.dcpump[port].throttle = 0
+        elif actuator == "servo_traverse":
+            self.servo[port_left] = 0
+            self.servo[port_right] = 0
         else:
             self.servo[port].throttle = 0
         msg = actuator + " stopping"
@@ -248,14 +254,17 @@ class RobotInterface():
 
     #Traverse servo
     def servo_traverse(self, action, sensitivity):
-        port = self.actuator_servo_traverse
+        port_left = self.actuator_servo_traverse_left
+        port_right = self.actuator_servo_traverse_right
         if action == "+":
             self.CurrentCommand = "traverse forward"
-            self.servo[port].throttle = sensitivity
+            self.servo[port_left].throttle = sensitivity
+            self.servo[port_right].throttle = sensitivity
             msg = "servo_traverse forward"
         elif action == "-":
             self.CurrentCommand = "traverse backward"
-            self.servo[port].throttle = -1*sensitivity
+            self.servo[port_left].throttle = -1*sensitivity
+            self.servo[port_right].throttle = -1*sensitivity
             msg = "servo_traverse backward"
         return msg
 
