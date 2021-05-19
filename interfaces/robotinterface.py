@@ -22,7 +22,7 @@ Adafruit_CircuitPython_ServoKit Adafruit MIT License--> https://github.com/adafr
 Adafruit_CircuitPython_MotorKit Adafruit MIT License--> https://github.com/adafruit/Adafruit_CircuitPython_MotorKit
 '''
 
----> create own pwm code???, will need to ask instrumentation, check docs, change flaskapp.py, robotinterface.py, & actuator files
+#---> create own pwm code???, will need to ask instrumentation, check docs, change flaskapp.py, robotinterface.py, & actuator files
 
 #Created a Class to wrap the robot functionality, one of the features is the idea of keeping track of the CurrentCommand, this is important when more than one process is running...
 class RobotInterface():
