@@ -11,7 +11,7 @@ from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger #grove ultrasoni
 from smbus2 import SMBus #smbus library for thermal sensor I2C communication
 from mlx90614 import MLX90614 #mlx90614 library for thermal sensor
 #from adafruit_servokit import ServoKit #library for actuator output via PCA9685 bonnet
-from interfaces.adafruit_actuatorkit_adapted import ActuatorKit #library for servo actuator output via PCA9685 bonnet
+from adafruit_actuatorkit_adapted import ActuatorKit #library for servo actuator output via PCA9685 bonnet
 
 '''
 Libraries:
