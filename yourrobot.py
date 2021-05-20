@@ -10,7 +10,6 @@ class Robot(RobotInterface):
 ###----------YOURROBOT SETUP----------###    
     def __init__(self):
         super().__init__()
-        robot.CurrentRoutine = 'ready' #could be useful to keep track of the current routine
         return
 
     #gets the current routine
