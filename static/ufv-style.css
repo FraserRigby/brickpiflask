@@ -126,6 +126,7 @@
 
 .control_tbl th{/**/
     text-align: center;
+    vertical-align: middle;
     font-weight: normal;
     padding: 0 10px 5px 10px;
 }
@@ -155,7 +156,7 @@
     cursor: pointer;
 }
 
-.slider:hover {/**/
+.slider:hover{/**/
     opacity: 1;
 }
 
@@ -167,6 +168,10 @@
     -webkit-appearance: slider-horizontal;
     height: 15px;
     width: 100px;
+}
+
+#slider_waterpressure_semiauto{/**/
+    -webkit-appearance: slider-vertical;
 }
 
 #manual_turret_rotation_container{/**/
@@ -321,6 +326,48 @@
 
 .firewater_btn:active{/**/
     filter: brightness(80%);
+}
+
+.semiauto_btn{/**/
+    display: block;
+    width: 100px;
+    height: 40px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+    color: black;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 2px;
+    transition: 0.2s;
+}
+
+.semiauto_btn:hover{/**/
+    background-color: #d3d3d3;
+}
+
+.semiauto_btn:active{/**/
+    filter: brightness(80%)
+}
+
+.auto_btn{/**/
+    display: block;
+    width: 75px;
+    height: 75px;
+    margin: auto;
+    text-align: center;
+    color: black;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+
+.auto_btn:hover{/**/
+    background-color: #d3d3d3;
+}
+
+.auto_btn:active{/**/
+    filter: brightness(80%)
 }
 /*End Button Styling*/
 

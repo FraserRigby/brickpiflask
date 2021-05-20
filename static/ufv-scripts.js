@@ -139,6 +139,7 @@ function auto_actuator(action) {
     commands = {}
     commands["action"] = action
     JSONrequest('/auto_actuator', 'POST', return_msg, commands)
+    console.log(commands)
 }
 
 ///End Robot Functions Code///
@@ -291,4 +292,4 @@ function toggle_class(elmnt, normal_class, target_class) {
         element.classList.toggle(normal_class);
     }
 }
-///End Highlight Code///
+///End Toggle Class Code///

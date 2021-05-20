@@ -16,223 +16,256 @@
         <!--Video Stream-->
         <img src="{{url_for('video_feed')}}" class="video_stream" id="video_stream">
 
-        <!--ControlMenu Window-->
-        <div class="dragcontainer_init" id="controlmenu_container"><!--Creating draggable div-->
-            <div class="dragcontainer_header" id="controlmenu_container_header"><!--Creating header-->
-                <div class="dragcontainer_header_title" id="controlmenu_container_header_title">Control Menu</div><!--Header title container-->
-                <div class="dragcontainer_header_buttons" id="controlmenu_container_header_buttons"><!--Header buttons container-->
-                    <button class="header_btn" id="controlmenu_header_btn_min" onclick="collapseElement('controlmenu_container', 'controlmenu_header_btn_min')">_</button><!--button for minimising/expanding window-->
-                </div>
-            </div>
-            <div class="dragcontainer_content" id="controlmenu_container_content"><!--Creating actual content container-->
-                <table class="controlmenu_tbl" id="controlmenu_tble">
-                    <tr class="controlmenu_tbl_row">
-                        <td class="controlmenu_tbl_col_lbl">Sensor View:</td>
-                        <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="sensorview_container_open_btn" onclick="openElement('sensorview_container')">Open</button></td><!--Button for opening other windows-->
-                    </tr>
-                    <tr class="controlmenu_tbl_row">
-                        <td class="controlmenu_tbl_col_lbl">Actuator View:</td>
-                        <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="actuatorview_container_open_btn" onclick="openElement('actuatorview_container')">Open</button></td>
-                    </tr>
-                    <tr class="controlmenu_tbl_row">
-                        <td class="controlmenu_tbl_col_lbl">Graph View:</td>
-                        <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="graphview_container_open_btn" onclick="openElement('graphview_container')">Open</button></td>
-                    </tr>
-                    <tr class="controlmenu_tbl_row">
-                        <td class="controlmenu_tbl_col_lbl">Manual Control:</td>
-                        <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="manual_container_open_btn" onclick="openElement('manual_container')">Open</button></td>
-                    </tr>
-                    <tr class="controlmenu_tbl_row">
-                        <td class="controlmenu_tbl_col_lbl">SemiAuto Control:</td>
-                        <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="semiauto_container_open_btn" onclick="openElement('semiauto_container')">Open</button></td>
-                    </tr>
-                    <tr class="controlmenu_tbl_row">
-                        <td class="controlmenu_tbl_col_lbl">Auto Control:</td>
-                        <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="auto_container_open_btn" onclick="openElement('auto_container')">Open</button></td>
-                    </tr>
-                </table>
-                <div class="shutdown_btn_container" id="shutdown_btn_container">
-                    <btn class="shutdown_btn" id="shutdown_btn" onclick="shutdown_server()">Shutdown</btn>
-                </div>
+    <!--ControlMenu Window-->
+    <div class="dragcontainer_init" id="controlmenu_container"><!--Creating draggable div-->
+        <div class="dragcontainer_header" id="controlmenu_container_header"><!--Creating header-->
+            <div class="dragcontainer_header_title" id="controlmenu_container_header_title">Control Menu</div><!--Header title container-->
+            <div class="dragcontainer_header_buttons" id="controlmenu_container_header_buttons"><!--Header buttons container-->
+                <button class="header_btn" id="controlmenu_header_btn_min" onclick="collapseElement('controlmenu_container', 'controlmenu_header_btn_min')">_</button><!--button for minimising/expanding window-->
             </div>
         </div>
-
-        <!--SensorView Window-->
-        <div class="dragcontainer_init" id="sensorview_container">
-            <div class="dragcontainer_header" id="sensorview_container_header">
-                <div class="dragcontainer_header_title" id="sensorview_container_header_title">Sensor View</div>
-                <div class="dragcontainer_header_buttons" id="sensorview_container_header_buttons">
-                    <button class="header_btn" id="sensorview_header_btn_min" onclick="collapseElement('sensorview_container', 'sensorview_header_btn_min')">_</button>
-                    <button class="header_btn" id="sensorview_header_btn_cls" onclick="closeElement('sensorview_container')">x</button>
-                </div>
-            </div>
-            <div class="dragcontainer_content" id="sensorview_container_content">
-                <table class="data_tbl">
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">TIF:</td>
-                        <td class="tbl_row_entry" id="sensor_tif">-</td>
-                        <td class="tbl_row_unit">celsius</td>
-                    </tr>
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">DistanceFront:</td>
-                        <td class="tbl_row_entry" id="sensor_distance_front">-</td>
-                        <td class="tbl_row_unit">cm</td>
-                    </tr>
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">DistanceTurret:</td>
-                        <td class="tbl_row_entry" id="sensor_distance_turret">-</td>
-                        <td class="tbl_row_unit">cm</td>
-                    </tr>
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">Battery:</th>
-                        <td class="tbl_row_entry" id="sensor_battery">-</td>
-                        <td class="tbl_row_unit">volts</td>
-                    </tr>
-                    <tr>
-                        <td class="tbl_row_name">RaspiTemp:</td>
-                        <td class="tbl_row_entry" id="sensor_raspi_temp">-</td>
-                        <td class="tbl_row_unit">celsius</td>
-                    </tr>
-                </table>
+        <div class="dragcontainer_content" id="controlmenu_container_content"><!--Creating actual content container-->
+            <table class="controlmenu_tbl" id="controlmenu_tble">
+                <tr class="controlmenu_tbl_row">
+                    <td class="controlmenu_tbl_col_lbl">Sensor View:</td>
+                    <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="sensorview_container_open_btn" onclick="openElement('sensorview_container')">Open</button></td><!--Button for opening other windows-->
+                </tr>
+                <tr class="controlmenu_tbl_row">
+                    <td class="controlmenu_tbl_col_lbl">Actuator View:</td>
+                    <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="actuatorview_container_open_btn" onclick="openElement('actuatorview_container')">Open</button></td>
+                </tr>
+                <tr class="controlmenu_tbl_row">
+                    <td class="controlmenu_tbl_col_lbl">Graph View:</td>
+                    <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="graphview_container_open_btn" onclick="openElement('graphview_container')">Open</button></td>
+                </tr>
+                <tr class="controlmenu_tbl_row">
+                    <td class="controlmenu_tbl_col_lbl">Manual Control:</td>
+                    <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="manual_container_open_btn" onclick="openElement('manual_container')">Open</button></td>
+                </tr>
+                <tr class="controlmenu_tbl_row">
+                    <td class="controlmenu_tbl_col_lbl">SemiAuto Control:</td>
+                    <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="semiauto_container_open_btn" onclick="openElement('semiauto_container')">Open</button></td>
+                </tr>
+                <tr class="controlmenu_tbl_row">
+                    <td class="controlmenu_tbl_col_lbl">Auto Control:</td>
+                    <td class="controlmenu_tbl_col_btn"><button class="open_btn" id="auto_container_open_btn" onclick="openElement('auto_container')">Open</button></td>
+                </tr>
+            </table>
+            <div class="shutdown_btn_container" id="shutdown_btn_container">
+                <btn class="shutdown_btn" id="shutdown_btn" onclick="shutdown_server()">Shutdown</btn>
             </div>
         </div>
+    </div>
 
-        <!--ActuatorView Window-->
-        <div class="dragcontainer_init" id="actuatorview_container">
-            <div class="dragcontainer_header" id="actuatorview_container_header">
-                <div class="dragcontainer_header_title" id="actuatorview_container_header_title">Actuator View</div>
-                <div class="dragcontainer_header_buttons" id="actuatorview_container_header_buttons">
-                    <button class="header_btn" id="actuatorview_header_btn_min" onclick="collapseElement('actuatorview_container', 'actuatorview_header_btn_min')">_</button>
-                    <button class="header_btn" id="actuatorview_header_btn_cls" onclick="closeElement('actuatorview_container')">x</button>
-                </div>
-            </div>
-            <div class="dragcontainer_content" id="actuatorview_container_content">
-                <table class="data_tbl">
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">DriveServo:</td>
-                        <td class="tbl_row_entry" id="actuator_driveservo">-</td>
-                        <td class="tbl_row_unit"></td>
-                    </tr>
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">TurretServo:</td>
-                        <td class="tbl_row_entry" id="actuator_turretservo">-</td>
-                        <td class="tbl_row_unit">degrees</td>
-                    </tr>
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">NozzleServo:</td>
-                        <td class="tbl_row_entry" id="actuator_nozzleservo">-</td>
-                        <td class="tbl_row_unit">degrees</td>
-                    </tr>
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">ServoSensitivity:</th>
-                        <td class="tbl_row_entry" id="actuator_sensitivity">-</td>
-                        <td class="tbl_row_unit">%</td>
-                    </tr>
-                    <tr class="tbl_row">
-                        <td class="tbl_row_name">Pump:</th>
-                        <td class="tbl_row_entry" id="actuator_waterpressure">-</td>
-                        <td class="tbl_row_unit">%</td>
-                    </tr>
-                </table>
+    <!--SensorView Window-->
+    <div class="dragcontainer_init" id="sensorview_container">
+        <div class="dragcontainer_header" id="sensorview_container_header">
+            <div class="dragcontainer_header_title" id="sensorview_container_header_title">Sensor View</div>
+            <div class="dragcontainer_header_buttons" id="sensorview_container_header_buttons">
+                <button class="header_btn" id="sensorview_header_btn_min" onclick="collapseElement('sensorview_container', 'sensorview_header_btn_min')">_</button>
+                <button class="header_btn" id="sensorview_header_btn_cls" onclick="closeElement('sensorview_container')">x</button>
             </div>
         </div>
+        <div class="dragcontainer_content" id="sensorview_container_content">
+            <table class="data_tbl">
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">TIF:</td>
+                    <td class="tbl_row_entry" id="sensor_tif">-</td>
+                    <td class="tbl_row_unit">celsius</td>
+                </tr>
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">DistanceFront:</td>
+                    <td class="tbl_row_entry" id="sensor_distance_front">-</td>
+                    <td class="tbl_row_unit">cm</td>
+                </tr>
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">DistanceTurret:</td>
+                    <td class="tbl_row_entry" id="sensor_distance_turret">-</td>
+                    <td class="tbl_row_unit">cm</td>
+                </tr>
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">Battery:</th>
+                    <td class="tbl_row_entry" id="sensor_battery">-</td>
+                    <td class="tbl_row_unit">volts</td>
+                </tr>
+                <tr>
+                    <td class="tbl_row_name">RaspiTemp:</td>
+                    <td class="tbl_row_entry" id="sensor_raspi_temp">-</td>
+                    <td class="tbl_row_unit">celsius</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-        <!--GraphView Window-->
-        <div class="dragcontainer_init" id="graphview_container">
-            <div class="dragcontainer_header" id="graphview_container_header">
-                <div class="dragcontainer_header_title" id="graphview_container_header_title">Graph View</div>
-                <div class="dragcontainer_header_buttons" id="graphview_container_header_buttons">
-                    <button class="header_btn" id="graphview_header_btn_min" onclick="collapseElement('graphview_container', 'graphview_header_btn_min')">_</button>
-                    <button class="header_btn" id="graphview_header_btn_cls" onclick="closeElement('graphview_container')">x</button>
-                </div>
-            </div>
-            <div class="dragcontainer_content" id="graphview_container_content">
-                <p>hello there, general kenobi</p>
-                <p>get the graph stuff done after everything, else --> not vital</p>
+    <!--ActuatorView Window-->
+    <div class="dragcontainer_init" id="actuatorview_container">
+        <div class="dragcontainer_header" id="actuatorview_container_header">
+            <div class="dragcontainer_header_title" id="actuatorview_container_header_title">Actuator View</div>
+            <div class="dragcontainer_header_buttons" id="actuatorview_container_header_buttons">
+                <button class="header_btn" id="actuatorview_header_btn_min" onclick="collapseElement('actuatorview_container', 'actuatorview_header_btn_min')">_</button>
+                <button class="header_btn" id="actuatorview_header_btn_cls" onclick="closeElement('actuatorview_container')">x</button>
             </div>
         </div>
+        <div class="dragcontainer_content" id="actuatorview_container_content">
+            <table class="data_tbl">
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">DriveServo:</td>
+                    <td class="tbl_row_entry" id="actuator_driveservo">-</td>
+                    <td class="tbl_row_unit"></td>
+                </tr>
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">TurretServo:</td>
+                    <td class="tbl_row_entry" id="actuator_turretservo">-</td>
+                    <td class="tbl_row_unit">degrees</td>
+                </tr>
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">NozzleServo:</td>
+                    <td class="tbl_row_entry" id="actuator_nozzleservo">-</td>
+                    <td class="tbl_row_unit">degrees</td>
+                </tr>
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">ServoSensitivity:</th>
+                    <td class="tbl_row_entry" id="actuator_sensitivity">-</td>
+                    <td class="tbl_row_unit">%</td>
+                </tr>
+                <tr class="tbl_row">
+                    <td class="tbl_row_name">Pump:</th>
+                    <td class="tbl_row_entry" id="actuator_waterpressure">-</td>
+                    <td class="tbl_row_unit">%</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-        <!--ManualControl Window-->
-        <div class="dragcontainer_init" id="manual_container">
-            <div class="dragcontainer_header" id="manual_container_header">
-                <div class="dragcontainer_header_title" id="manual_container_header_title">Manual Control</div>
-                <div class="dragcontainer_header_buttons" id="manual_container_header_buttons">
-                    <button class="header_btn" id="manual_header_btn_min" onclick="collapseElement('manual_container', 'manual_header_btn_min')">_</button>
-                    <button class="header_btn" id="manual_header_btn_cls" onclick="closeElement('manual_container')">x</button>
-                </div>
-            </div>
-            <div class="dragcontainer_content" id="manual_container_content">
-                <table class="control_tbl" id="control_manual_tbl">
-                    <tr>
-                        <th>Sensitivity:</th>
-                        <th>Traverse:</th>
-                        <th>Turret Rotation:</th>
-                        <th>Nozzle Elevation:</th>
-                        <th>Water Pressure:</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="range" min="1" max="100" value="50" class="slider" id="slider_sensitivity" oninput="slider_update('slider_sensitivity', 'actuator_sensitivity')" onmouseup="slider_transfer('slider_sensitivity')"><!--Sensitivity slider-->
-                        </td>
-                        <td>
-                            <button class="arrow up" id="control_manual_traverse_forward" onmousedown="manual_actuator('servo_traverse', '+')" onmouseup="manual_actuator('servo_traverse', 'stop')"></button><!--Traverse forward button-->
-                            <button class="arrow down" id="control_manual_traverse_backward" onmousedown="manual_actuator('servo_traverse', '-')" onmouseup="manual_actuator('servo_traverse', 'stop')"></button><!--Travere back button-->
-                        </td>
-                        <td id="manual_turret_rotation_container">
-                            <button class="arrow left" id="control_manual_turret_left" onmousedown="manual_actuator('servo_turret', '-')" onmouseup="manual_actuator('servo_turret', 'stop')"></button><!--Rotate turret left button-->
-                            <button class="arrow right" id="control_manual_turret_right" onmousedown="manual_actuator('servo_turret', '+')" onmouseup="manual_actuator('servo_turret', 'stop')"></button><!--Rotate turret right button-->
-                        </td>
-                        <td>
-                            <button class="arrow up" id="control_manual_nozzle_up" onmousedown="manual_actuator('servo_nozzle', '+')" onmouseup="manual_actuator('servo_nozzle', 'stop')"></button><!--Nozzle Up button-->
-                            <button class="arrow down" id="control_manual_nozzle_down" onmousedown="manual_actuator('servo_nozzle', '-')" onmouseup="manual_actuator('servo_nozzle', 'stop')"></button><!--Nozzle down button-->
-                        </td>
-                        <td>
-                            <input type="range" min="1" max="100" value="50" class="slider" id="slider_waterpressure" oninput="slider_update('slider_waterpressure', 'actuator_waterpressure')" onmouseup="slider_transfer('slider_waterpressure')"><!--Sensitivity slider-->
-                            <button class="firewater_btn" id="control_manual_firewater" onmousedown="manual_actuator('pump_water', 'fire')" onmouseup="manual_actuator('pump_water', 'stop')">Fire<br>Water</button><!--Fire water button-->
-                        </td>
-                    </tr>
-                </table>
+    <!--GraphView Window-->
+    <div class="dragcontainer_init" id="graphview_container">
+        <div class="dragcontainer_header" id="graphview_container_header">
+            <div class="dragcontainer_header_title" id="graphview_container_header_title">Graph View</div>
+            <div class="dragcontainer_header_buttons" id="graphview_container_header_buttons">
+                <button class="header_btn" id="graphview_header_btn_min" onclick="collapseElement('graphview_container', 'graphview_header_btn_min')">_</button>
+                <button class="header_btn" id="graphview_header_btn_cls" onclick="closeElement('graphview_container')">x</button>
             </div>
         </div>
+        <div class="dragcontainer_content" id="graphview_container_content">
+            <p>hello there, general kenobi</p>
+            <p>get the graph stuff done after everything, else --> not vital</p>
+        </div>
+    </div>
 
-        <!--SemiAutoControl Window-->
-        <div class="dragcontainer_init" id="semiauto_container">
-            <div class="dragcontainer_header" id="semiauto_container_header">
-                <div class="dragcontainer_header_title" id="semiauto_container_header_title">SemiAuto Control</div>
-                <div class="dragcontainer_header_buttons" id="semiauto_container_header_buttons">
-                    <button class="header_btn" id="semiauto_header_btn_min" onclick="collapseElement('semiauto_container', 'semiauto_header_btn_min')">_</button>
-                    <button class="header_btn" id="semiauto_header_btn_cls" onclick="closeElement('semiauto_container')">x</button>
-                </div>
-            </div>
-            <div class="dragcontainer_content" id="semiauto_container_content">
-                <p>hello there, general kenobi</p>
+    <!--ManualControl Window-->
+    <div class="dragcontainer_init" id="manual_container">
+        <div class="dragcontainer_header" id="manual_container_header">
+            <div class="dragcontainer_header_title" id="manual_container_header_title">Manual Control</div>
+            <div class="dragcontainer_header_buttons" id="manual_container_header_buttons">
+                <button class="header_btn" id="manual_header_btn_min" onclick="collapseElement('manual_container', 'manual_header_btn_min')">_</button>
+                <button class="header_btn" id="manual_header_btn_cls" onclick="closeElement('manual_container')">x</button>
             </div>
         </div>
+        <div class="dragcontainer_content" id="manual_container_content">
+            <table class="control_tbl" id="control_manual_tbl">
+                <tr>
+                    <th>Sensitivity:</th>
+                    <th>Traverse:</th>
+                    <th>Turret Rotation:</th>
+                    <th>Nozzle Elevation:</th>
+                    <th>Water Pressure:</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="slider_sensitivity" oninput="slider_update('slider_sensitivity', 'actuator_sensitivity')" onmouseup="slider_transfer('slider_sensitivity')"><!--Sensitivity slider-->
+                    </td>
+                    <td>
+                        <button class="arrow up" id="control_manual_traverse_forward" onmousedown="manual_actuator('servo_traverse', '+')" onmouseup="manual_actuator('servo_traverse', 'stop')"></button><!--Traverse forward button-->
+                        <button class="arrow down" id="control_manual_traverse_backward" onmousedown="manual_actuator('servo_traverse', '-')" onmouseup="manual_actuator('servo_traverse', 'stop')"></button><!--Travere back button-->
+                    </td>
+                    <td id="manual_turret_rotation_container">
+                        <button class="arrow left" id="control_manual_turret_left" onmousedown="manual_actuator('servo_turret', '-')" onmouseup="manual_actuator('servo_turret', 'stop')"></button><!--Rotate turret left button-->
+                        <button class="arrow right" id="control_manual_turret_right" onmousedown="manual_actuator('servo_turret', '+')" onmouseup="manual_actuator('servo_turret', 'stop')"></button><!--Rotate turret right button-->
+                    </td>
+                    <td>
+                        <button class="arrow up" id="control_manual_nozzle_up" onmousedown="manual_actuator('servo_nozzle', '+')" onmouseup="manual_actuator('servo_nozzle', 'stop')"></button><!--Nozzle Up button-->
+                        <button class="arrow down" id="control_manual_nozzle_down" onmousedown="manual_actuator('servo_nozzle', '-')" onmouseup="manual_actuator('servo_nozzle', 'stop')"></button><!--Nozzle down button-->
+                    </td>
+                    <td>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="slider_waterpressure" oninput="slider_update('slider_waterpressure', 'actuator_waterpressure')" onmouseup="slider_transfer('slider_waterpressure')"><!--Sensitivity slider-->
+                        <button class="firewater_btn" id="control_manual_firewater" onmousedown="manual_actuator('pump_water', 'fire')" onmouseup="manual_actuator('pump_water', 'stop')">Fire<br>Water</button><!--Fire water button-->
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
-        <!--AutoControl Window-->
-        <div class="dragcontainer_init" id="auto_container">
-            <div class="dragcontainer_header" id="auto_container_header">
-                <div class="dragcontainer_header_title" id="auto_container_header_title">Auto Control</div>
-                <div class="dragcontainer_header_buttons" id="auto_container_header_buttons">
-                    <button class="header_btn" id="auto_header_btn_min" onclick="collapseElement('auto_container', 'auto_header_btn_min')">_</button>
-                    <button class="header_btn" id="auto_header_btn_cls" onclick="closeElement('auto_container')">x</button>
-                </div>
-            </div>
-            <div class="dragcontainer_content" id="auto_container_content">
-                <p>hello there, general kenobi</p>
+    <!--SemiAutoControl Window-->
+    <div class="dragcontainer_init" id="semiauto_container">
+        <div class="dragcontainer_header" id="semiauto_container_header">
+            <div class="dragcontainer_header_title" id="semiauto_container_header_title">SemiAuto Control</div>
+            <div class="dragcontainer_header_buttons" id="semiauto_container_header_buttons">
+                <button class="header_btn" id="semiauto_header_btn_min" onclick="collapseElement('semiauto_container', 'semiauto_header_btn_min')">_</button>
+                <button class="header_btn" id="semiauto_header_btn_cls" onclick="closeElement('semiauto_container')">x</button>
             </div>
         </div>
-
-        <!--eStop Button-->
-        <div class="estop_container">
-            <button class="estop_btn" id="estop_btn" onclick="stop_all()">STOP</button>
+        <div class="dragcontainer_content" id="semiauto_container_content">
+            <table class="control_tbl" id="control_semiauto_tbl">
+                <tr>
+                    <th>Sensitivity:</th>
+                    <th>Waterpressure:</th>
+                    <th>Turret<br>Orientation:</th>
+                    <th>Front<br>Search:</th>
+                    <th>Direction<br>Search:</th>
+                    <th>Extinguish:</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="slider_sensitivity" oninput="slider_update('slider_sensitivity', 'actuator_sensitivity')" onmouseup="slider_transfer('slider_sensitivity')"><!--Sensitivity slider-->
+                    </td>
+                    <td>
+                        <input type="range" min="1" max="100" value="50" class="slider" id="slider_waterpressure_semiauto" oninput="slider_update('slider_waterpressure', 'actuator_waterpressure')" onmouseup="slider_transfer('slider_waterpressure')"><!--Sensitivity slider-->
+                    </td>
+                    <td>
+                        <button class="semiauto_btn" id="turret_face_left" onclick="semiauto_actuator('servo_turret_face_left')">Turret Face<br>Left</button>
+                        <button class="semiauto_btn" id="turret_face_right" onclick="semiauto_actuator('servo_turret_face_right')">Turret Face<br>Right</button>
+                    </td>
+                    <td>
+                        <button class="semiauto_btn" id="search_front_semi" onclick="semiauto_actuator('search_front_semi')">Search Front<br>Semi</button>
+                        <button class="semiauto_btn" id="search_front_auto" onclick="semiauto_actuator('search_front_auto')">Search Front<br>Auto</button>
+                    </td>
+                    <td>
+                        <button class="semiauto_btn" id="search_forward" onclick="semiauto_actuator('search_forward')">Search<br>Forward</button>
+                        <button class="semiauto_btn" id="search_backward" onclick="semiauto_actuator('search_backward')">Search<br>Backward</button>
+                    </td>
+                    <td>
+                        <button class="semiauto_btn" id="get_firing_solution" onclick="semiauto_actuator('get_firing_solution')">Get Firing<br>Solution</button>
+                        <button class="semiauto_btn" id="fire_extinguish" onclick="semiauto_actuator('fire_extinguish')">Fire<br>Extinguish</button>
+                    </td>
+                </tr>
+            </table>
         </div>
+    </div>
 
-       <!--Message Box-->
-       <div class="msg_container" id="msg_container" onclick="toggle_class('msg_container', 'msg_container', 'msg_container_active')">
-           <p class="msg_box_title">Message:</p>
-           <p class="msg_box_msg" id="msg_box_msg">Hello there, general kenobi.</p>
-       </div>
-    </body>
+    <!--AutoControl Window-->
+    <div class="dragcontainer_init" id="auto_container">
+        <div class="dragcontainer_header" id="auto_container_header">
+            <div class="dragcontainer_header_title" id="auto_container_header_title">Auto Control</div>
+            <div class="dragcontainer_header_buttons" id="auto_container_header_buttons">
+                <button class="header_btn" id="auto_header_btn_min" onclick="collapseElement('auto_container', 'auto_header_btn_min')">_</button>
+                <button class="header_btn" id="auto_header_btn_cls" onclick="closeElement('auto_container')">x</button>
+            </div>
+        </div>
+        <div class="dragcontainer_content" id="auto_container_content">
+            <button class="auto_btn" id="full_auto" onclick="auto_actuator('full_auto')">Full<br>Auto</button>
+        </div>
+    </div>
+
+    <!--eStop Button-->
+    <div class="estop_container">
+        <button class="estop_btn" id="estop_btn" onclick="stop_all()">STOP</button>
+    </div>
+
+   <!--Message Box-->
+   <div class="msg_container" id="msg_container" onclick="toggle_class('msg_container', 'msg_container', 'msg_container_active')">
+       <p class="msg_box_title">Message:</p>
+       <p class="msg_box_msg" id="msg_box_msg">Hello there, general kenobi.</p>
+   </div>
+   </body>
     <script src="/static/ufv-scripts.js"></script><!--UFV JS-->
 </html>
