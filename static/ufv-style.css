@@ -146,7 +146,7 @@
     margin: auto;
 }
 
-.slider::-webkit-slider-thumb{/**/
+/*.slider::-webkit-slider-thumb{
     -webkit-appearance: none;
     appearance: none;
     width: 25px;
@@ -154,7 +154,7 @@
     border-radius: 50%;
     background-color: #04AA6D;
     cursor: pointer;
-}
+}*/
 
 .slider:hover{/**/
     opacity: 1;
