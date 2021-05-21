@@ -27,7 +27,7 @@ class _BaseServo:  # pylint: disable-msg=too-few-public-methods
         self._pwm_out.duty_cycle = 0
         self.set_pulse_width_range(min_pulse, max_pulse)
 
-    def set_pulse_width_range(self, min_pulse=750, max_pulse=19500):
+    def set_pulse_width_range(self, min_pulse=750, max_pulse=19750):
         """Change min and max pulse widths."""
         self._min_duty = int((min_pulse * self._pwm_out.frequency) / 1000000 * 0xFFFF)
         max_duty = (max_pulse * self._pwm_out.frequency) / 1000000 * 0xFFFF
@@ -132,7 +132,7 @@ class Servo(_BaseServo):
 '''START PUMP CODE'''
 class DCPump(_BaseServo):
 
-    def __init__(self, pwm_out, *, min_pulse=750, max_pulse=19500):
+    def __init__(self, pwm_out, *, min_pulse=750, max_pulse=19750):
         super().__init__(pwm_out, min_pulse=min_pulse, max_pulse=max_pulse)
         self._pwm = pwm_out
 
