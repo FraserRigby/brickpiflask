@@ -16,7 +16,7 @@ class Camera(BaseCamera):
         with picamera.PiCamera() as camera:
             camera.resolution = (320, 240)
             camera.hflip = True
-            camera.vflip = False
+            camera.vflip = True
 
             # let camera warm up
             time.sleep(2)
